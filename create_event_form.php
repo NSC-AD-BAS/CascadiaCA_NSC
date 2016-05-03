@@ -32,8 +32,6 @@
             Last Name*:<input type="text" name="last_name" required><br>
             e-mail*:<input type="text" name="email" required><br>
             Phone Number*:<input type="text" name="phone_number" required><br>
-
-            <form action="upload.php" enctype="multipart/form-data">
                 Select image to upload:
                 <input type="file" name="fileToUpload" id="fileToUpload"><br>
                 <input type="submit" value="Submit New Event">
