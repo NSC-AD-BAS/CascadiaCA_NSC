@@ -1,47 +1,20 @@
-/*
-	*	Original script by: Shafiul Azam
-	*	Version 4.0
-	*	Modified by: Luigi Balzano
-
-	*	Description:
-	*	Inserts Countries and/or States as Dropdown List
-	*	How to Use:
-
-		In Head section:
-		----------------
-		<script type= "text/javascript" src = "countries.js"></script>
-		
-		In Body Section:
-		----------------
-		Select Country (with states):   <select id="country" name ="country"></select>
-			
-		Select State: <select name ="state" id ="state"></select>
-
-        Select Country (without states):   <select id="country2" name ="country2"></select>
-			
-		<script language="javascript">
-			populateCountries("country", "state");
-			populateCountries("country2");
-		</script>
-
-	*
-	*	License: Free to copy, distribute, modify, whatever you want to.
-	*	Aurthor's Website: http://bdhacker.wordpress.com
-	*
-*/
 
 
 
-// Countries
+// states
 var country_arr = new Array("Idaho" , "Oregon" , "Washington");
 
-// States
+//topics
+var topic_arr = new Array("Green House Gases" , "Carbon-Neutral", "Composting" , "Recycling");
+
+var events_arr = new Array("Rally", "Speaker" , "Protest" , "Concert");
+// Cities
 var s_a = new Array();
 s_a[0]="";
 s_a[1]="Sun Valley| coure d'alene";
 s_a[2]="Bend|Portland|Corvalis|";
-
 s_a[3]="Seattle|Tacoma|Bellingham|Kirkland";
+
 
 
 function populateStates( countryElementId, stateElementId ){
@@ -58,6 +31,43 @@ function populateStates( countryElementId, stateElementId ){
 	
 	for (var i=0; i<state_arr.length; i++) {
 		stateElement.options[stateElement.length] = new Option(state_arr[i],state_arr[i]);
+	}
+}
+
+
+function populateTopics( topicElementId ){
+	
+	
+
+	var topicElement = document.getElementById(topicElementId );
+	
+	topicElement.length=0;	
+	topicElement.options[0] = new Option('Select Topic','');
+	topicElement.selectedIndex = 0;
+	
+	
+	
+	for (var i=0; i< topic_arr.length; i++) {
+		topicElement.options[topicElement.length] = new Option(topic_arr[i],topic_arr[i]);
+	}
+}
+
+
+
+function populateEvents( eventsElementId ){
+	
+	
+
+	var eventsElement = document.getElementById(eventsElementId );
+	
+	eventsElement.length=0;	
+	eventsElement.options[0] = new Option('Select Event','');
+	eventsElement.selectedIndex = 0;
+	
+	
+	
+	for (var i=0; i< events_arr.length; i++) {
+		eventsElement.options[eventsElement.length] = new Option(events_arr[i],events_arr[i]);
 	}
 }
 

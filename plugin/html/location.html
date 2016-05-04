@@ -54,23 +54,31 @@ color: #ffffff;
 <body>
 <div id="widget">
 <form>
-
+<div>
+Select Event: <select name ="event" id ="event"></select>
+<div>
+<div>
+Select Topic: <select name ="topic" id ="topic"></select>
+<div>
 Select State:   <select id="country" name ="country"></select>
 <div>
 Select City: <select name ="state" id ="state"></select>
 
+
+
+
  <script language="javascript">
+ 
 populateCountries("country", "state");
-
-
- </script>
+populateTopics("topic");
+populateEvents("event");
+</script>
 </script>
 </select>
 <div>
 <text> Or enter your zip:  </text>
 <input id="txtZip" name="zip" type="text" /><br />
 </form>
-
 </div>
 </body>
 </html>
