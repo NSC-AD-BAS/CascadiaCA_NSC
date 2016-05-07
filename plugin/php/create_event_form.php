@@ -5,11 +5,13 @@
     </head>
     <body>
         <h1>New Event Form</h1>
-        <form action="create_new_event.php" method="post" enctype="multipart/form-data">
+        <form action="createEvent.php" method="post" enctype="multipart/form-data">
             Title*: <input type="text" name="title" required><br>
             Type*: <input type="text" name="type" required><br>
-            <label for="topic">Topic*:</label><textarea name="topic" id="topic" rows="1" cols="50" required></textarea><br>
-            <label for="description">Event Description*:</label><textarea name="description" id="description" rows="5" cols="50" required></textarea><br>
+            <label for="topic">Topic*:</label>
+            <textarea name="topic" id="topic" rows="1" cols="50" required></textarea><br>
+            <label for="description">Event Description*:</label>
+            <textarea name="description" id="description" rows="5" cols="50" required></textarea><br>
             <!-- calendar input for date-->
             Start Date*:<input type="date" name="start_date" required value="mm/dd/yyyy">
             End Date*:<input type="date" name="end_date" required value="mm/dd/yyyy">
@@ -21,10 +23,11 @@
             Zip*:<input type="text" name="zip" required><br>
             
             Organization<br>
-            Organization Name:<input type="text" name="organization_name"><br>
+            Organization Name*:<input type="text" name="organization_name"><br>
             Organization Website:<input type="text" name="organization_website"><br>
-            Organization Address:<input type="text" name="organization_name"><br>
+            Organization Address:<input type="text" name="organization_address"><br>
             Organization City:<input type="text" name="organization_city"><br>
+            Organization State:<input type="text" name="organization_state"><br>
             Organization Zip:<input type="text" name="organization_zip"><br>
 
             Contact Info<br>
