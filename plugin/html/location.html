@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>Region > Country > Division</title>
+<style type="text/css">
+
+body {
+	background: #FFFFFF;
+}
+#widget {
+	width: 780px;
+	height: 480px;
+	font: normal 10px verdana;
+	text-align: center;
+	margin: 40px auto;
+	border: 5px #aaa;
+	border-style: outset inset inset outset;
+	background: url(http://www.grsites.com/textures/misc/misc142.jpg);
+}
+form {
+	width: 98%;
+	margin: 200px 0 60px 0;
+}
+select {
+	width: 190px;
+	font: normal 11px verdana;
+	color: #fff;
+	background: #000;
+}
+#txtregion {
+	width: 98%;
+	height: 16px;
+	font: normal 12px verdana;
+	letter-spacing: .4em;
+	margin: auto;
+	border-bottom: 1px black solid;
+}
+#txtplacename {
+	width: 98%;
+	height: 16px;
+	font: normal 10px verdana;
+	margin: auto;
+}
+#txtZip {
+background: #000000;
+color: #ffffff;
+}
+
+</style>
+<script type= "text/javascript" src = "./../js/city-state.js"></script>
+</head>
+<body>
+<div id="widget">
+<form>
+<div>
+Select Event: <select name ="event" id ="event"></select>
+<div>
+<div>
+Select Topic: <select name ="topic" id ="topic"></select>
+<div>
+Select State:   <select id="country" name ="country"></select>
+<div>
+Select City: <select name ="state" id ="state"></select>
+
+
+
+
+ <script language="javascript">
+ 
+populateCountries("country", "state");
+populateTopics("topic");
+populateEvents("event");
+</script>
+</script>
+</select>
+<div>
+<text> Or enter your zip:  </text>
+<input id="txtZip" name="zip" type="text" /><br />
+</form>
+</div>
+</body>
+</html>
