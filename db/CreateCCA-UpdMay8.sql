@@ -83,28 +83,6 @@ CREATE TABLE `event` (
 		FOREIGN KEY (event_main_topic_id)
         REFERENCES main_topic(main_topic_id)
 );
-	event_id INT PRIMARY KEY AUTO_INCREMENT,
-    event_title TEXT NOT NULL,
-    event_type INT NOT NULL,
-    event_description LONGTEXT NOT NULL,
-    CONSTRAINT event_fk_event_type
-		FOREIGN KEY (event_type)
-        REFERENCES event_type(event_type_id),
-	start_date_time DATETIME NOT NULL,
-    end_date_time DATETIME,
-    address_id INT NOT NULL,
-	CONSTRAINT event_fk_address_id
-		FOREIGN KEY (address_id)
-        REFERENCES address(address_id),
-	main_topic_id INT NOT NULL,
-    CONSTRAINT main_topic_fk_event_main_topic_id
-		FOREIGN KEY (main_topic_id)
-        REFERENCES event_main_topic(event_main_topic_id),
-	main_event_org_id INT NOT NULL,
-    CONSTRAINT main_event_org_fk_organization
-		FOREIGN KEY (main_event_org_id)
-        REFERENCES organization(org_id)
-);
 
 /*NEED INFO TO FILL EVENT TABLE*/
 
