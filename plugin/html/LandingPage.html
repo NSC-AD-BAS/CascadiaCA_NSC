@@ -3,8 +3,10 @@
 
 <html>
 <head>
-<title>Region > Country > Division</title>
+<title>Calendar</title>
 <style type="text/css">
+
+
 
 body {
 	background: #FFFFFF;
@@ -48,13 +50,29 @@ background: #000000;
 color: #ffffff;
 }
 
+
 </style>
+
+
+
 <script type= "text/javascript" src = "./../js/city-state.js"></script>
 </head>
 <body>
 <div id="widget">
 <form>
 <div>
+
+<form action = "action_page.php">
+
+Start Date:
+
+<input type = "date" name = "start_date" > <br>
+
+End Date: 
+
+<input type = "date" name = "end_date" > <br>
+</form>
+
 Select Event: <select name ="event" id ="event"></select>
 <div>
 <div>
