@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
+
 <html>
 <head>
 <title>Calendar</title>
@@ -58,9 +59,22 @@ color: #ffffff;
 <script type= "text/javascript" src = "./../js/city-state.js"></script>
 </head>
 <body>
+
+
+
 <div id="widget">
+
+
+
 <form>
+
+Choose Radius of Location:
+<input type="range" min="0" max="100" value="0" step="1" onchange="showValue(this.value)" />
+<span id="range">0</span>
+<br>
+<br>
 <div>
+
 
 <form action = "action_page.php">
 
@@ -71,6 +85,8 @@ Start Date:
 End Date: 
 
 <input type = "date" name = "end_date" > <br>
+
+
 </form>
 
 Select Event: <select name ="event" id ="event"></select>
@@ -82,17 +98,22 @@ Select State:   <select id="country" name ="country"></select>
 <div>
 Select City: <select name ="state" id ="state"></select>
 
-
-
-
  <script language="javascript">
  
 populateCountries("country", "state");
 populateTopics("topic");
 populateEvents("event");
+
 </script>
+
+<script type="text/javascript">
+function showValue(newValue)
+{
+	document.getElementById("range").innerHTML=newValue;
+}
 </script>
-</select>
+
+
 <div>
 <text> Or enter your zip:  </text>
 <input id="txtZip" name="zip" type="text" /><br />
