@@ -1,13 +1,13 @@
 
-
+//"created" by Sam Cooledge & James the 4th
 
 // states
-var country_arr = new Array("Idaho" , "Oregon" , "Washington");
+var country_arr = new Array("Idaho" , "Oregon" , "Washington"); 
 
 //topics
-var topic_arr = new Array("Green House Gases" , "Carbon-Neutral", "Composting" , "Recycling");
+var topic_arr = new Array("Green House Gases" , "Carbon-Neutral", "Composting" , "Recycling"); //getTopic() using json from db
 
-var events_arr = new Array("Rally", "Speaker" , "Protest" , "Concert");
+var events_arr = new Array("Rally", "Speaker" , "Protest" , "Concert"); //getEvent() using json from db
 // Cities
 var s_a = new Array();
 s_a[0]="";
@@ -23,7 +23,7 @@ function populateStates( countryElementId, stateElementId ){
 
 	var stateElement = document.getElementById( stateElementId );
 	
-	stateElement.length=0;	// Fixed by Julian Woods
+	stateElement.length=0;	
 	stateElement.options[0] = new Option('Select City','');
 	stateElement.selectedIndex = 0;
 	
