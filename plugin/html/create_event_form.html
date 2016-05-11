@@ -3,20 +3,7 @@
     <head>
         <title>Create New Event</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-        <script>
-            $(function () {
-                $("#addMore").click(function (e) {
-                    e.preventDefault();
-                    $("#fieldList").append("<li>&nbsp;</li>");
-                    $("#fieldList").append(
-                            "<li>Organization Name*:<input type='text' name=\n\
-                            'organization_name' required></li>");
-                    $("#fieldList").append(
-                            "<li>Organization Website*:<input type='text' name=\n\
-                            'organization_website'></li>");
-                });
-            });
-        </script>
+        <script src="../js/AddSponsor.js"></script>
         <style>
             ul {
                 padding: 0;
@@ -30,7 +17,7 @@
     </head>
     <body>
         <h1>New Event Form</h1>
-        <form action="createEvent.php" method="post" enctype="multipart/form-data">
+        <form action="../php/createEvent.php" method="post" enctype="multipart/form-data">
 
             <h3>Event Info</h3>
             Title*: <input type="text" name="title" required><br>
