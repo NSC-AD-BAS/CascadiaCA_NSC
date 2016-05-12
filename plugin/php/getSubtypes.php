@@ -1,19 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: james_000
- * Date: 4/29/2016
- * Time: 11:01 PM
- */
 
+//returns an array of all 18 subtypes
 include "connect.php";
 
-function getEventTypes()
+function getSubtypes()
 {
     $db = connect();
 
     //fetch table rows from mysql db
-    $sql = "select * from event_type";
+    $sql = "SELECT DISTINCT `Subtype` FROM full_type_list";
     $result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 
     //create an array
@@ -30,6 +25,6 @@ function getEventTypes()
     return $jsonarray;
 }
 
-echo getEventTypes();
+echo getSubtypes();
 
 ?>

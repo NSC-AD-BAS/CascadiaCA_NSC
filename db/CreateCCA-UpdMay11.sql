@@ -69,6 +69,10 @@ CREATE TABLE `event` (
     CONSTRAINT event_fk_main_event_type
 		FOREIGN KEY (main_event_type)
         REFERENCES main_type(main_type_id),
+	main_event_subtype INT NOT NULL,
+    CONSTRAINT event_fk_main_event_subtype
+		FOREIGN KEY (main_event_subtype)
+        REFERENCES subtypes(subtype_id),
 	start_date_time DATETIME NOT NULL,
     end_date_time DATETIME,
     address_id INT NOT NULL,

@@ -5,7 +5,7 @@ function connect(){
     /* Change values below as needed */
     $db_host = "localhost";
     $db_username = "root";
-    $db_pass = "";
+    $db_pass = "root";
     $db_name = "cascadia_climate_action";
 
     /*for security purposes we should turn off detailed error reporting.

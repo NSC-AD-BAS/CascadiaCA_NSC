@@ -9,7 +9,7 @@
 		header('Content-type: application/javascript');
 		$db = connect();
 		//fetch table rows from mysql db
-		$sql = "select * from event between dateStart and dateEnd";
+		$sql = "SELECT * FROM event_list between dateStart and dateEnd";
 		$result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 		$eventarray = array();
 		while ($row = mysqli_fetch_assoc($result)) {
