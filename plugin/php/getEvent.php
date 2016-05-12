@@ -1,15 +1,15 @@
 <?php
+
 	/**
 	 * function that returns the events as $json data
 	 */
-	 
-	include "connect.php";
+    include 'connect.php';    
 	//$startDate, $endDate, $eventTypes, $topics
-	public function getEvents($startDate, $endDate){
+	function getEvents($startDate, $endDate){        
 		header('Content-type: application/javascript');
-		$db = connect();
+		$db = connect();        
 		//fetch table rows from mysql db
-		$sql = "select * from event between dateStart and dateEnd";
+		$sql = "select * from `event` where start_date_time between '$startDate' and '$endDate'";
 		$result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 		$eventarray = array();
 		while ($row = mysqli_fetch_assoc($result)) {
@@ -18,6 +18,9 @@
 		$jsonarray = json_encode($eventarray);
 		//close the db connection
 		mysqli_close($db);
+        echo "$jsonarray";
 		return $jsonarray;
 	}
 ?>
+
+

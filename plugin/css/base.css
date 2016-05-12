@@ -1,0 +1,30 @@
+html {
+    background-color:darkgray;
+}
+
+body {
+    background-color:antiquewhite;
+    padding-left:10px;
+}
+
+form {
+    padding-left: 10px;
+}
+
+.formSpan {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 25%;
+    background-color: green;
+}
+
+label {
+    order: 1;
+    margin: 5px;
+}
+
+input {
+    order: 2;
+    margin: 5px;
+}
