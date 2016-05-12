@@ -82,7 +82,8 @@ CREATE TABLE `event` (
 	event_main_topic_id INT NOT NULL,
     CONSTRAINT event_main_topic_id_fk_main_topic_id
 		FOREIGN KEY (event_main_topic_id)
-        REFERENCES main_topic(main_topic_id)
+        REFERENCES main_topic(main_topic_id),
+	main_contact_id INT NOT NULL
 );
 
 CREATE TABLE event_subtopics (
