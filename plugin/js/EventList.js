@@ -6,8 +6,6 @@ var request;
 
 // this is the function called from the landing page, will be updated to pass a JSON object to the php
 function EventsCaller(type) {
-    console.log('type is: ' + type);
-    
     // sets up the ajax xhtml object
     function getEvents(typeOfQuery) {
         console.log('get events was called');
@@ -18,8 +16,7 @@ function EventsCaller(type) {
             console.log("Error creating request object");
         }
         request.onreadystatechange = processResponse;
-        // this is where we can pass it different filters in the form of JSON objects, or as an array for php to 
-        // figure out which method it should pass the argument to
+        // now we pass our array to php for it to process with variable functions
         request.open('GET', '../php/getEvent.php?type=' + typeOfQuery);
         request.send();
     }

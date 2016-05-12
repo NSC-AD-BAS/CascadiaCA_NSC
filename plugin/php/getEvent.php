@@ -9,10 +9,21 @@
     // if the $POST value is 'all', call the 'all' function, if it's 'dateRange' call the 'dateRange' function
     $filter = $_GET['type'];
     
-    if($filter === 'all') {
+    if($filter[0] === 'all') {
          $arr = getAllEvents();
          echo "$arr";
     }
+
+	switch($filter[0]) {
+		case 'all':
+			getAllEvents();
+			break;
+		case 'range':
+			getEventsByDateRange($filter[1], $filter[2]);
+			break;
+		case 'month':
+			getEventsByMonth($filter[1]);
+	}
 
 	//$startDate, $endDate, $eventTypes, $topics
 	function getEventsByDateRange($startDate, $endDate){
@@ -33,6 +44,7 @@
 		return $jsonarray;
 	}
 
+	//TODO: before sending this json string, get the actual address instead of address id
     // added function for echoing all events for the javascript caller
 	function getAllEvents() {
 		header('Content-type: application/javascript');
@@ -49,6 +61,11 @@
 		mysqli_close($db);		
 		return $jsonarray;
 	}
+
+	function getEventsByMonth($value) {
+
+	}
+
 
 ?>
 
