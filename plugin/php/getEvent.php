@@ -9,7 +9,8 @@
 		header('Content-type: application/javascript');
 		$db = connect();        
 		//fetch table rows from mysql db
-		$sql = "select * from `event` where start_date_time between '$startDate' and '$endDate'";
+		$sql = "select * from `event` where start_date_time between '$startDate' and '$endDate'
+				and end_date_time between '$startDate' and '$endDate'";
 		$result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 		$eventarray = array();
 		while ($row = mysqli_fetch_assoc($result)) {
