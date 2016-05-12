@@ -21,7 +21,7 @@ function connect(){
 
     /* take this else statement out later. It is here for development purposes */
     else{
-    echo 'Database is connected';
+    //echo 'Database is connected';
     }
     return $db;
 }
