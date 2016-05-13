@@ -4,38 +4,34 @@
 // define request global var
 var request;
 
-// this is the function called from the landing page, will be updated to pass a JSON object to the php
-function EventsCaller(type) {
-    // sets up the ajax xhtml object
-    function getEvents(typeOfQuery) {
-        console.log('get events was called');
-        // based upon which value 'typeOfQuery' is, the php will call different functions
-        try {
-            request = new XMLHttpRequest();
-        } catch (e) {
-            console.log("Error creating request object");
-        }
-        request.onreadystatechange = processResponse;
-        // now we pass our array to php for it to process with variable functions
-        request.open('GET', '../php/getEvent.php?type=' + typeOfQuery);
-        request.send();
+// This is the function called from the landing page. We will add an onclick listener for the filter form submit
+// button, which will call this function and pass all the proper textfield user variables to it.
+// For drop down list filters, we will have listeners for onSelect() that will do the same thing
+function getEvents(typeOfQuery, val1, val2) {
+    // based upon which value 'typeOfQuery' is, the php will call different functions
+    try {
+        request = new XMLHttpRequest();
+    } catch (e) {
+        console.log("Error creating request object");
     }
-    
-    // called anytime the readystate changes 
-    function processResponse() {
-        if (request.readyState === XMLHttpRequest.DONE) {
-            if (request.status === 200) {
-                var json = request.responseText;
-                // format the json string that php passed back
-                showTable(json);
-            } else {
-                console.log("error, nothing returned from server");
-            }
-        }
-    }
-    // actual caller for the inner functions
-    getEvents(type);
+    request.onreadystatechange = processResponse;
+    // now we pass our array to php for it to process with variable functions
+    request.open('GET', '../php/getEvent.php?type=' + typeOfQuery + '&value1=' + val1 + '&value2=' + val2);
+    request.send();
+}
 
+// called anytime the readystate changes
+function processResponse() {
+    if (request.readyState === XMLHttpRequest.DONE) {
+        if (request.status === 200) {
+            var json = request.responseText;
+            // format the json string that php passed back
+            console.log("heres the json: " + json);
+            showTable(json);
+        } else {
+            console.log("error, nothing returned from server");
+        }
+    }
 }
 
 // we will format our data here. This is more of a test sample than set-in-stone
