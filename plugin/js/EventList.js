@@ -1,45 +1,47 @@
-/** Created by Chris Wilson
- * 5/12/16
+/**
+ * Created By Cdub 5/16/16
  */
-// define request global var
-var request;
+var eventsCallback;
 
-// This is the function called from the landing page. We will add an onclick listener for the filter form submit
-// button, which will call this function and pass all the proper textfield user variables to it.
-// For drop down list filters, we will have listeners for onSelect() that will do the same thing
+// body onload function. gets all events, loads up <select> options for the filter elements
+function loadFilters() {
+    getEvents('all');
+    loadLists('monthTextBox', months);
+    var months = {
+            jan: "January",
+            feb: "February",
+            mar: "March",
+            apr: "April",
+            may: "May",
+            june: "June",
+            july: "July",
+            aug: "August",
+            sep: "September",
+            oct: "October",
+            nov: "November",
+            dec: "December"
+        };
+    getEvents('typeList');
+    getEvents('topicList');
 
-function getEvents(typeOfQuery, val1, val2) {
-    // based upon which value 'typeOfQuery' is, the php will call different functions
-    try {
-        request = new XMLHttpRequest();
-    } catch (e) {
-        console.log("Error creating request object");
-    }
-    request.onreadystatechange = processResponse;
-    // now we pass our array to php for it to process with variable functions
-    request.open('GET', '../php/getEvent.php?type=' + typeOfQuery + '&value1=' + val1 + '&value2=' + val2);
-    request.send();
 }
 
-// called anytime the readystate changes
-function processResponse() {
-    if (request.readyState === XMLHttpRequest.DONE) {
-        if (request.status === 200) {
-            var json = request.responseText;
-            // format the json string that php passed back
-            console.log("heres the json: " + json);
-            showTable(json);
-        } else {
-            console.log("error, nothing returned from server");
-        }
+//TODO: finish this function to load up different pieces of content into the dynamic div (all, types, topics, etc)
+function eventContentCallBack(jsonObj, action) {
+    console.log("callback function engaged");
+    eventsCallback = jsonObj;
+    switch(action) {
+        case 'all':
+            showAll(eventsCallback);
+            break;
+        default:
+            return;
     }
 }
 
-// we will format our data here. This is more of a test sample than set-in-stone
-// we will need to do a sql join to get the actual address instead of the address_id
-function showTable(val) {
-    // take the JSON string, and create a javascript object with it
-    var obj = JSON.parse(val);
+// show all events. The div 'eventContent' is our dynamic container element, and we update its ul to show the query info
+function showAll(obj) {
+    console.log('called the showall function with default event list');
     // main container element in the landing page
     var container = document.getElementById("eventList");
     var ul = document.getElementById("listChildren");
@@ -50,35 +52,44 @@ function showTable(val) {
         li.innerHTML = obj[i].event_title + ", " + obj[i].address_id + ", " + obj[i].start_date_time;
         ul.appendChild(li);
     }
-
 }
 
-function loadFilters() {    
-    var months = {
-        jan: "January",
-        feb: "February",
-        mar: "March",
-        apr: "April",
-        may: "May",
-        june: "June",
-        july: "July",
-        aug: "August",
-        sep: "September",
-        oct: "October",
-        nov: "November",
-        dec: "December"
-    };
-    var selectBox = document.getElementById("monthTextBox");
-    for(var index in months) {
-        console.log('inside the month loop, val is: ' + index + 'innerhtml is: ' + months[index]);
-        var op = document.createElement('option');
-        var val = document.createTextNode(months[index]);
-        op.appendChild(val);
-        op.setAttribute('value', 'index');
-        op.setAttribute('class', 'listOption');
-        selectBox.appendChild(op);
+// shows all types in the 'eventContent' div ul
+function showTypes(val) {   
+    var container = document.getElementById("eventList");
+    var ul = document.getElementById("listChildren");
+    for(var i = 0; i < 24; i++) {
+        var li = document.createElement('li');
+        li.innerHTML = "Event type: " + obj[i].type;
+        ul.appendChild(li);
     }
 }
+
+function loadLists(divType, vals) {
+    var str;
+    var key = "Event Topic";
+    var selectBox = document.getElementById(divType);
+    for(var index in vals) {
+        var op = document.createElement('option');
+        if (divType === 'topicList') {
+            var innerObj = vals[index];
+            str = innerObj.key;
+        }
+        else {
+            str = vals[index];
+            var val = document.createTextNode(str);
+            op.appendChild(val);
+            op.setAttribute('value', 'index');
+            op.setAttribute('class', 'listOption');
+            selectBox.appendChild(op);
+        }
+    }
+}
+
+
+
+
+
 
 
 

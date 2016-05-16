@@ -4,7 +4,7 @@ USE cascadia_climate_action;
 /*Creates a List containing all event types */
 CREATE OR REPLACE VIEW event_type_list AS ( 
 SELECT 
-	DISTINCT event_type AS `Event Type`
+	DISTINCT event_type AS `type`
     FROM event_type
     
 );

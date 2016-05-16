@@ -5,8 +5,8 @@
 	 */
     include 'connect.php';
 
-    //use variable functions to call/return the proper json data to the AJAX request - i.e.
-    // if the $POST value is 'all', call the 'all' function, if it's 'dateRange' call the 'dateRange' function
+    // based upon the type of query, php will call different functions to return those mysql views
+    //  other functions can be called here as well
     $filter = $_GET['type'];
 
 	switch($filter) {
@@ -22,12 +22,37 @@
 			break;
 		case 'month':
             $var1 = $_GET['value1'];
-			$strMonth = getEventsByMonth($var1);
+			$strMonth = getSQLViewInfo($var1);
             echo $strMonth;
+            break;
+        case 'topicList':
+            $strTopic = getSQLViewInfo('event_topic_list');
+            echo $strTopic;
+            break;
+        case 'typeList':
+            $strType = getSQLViewInfo('event_type_list');
+            echo $strType;
             break;
         default:
             break;
 	}
+
+function getSQLViewInfo($sql_view) {
+    header('Content-type: application/javascript');
+    $db = connect();
+    //fetch table rows from mysql db
+    // fixed query to find range of values
+    $sql = "select * from $sql_view";
+    $result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
+    $eventarray = array();
+    while($row = mysqli_fetch_assoc($result)) {
+        $eventarray[] = $row;
+    }
+    $jsonarray = json_encode($eventarray);
+    //close connection
+    mysqli_close($db);
+    return $jsonarray;
+}
 
 
     //TODO: before sending this json string, get the actual address instead of address id
@@ -67,8 +92,6 @@
 		return $jsonarray;
 	}
 
-
-
 	function getEventsByMonth($valueMonth) {
         header('Content-type: application/javascript');
         $db = connect();
@@ -85,6 +108,8 @@
         mysqli_close($db);
         return $jsonarray;
 	}
+
+
 
 
 ?>

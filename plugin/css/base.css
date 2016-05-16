@@ -96,9 +96,11 @@ body {
     background-color: transparent;
     border: 2px solid black;
     border-radius: 3px;
-    padding: 5px;
+    padding: 5px 5px 0 5px;
     margin-bottom: 10px;
+    margin-left: 5px;
     height: 25px;
+    background-color: rgba(0, 0, 0, .3);
 }
 
 #headerBox {
@@ -109,8 +111,10 @@ body {
     background-color: transparent;
     border: 2px solid black;
     border-radius: 3px;
-    padding: 5px;
+    padding: 5px 5px 0 5px;
     height: 25px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, .3);
 }
 
 #eventContent, #filterContainer {
@@ -130,11 +134,20 @@ body {
 #headerLeft {
     order: 1;
     flex-basis: 20%;
+    margin-left: 5px;
 }
 
 #headerRight {
     order: 2;
-    flex-basis: 70%;
+    flex-basis: auto;
+    background-color: black;
+    align-self: stretch;
+    margin-bottom: -12px;
+    padding:8px 5px 0 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: transparent;
+    box-shadow: inset 1px 1px 20px #000000;
 }
 
 .dynamicList {
@@ -211,14 +224,14 @@ body {
     background: radial-gradient(#3366ff, #0040ff, #001a66); /* Standard syntax */
     display:inline-block;
     cursor:pointer;
-    color: #000000;
+    color: rgba(204, 204, 204, .7);
     font-size:14px;
     font-weight: 700;
     padding:3px 5px;
     text-decoration:none;
     text-shadow:1px 1px 10px #ffffff ;
     margin: 5px 10px;
-    box-shadow: 1px 0px 5px#b366ff;
+    box-shadow: 1px 0px 5px #3366ff;
 }
 .filterButton:hover {
     border: 1px solid #00e600;
@@ -227,7 +240,7 @@ body {
     background: -o-radial-gradient(#3366ff, #0040ff, #001a66); /* For Opera 11.1 to 12.0 */
     background: -moz-radial-gradient(#3366ff, #0040ff, #001a66); /* For Firefox 3.6 to 15 */
     background: radial-gradient(#3366ff, #0040ff, #001a66); /* Standard syntax */
-    color: #000000;
+    color: rgba(0, 0, 0, .4 );
     text-shadow: 1px 0px 5px #ffffff;
     box-shadow: 1px 0px 5px #000000;
 }
