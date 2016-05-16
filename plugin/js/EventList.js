@@ -7,6 +7,7 @@ var request;
 // This is the function called from the landing page. We will add an onclick listener for the filter form submit
 // button, which will call this function and pass all the proper textfield user variables to it.
 // For drop down list filters, we will have listeners for onSelect() that will do the same thing
+
 function getEvents(typeOfQuery, val1, val2) {
     // based upon which value 'typeOfQuery' is, the php will call different functions
     try {
@@ -40,17 +41,43 @@ function showTable(val) {
     // take the JSON string, and create a javascript object with it
     var obj = JSON.parse(val);
     // main container element in the landing page
-    var container = document.getElementById("mainContent");
-    var ul = document.createElement('ul');
+    var container = document.getElementById("eventList");
+    var ul = document.getElementById("listChildren");
     // create a bigass list, then append it to the main content div
-    for(var i = 0; i < obj.length; i++) {
+    for(var i = 0; i < 24; i++) {
         // here we can format our event objects in any way we like. for now im just appending them to a one-line string
         var li = document.createElement('li');
-        ul.appendChild(li);
         li.innerHTML = obj[i].event_title + ", " + obj[i].address_id + ", " + obj[i].start_date_time;
-        container.appendChild(ul);
+        ul.appendChild(li);
     }
 
+}
+
+function loadFilters() {    
+    var months = {
+        jan: "January",
+        feb: "February",
+        mar: "March",
+        apr: "April",
+        may: "May",
+        june: "June",
+        july: "July",
+        aug: "August",
+        sep: "September",
+        oct: "October",
+        nov: "November",
+        dec: "December"
+    };
+    var selectBox = document.getElementById("monthTextBox");
+    for(var index in months) {
+        console.log('inside the month loop, val is: ' + index + 'innerhtml is: ' + months[index]);
+        var op = document.createElement('option');
+        var val = document.createTextNode(months[index]);
+        op.appendChild(val);
+        op.setAttribute('value', 'index');
+        op.setAttribute('class', 'listOption');
+        selectBox.appendChild(op);
+    }
 }
 
 

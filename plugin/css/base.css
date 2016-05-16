@@ -1,30 +1,248 @@
+/*CSS Reset*/
+
+body, html, div, blockquote, img, label, p, pre, ul,
+ol, li, dl, dt, dd, form, a, fieldset, input, th, td
+{
+    margin: 0; padding: 0; border: 0; outline: none; font-size: 100%;
+}
+
+ul, ol
+{
+    list-style: none;
+}
+
+body
+{
+    line-height: 1;
+}
+
+img
+{
+    border: 0;
+}
+
+/* Global Styles*/
+
+
 html {
-    background-color:darkgray;
+    background-color:#a9a9a9;
+}
+
+html, body {
+    min-height: 100%;
 }
 
 body {
-    background-color:antiquewhite;
-    padding-left:10px;
+    width: 70%;
+    margin: auto;
+    padding-top: 10px;
+    background-color:#ffffff;
+    padding-bottom: 10px;
 }
 
-form {
-    padding-left: 10px;
+#headerLeft h2, #filterBoth h2 {
+    color: #3366ff;
+    text-shadow: 1px 1px 1px #000000;
+    padding: 5px;
+    margin: -10px;
 }
 
-.formSpan {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    width: 25%;
-    background-color: green;
+#mainContent {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    justify-content: space-around;
+    margin-left: 3%;
+    margin-right: 3%;
+    background-color: #f5f5f5;
+    font-family: "Segoe UI";
+    border: solid 3px #00e600;
+    border-radius: 5px;
+    box-shadow: 1px 0 30px rgba(51,102,255, .9);
+    -moz-box-shadow: 1px 1px 10px rgba(51,102,255, .9);
+    -webkit-box-shadow: 1px 1px 10px rgba(51,102,255, .9);
+    -o-box-shadow: 1px 1px 10px rgba(51,102,255, .9);
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
-label {
+#eventList {
+    display: -webkit-flex;
+    display: flex;
     order: 1;
-    margin: 5px;
+    flex-flow: column nowrap;
+    flex-grow: 4;
+    padding: 5px;
+    color: #000000;
+    background-color: transparent;
 }
 
-input {
+#filterSideBar {
+    display: -webkit-flex;
+    display: flex;
     order: 2;
-    margin: 5px;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+    padding: 5px;
+    color: #000000;
+    background-color: transparent;
 }
+
+#filterBox  {
+    order: 1;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 10px;
+    height: 25px;
+}
+
+#headerBox {
+    display: flex;
+    flex-flow: row nowrap;
+    order: 1;
+    justify-content: space-between;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 3px;
+    padding: 5px;
+    height: 25px;
+}
+
+#eventContent, #filterContainer {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: column nowrap;
+    order: 2;
+    flex-shrink: 1;
+    padding:5px;
+    color: #000000;
+    border: 3px inset black;
+    border-radius: 5px;
+}
+
+#filterContainer {border: 3px inset black;}
+
+#headerLeft {
+    order: 1;
+    flex-basis: 20%;
+}
+
+#headerRight {
+    order: 2;
+    flex-basis: 70%;
+}
+
+.dynamicList {
+    color: #000000;
+    padding: 5px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, .3);
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    background-color: transparent;
+}
+.main {
+    background: rgba(173,207,250,1);
+    background: radial-gradient(ellipse at left bottom, rgba(173,207,250,.5) 10%, rgba(255, 255, 255, 0.9) 60%, transparent 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adcffa', endColorstr='#c4c4c4', GradientType=1 );
+}
+
+#filterContainer h3 {
+    color: #3366ff;
+    border-bottom: 3px solid black;
+    text-shadow: 1px 1px 1px #000000;
+    padding: 5px;
+}
+
+#formFilterField {
+    text-align: center;
+}
+
+#typeFilterField {order:1;} #topicFilterField {order:2;}  #locationFilterField{order:3;}
+#monthFilterField{order:4; border-bottom: 3px solid black;} #formFilterField{order:5;} #zipCodeFilterField{order:7; border-top: 3px solid black; text-align: center;}
+#radiusFilterField{order:8;}  #dateBtnContainer{order: 6;} #searchBtnContainer{order:9;}
+
+#dateStartFilterField, #dateEndFilterField, #dateBtnContainer {
+    display: inline-flex;
+    flex-flow: row nowrap;
+}
+
+#dateStart, #dateEnd, #dateBtnContainer.filterButton {
+    order: 1;
+}
+
+#timeStart, #timeEnd, #searchBtnContainer.filterButton {
+    order: 2;
+}
+
+.filterField, .filterSelect, .filterDate {
+    font-family: "Segoe UI Semibold";
+    background-color: #cccccc;
+    border: 1px solid black;
+    color: #000000;
+    padding: 2px;
+}
+
+.filterField, .filterSelect {
+    margin: 5px 10px;
+    width: 80%;
+}
+
+#dateStartFilterField input, #dateEndFilterField input {
+    max-width: 80px;
+    margin: 5px 10px;
+}
+
+.filterButton {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border:1px solid #0B1022;
+    border-radius: 3px;
+    background: #3366ff; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(#3366ff, #0040ff, #001a66); /* For Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(#3366ff, #0040ff, #001a66); /* For Opera 11.1 to 12.0 */
+    background: -moz-radial-gradient(#3366ff, #0040ff, #001a66); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(#3366ff, #0040ff, #001a66); /* Standard syntax */
+    display:inline-block;
+    cursor:pointer;
+    color: #000000;
+    font-size:14px;
+    font-weight: 700;
+    padding:3px 5px;
+    text-decoration:none;
+    text-shadow:1px 1px 10px #ffffff ;
+    margin: 5px 10px;
+    box-shadow: 1px 0px 5px#b366ff;
+}
+.filterButton:hover {
+    border: 1px solid #00e600;
+    background: #3366ff; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(#3366ff, #0040ff, #001a66); /* For Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(#3366ff, #0040ff, #001a66); /* For Opera 11.1 to 12.0 */
+    background: -moz-radial-gradient(#3366ff, #0040ff, #001a66); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(#3366ff, #0040ff, #001a66); /* Standard syntax */
+    color: #000000;
+    text-shadow: 1px 0px 5px #ffffff;
+    box-shadow: 1px 0px 5px #000000;
+}
+.filterButton:active {
+    position:relative;
+    top:1px;
+}
+
+
+
+
+
+
+
+
+
+
+
