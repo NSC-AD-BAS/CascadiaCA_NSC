@@ -1,23 +1,14 @@
 <?php
 
-//returns array of all 5 main topics
-=======
-/**
- * Created by PhpStorm.
- * User: james_000
- * Date: 4/29/2016
- * Time: 11:01 PM
- */
-
+//returns an array of all 24 sub topics
 include "connect.php";
 
-function getTopics()
+function getSubtopics()
 {
     $db = connect();
 
     //fetch table rows from main_topics view
-    $sql = "SELECT DISTINCT `Main Topic` FROM full_topic_list";
-
+    $sql = "SELECT DISTINCT `Subtopic` FROM full_topic_list";
     $result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 
     //create an array
@@ -34,6 +25,6 @@ function getTopics()
     return $jsonarray;
 }
 //display for testing purposes, can be removed.
-echo getTopics();
+echo getSubtopics();
 
 ?>
