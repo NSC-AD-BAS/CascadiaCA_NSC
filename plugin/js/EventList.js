@@ -1,12 +1,12 @@
 /**
  * Created By Cdub 5/16/16
  */
-var eventsCallback;
+var jsonData, callBack;
 
 // body onload function. gets all events, loads up <select> options for the filter elements
 function loadFilters() {
-    getEvents('all');
-    loadLists('monthTextBox', months);
+    callBack = showAll;
+    getEvents('all', callBack);
     var months = {
             jan: "January",
             feb: "February",
@@ -21,22 +21,8 @@ function loadFilters() {
             nov: "November",
             dec: "December"
         };
-    getEvents('typeList');
-    getEvents('topicList');
+    loadLists('monthTextBox', months);
 
-}
-
-//TODO: finish this function to load up different pieces of content into the dynamic div (all, types, topics, etc)
-function eventContentCallBack(jsonObj, action) {
-    console.log("callback function engaged");
-    eventsCallback = jsonObj;
-    switch(action) {
-        case 'all':
-            showAll(eventsCallback);
-            break;
-        default:
-            return;
-    }
 }
 
 // show all events. The div 'eventContent' is our dynamic container element, and we update its ul to show the query info
@@ -72,7 +58,7 @@ function loadLists(divType, vals) {
     for(var index in vals) {
         var op = document.createElement('option');
         if (divType === 'topicList') {
-            var innerObj = vals[index];
+            var innerObj = vals[2];
             str = innerObj.key;
         }
         else {
@@ -85,6 +71,11 @@ function loadLists(divType, vals) {
         }
     }
 }
+
+/////////////////////////////////////////////////////////////////////////////////
+// ajax calls
+
+
 
 
 
