@@ -1,23 +1,14 @@
 <?php
 
-//returns array of all 5 main topics
-=======
-/**
- * Created by PhpStorm.
- * User: james_000
- * Date: 4/29/2016
- * Time: 11:01 PM
- */
-
+//returns an array of 3 main types
 include "connect.php";
 
-function getTopics()
+function getTypes()
 {
     $db = connect();
 
-    //fetch table rows from main_topics view
-    $sql = "SELECT DISTINCT `Main Topic` FROM full_topic_list";
-
+    //fetch table rows from mysql db
+    $sql = "SELECT DISTINCT `Main Type` FROM full_type_list";
     $result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 
     //create an array
@@ -33,7 +24,7 @@ function getTopics()
 
     return $jsonarray;
 }
-//display for testing purposes, can be removed.
-echo getTopics();
+
+echo getTypes();
 
 ?>

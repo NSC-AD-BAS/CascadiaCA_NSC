@@ -1,11 +1,27 @@
 
+var text = '{"topics":[' +
+'{"main_topic_id":"1","main_topic":"Fossil Fuel"},' +
+'{"main_topic_id":"2","main_topic":"Legislative\/Regulatory"},' +
+'{"main_topic_id":"3","main_topic":"Transport"},' +
+'{"main_topic_id":"4","main_topic":"Energy"},' +
+'{"main_topic_id":"5","main_topic":"Other"}]}';
+
+
+
+var parsed = JSON.parse(text);
+
+var arrTopics = [];
+
+for(var x in parsed.topics){
+  arrTopics.push(parsed.topics[x].main_topic);
+}
 //"created" by Sam Cooledge & James the 4th
 
 // states
 var country_arr = new Array("Idaho" , "Oregon" , "Washington"); 
 
 //topics
-var topic_arr = new Array("Green House Gases" , "Carbon-Neutral", "Composting" , "Recycling"); //getTopic() using json from db
+var topic_arr = new Array(arrTopics); //getTopic() using json from db
 
 var events_arr = new Array("Rally", "Speaker" , "Protest" , "Concert"); //getEvent() using json from db
 // Cities
@@ -36,19 +52,22 @@ function populateStates( countryElementId, stateElementId ){
 
 
 function populateTopics( topicElementId ){
-	
-	
+
 
 	var topicElement = document.getElementById(topicElementId );
 	
 	topicElement.length=0;	
+	
 	topicElement.options[0] = new Option('Select Topic','');
+	
 	topicElement.selectedIndex = 0;
 	
 	
 	
-	for (var i=0; i< topic_arr.length; i++) {
-		topicElement.options[topicElement.length] = new Option(topic_arr[i],topic_arr[i]);
+	for (var i=0; i< arrTopics.length; i++) {
+	
+		topicElement.options[topicElement.length] = new Option(arrTopics[i],arrTopics[i]);
+		
 	}
 }
 

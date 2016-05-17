@@ -11,8 +11,6 @@ CREATE TABLE address (
     zip VARCHAR(12) NOT NULL
 );
 
-/*Data for address table included in insert file*/
-
 CREATE TABLE organization (
 	org_id INT PRIMARY KEY AUTO_INCREMENT,
     org_name VARCHAR(100) NOT NULL,
@@ -22,8 +20,6 @@ CREATE TABLE organization (
 		FOREIGN KEY (org_address_id)
         REFERENCES address(address_id)
 );
-
-/*Data for organization table in insert data file*/
 
 CREATE TABLE contact (
 	contact_id	INT PRIMARY KEY AUTO_INCREMENT,
@@ -37,37 +33,46 @@ CREATE TABLE contact (
         REFERENCES organization(org_id)
 );
 
-/*Test data for contacts included to insert file*/
-
-CREATE TABLE event_type (
-	event_type_id INT PRIMARY KEY AUTO_INCREMENT,
-    event_type VARCHAR(50) NOT NULL
+CREATE TABLE main_type (
+	main_type_id INT PRIMARY KEY AUTO_INCREMENT,
+    main_type VARCHAR(50) NOT NULL
 );
 
-/*Event type data included to data insert file*/
+CREATE TABLE subtypes (
+	subtype_id INT PRIMARY KEY AUTO_INCREMENT,
+    main_type_id INT NOT NULL,
+    CONSTRAINT subtype_fk_main_type_id
+		FOREIGN KEY (main_type_id)
+        REFERENCES main_type(main_type_id),
+	subtype_type VARCHAR(100) NOT NULL
+);
 
 CREATE TABLE main_topic (
 	main_topic_id INT PRIMARY KEY AUTO_INCREMENT,
     main_topic VARCHAR(100) NOT NULL
 );
 
-/*Main topic info included to data insert file*/
-        
 CREATE TABLE subtopics (
 	subtopic_id INT PRIMARY KEY AUTO_INCREMENT,
+    main_topic_id INT NOT NULL,
+    CONSTRAINT subtopics_fk_main_topic_id
+		FOREIGN KEY (main_topic_id)
+        REFERENCES main_topic(main_topic_id),
     subtopic VARCHAR(100) NOT NULL
 );
-
-/*Data for subtopics included to insert data file*/
 
 CREATE TABLE `event` (
 	event_id INT PRIMARY KEY AUTO_INCREMENT,
     event_title TEXT NOT NULL,
-    event_type INT NOT NULL,
     event_description LONGTEXT NOT NULL,
-    CONSTRAINT event_fk_event_type
-		FOREIGN KEY (event_type)
-        REFERENCES event_type(event_type_id),
+	main_event_type INT NOT NULL,
+    CONSTRAINT event_fk_main_event_type
+		FOREIGN KEY (main_event_type)
+        REFERENCES main_type(main_type_id),
+	main_event_subtype INT NOT NULL,
+    CONSTRAINT event_fk_main_event_subtype
+		FOREIGN KEY (main_event_subtype)
+        REFERENCES subtypes(subtype_id),
 	start_date_time DATETIME NOT NULL,
     end_date_time DATETIME,
     address_id INT NOT NULL,
@@ -81,10 +86,9 @@ CREATE TABLE `event` (
 	event_main_topic_id INT NOT NULL,
     CONSTRAINT event_main_topic_id_fk_main_topic_id
 		FOREIGN KEY (event_main_topic_id)
-        REFERENCES main_topic(main_topic_id)
+        REFERENCES main_topic(main_topic_id),
+	main_contact_id INT NOT NULL
 );
-
-/*NEED INFO TO FILL EVENT TABLE*/
 
 CREATE TABLE event_subtopics (
 	es_event_id INT NOT NULL,
@@ -97,7 +101,16 @@ CREATE TABLE event_subtopics (
         REFERENCES subtopics(subtopic_id)
 );
 
-/*Data for event_subtopics included to insert data file*/
+CREATE TABLE event_subtype (
+	estype_event_id INT NOT NULL,
+    CONSTRAINT event_subtypes_fk_event_detail
+		FOREIGN KEY (estype_event_id)
+        REFERENCES `event`(event_id),
+	estype_subtype_id INT NOT NULL,
+    CONSTRAINT estype_subtype_id_fk_subtype_id
+		FOREIGN KEY (estype_subtype_id)
+        REFERENCES subtypes(subtype_id)
+);
 
 CREATE TABLE event_sponsor (
 	event_id INT NOT NULL,
@@ -109,8 +122,6 @@ CREATE TABLE event_sponsor (
 		FOREIGN KEY (org_id)
         REFERENCES organization(org_id)
 );
-
-/*Data for event_sponsor included to insert data file*/
 
 CREATE TABLE org_image (
 	org_image_id INT NOT NULL,
@@ -127,5 +138,3 @@ CREATE TABLE event_image (
         REFERENCES `event`(event_id),
 	event_image BLOB
 );
-
-/*SHOW ENGINE INNODB STATUS;*/
