@@ -5,7 +5,7 @@
 	 
 	include "connect.php";
 	//$startDate, $endDate, $eventTypes, $topics
-	public function getEvents($startDate, $endDate){
+	function getEvents($startDate, $endDate){
 		header('Content-type: application/javascript');
 		$db = connect();
 		//fetch table rows from mysql db
