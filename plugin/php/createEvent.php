@@ -11,6 +11,18 @@ function submitFormToDB() {
 
     if (isset($_POST['submit'])) {
         //address variables
+        //subtypes into an array as well
+        $allOrgNameArray = $_POST['organization_name'];
+        $allOrgWebsiteArray = $_POST['organization_website'];
+        $allSubtopicArray = $_POST['subtopic'];
+        $allSubtypeArray = $_POST['subtype'];
+        echo count($allSubtopicArray);
+        echo count($allSubtypeArray);
+//        foreach ($allSubtopicArray as $checkbox) {
+//            echo $checkbox . ' ';
+//        }
+        //$organizationNameArray = array();
+        //$organizationWebsiteArray = array();
         $buildingName = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'building'));
         $streetAddress = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'street_address'));
         $city = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'city'));
@@ -31,14 +43,13 @@ function submitFormToDB() {
         $description = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'description'));
 
         //organization variables
-        $orgName = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_name'));
-        $orgWebsite = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_website'));
-        $orgBuilding = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_building'));
-        $orgAddress = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_address'));
-        $orgCity = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_city'));
-        $orgZip = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_zip'));
-        $orgState = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_state'));
-
+        //$orgName = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_name'));
+        //$orgWebsite = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_website'));
+        //$orgBuilding = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_building'));
+        //$orgAddress = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_address'));
+        //$orgCity = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_city'));
+        //$orgZip = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_zip'));
+        //$orgState = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'organization_state'));
         //contact info variables
         $firstName = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'first_name'));
         $lastName = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'last_name'));
@@ -46,8 +57,8 @@ function submitFormToDB() {
         $phoneNumber = mysqli_real_escape_string($db, filter_input(INPUT_POST, 'phone_number'));
         //inserts all the necessary data before events and organizations
         //need to check for duplicates before insertions
-        $addressCheck = mysqli_query($db, "SELECT * FROM address WHERE" .
-                "street_address = $streetAddress");
+//        $addressCheck = mysqli_query($db, "SELECT * FROM address WHERE" .
+//                "street_address = $streetAddress");
         //if ($result = mysqli_query($db, "SELECT * FROM address WHERE" .
         //     "street_address = $streetAddress")) {
         // if (mysqli_num_rows($result) <= 0) {
@@ -69,32 +80,32 @@ function submitFormToDB() {
         //     if (mysqli_num_rows($result) <= 0) {
 //                $insertOrgAddress = "INSERT INTO address (building_name, street_address, city, state, zip) "
 //                        . "VALUES ('$orgBuilding', $orgAddress', '$orgCity', '$orgState', $orgZip');";
-        $insertOrgAddress = "INSERT INTO address"
-                . "(building_name, street_address, city, state, zip) VALUES"
-                . "('$orgBuilding', '$orgAddress', '$orgCity', '$orgState', '$orgZip');";
-        $insertOrgAddressQuery = mysqli_query($db, $insertOrgAddress);
-        if ($insertOrgAddressQuery === TRUE) {
-            echo "New oragnization address created successfully";
-        } else {
-            echo "Error: 1" . $insertAddressQuery . "<br>" . $db->error;
-        }
+//        $insertOrgAddress = "INSERT INTO address"
+//                . "(building_name, street_address, city, state, zip) VALUES"
+//                . "('$orgBuilding', '$orgAddress', '$orgCity', '$orgState', '$orgZip');";
+//        $insertOrgAddressQuery = mysqli_query($db, $insertOrgAddress);
+//        if ($insertOrgAddressQuery === TRUE) {
+//            echo "New oragnization address created successfully";
+//        } else {
+//            echo "Error: 1" . $insertAddressQuery . "<br>" . $db->error;
+//        }
         //  }
         //  }
 
-        $insertTopic = "INSERT INTO event_topic (event_topic) VALUES ('$topic');";
+        $insertTopic = "INSERT INTO main_topic (main_topic) VALUES ('$topic');";
         $insertTopicQuery = mysqli_query($db, $insertTopic);
         if ($insertTopicQuery === TRUE) {
             echo "New oragnization created successfully";
         } else {
-            echo "Error:2 " . $insertTopicQuery . "<br>" . $db->error;
+            echo "Error: 2" . $insertTopicQuery . "<br>" . $db->error;
         }
 
-        $insertType = "INSERT INTO event_type (event_type) VALUES ('$type');";
+        $insertType = "INSERT INTO main_type (main_type) VALUES ('$type');";
         $insertTypeQuery = mysqli_query($db, $insertType);
         if ($insertTypeQuery === TRUE) {
             echo "New type created successfully";
         } else {
-            echo "Error: 3" . $insertTypeQuery . "<br>" . $db->error;
+            echo nl2br("Error: 3" . $insertTypeQuery . "<br>" . $db->error);
         }
 
         //get the ids for insertion
@@ -103,40 +114,43 @@ function submitFormToDB() {
         $addressIdRow = mysqli_query($db, $addressIdQuery);
         $addressId = mysqli_fetch_assoc($addressIdRow)['address_id'];
 
-        $orgAddressIdQuery = "SELECT address_id FROM address "
-                . "WHERE street_address = '$orgAddress'";
-        $orgAddressIdRow = mysqli_query($db, $orgAddressIdQuery);
-        $orgAddressId = mysqli_fetch_assoc($orgAddressIdRow)['address_id'];
+//        $orgAddressIdQuery = "SELECT address_id FROM address "
+//                . "WHERE street_address = '$orgAddress'";
+//        $orgAddressIdRow = mysqli_query($db, $orgAddressIdQuery);
+//        $orgAddressId = mysqli_fetch_assoc($orgAddressIdRow)['address_id'];
 
-        $topicIdQuery = "SELECT event_topic_id FROM event_topic "
-                . "WHERE event_topic = '$topic'";
+        $topicIdQuery = "SELECT main_topic_id FROM main_topic "
+                . "WHERE main_topic = '$topic'";
         $topicIdRow = mysqli_query($db, $topicIdQuery);
-        $topicId = mysqli_fetch_assoc($topicIdRow)['event_topic_id'];
+        $topicId = mysqli_fetch_assoc($topicIdRow)['main_topic_id'];
 
-        $typeIdQuery = "SELECT event_type_id FROM event_type "
-                . "WHERE event_type = '$type'";
+        $typeIdQuery = "SELECT main_type_id FROM main_type "
+                . "WHERE main_type = '$type'";
         $typeIdRow = mysqli_query($db, $typeIdQuery);
-        $typeId = mysqli_fetch_assoc($typeIdRow)['event_type_id'];
+        $typeId = mysqli_fetch_assoc($typeIdRow)['main_type_id'];
 
-        $orgCheck = mysqli_query($db, "SELECT * FROM organization WHERE" .
-                "org_name = '$orgName'");
+        //first organization is what we need
+        $orgMainName = mysqli_real_escape_string($db, $allOrgNameArray[0]);
+        $orgMainWebsite = mysqli_real_escape_string($db, $allOrgWebsiteArray[0]);
+        $orgMainCheck = mysqli_query($db, "SELECT * FROM organization WHERE" .
+                "org_name = '$orgMainName'");
 //        if ($result = mysqli_query($db, "SELECT * FROM organization WHERE" .
 //                "org_name = '$orgName'")) {
 //            if (mysqli_num_rows($result) <= 0) {
-        $insertOrg = "INSERT INTO organization (org_name, org_website, org_address_id)"
-                . "VALUES ('$orgName', '$orgWebsite', '$orgAddressId');";
-        $insertOrgQuery = mysqli_query($db, $insertOrg);
-        if ($insertOrgQuery === TRUE) {
+        $insertMainOrg = "INSERT INTO organization (org_name, org_website, org_address_id)"
+                . "VALUES ('$orgMainName', '$orgMainWebsite', 1);";
+        $insertMainOrgQuery = mysqli_query($db, $insertMainOrg);
+        if ($insertMainOrgQuery === TRUE) {
             echo "New oragnization created successfully";
         } else {
-            echo "Error: 4" . $insertOrgQuery . "<br>" . $db->error;
+            echo nl2br("Error: 4" . $insertMainOrgQuery . "<br>" . $db->error);
         }
 //            }
 //        }
 
-        $orgIdQuery = "SELECT org_id FROM organization WHERE org_name = '$orgName'";
-        $orgIdRow = mysqli_query($db, $orgIdQuery);
-        $orgId = mysqli_fetch_assoc($orgIdRow)['org_id'];
+        $orgMainIdQuery = "SELECT org_id FROM organization WHERE org_name = '$orgMainName'";
+        $orgMainIdRow = mysqli_query($db, $orgMainIdQuery);
+        $orgMainId = mysqli_fetch_assoc($orgMainIdRow)['org_id'];
 
         $contactCheck = mysqli_query($db, "SELECT * FROM contact WHERE" .
                 "email = '$email'");
@@ -144,14 +158,15 @@ function submitFormToDB() {
 //        if ($result = mysqli_query($db, "SELECT * FROM contact WHERE" .
 //                "email = '$email'")) {
 //            if (mysqli_num_rows($result) <= 0) {
-        $insertContact = "INSERT INTO contact (first_name, last_name, email, phone, "
+        //not working
+        $insertMainContact = "INSERT INTO contact (first_name, last_name, email, phone, "
                 . "org_id) VALUES ('$firstName', '$lastName', '$email', "
-                . "'$phoneNumber', '$orgId')";
-        $insertContactQuery = mysqli_query($db, $insertContact);
-        if ($insertContactQuery === TRUE) {
+                . "'$phoneNumber', '$orgMainId')";
+        $insertMainContactQuery = mysqli_query($db, $insertMainContact);
+        if ($insertMainContactQuery === TRUE) {
             echo "New contact created successfully";
         } else {
-            echo "Error: 5" . $insertContactQuery . "<br>" . $db->error;
+            echo nl2br("Error: 5" . $insertMainContactQuery . "<br>" . $db->error);
         }
 //            }
 //        }
@@ -162,21 +177,81 @@ function submitFormToDB() {
         $contactIdRow = mysqli_query($db, $contactIdQuery);
         $contactId = mysqli_fetch_assoc($contactIdRow)['contact_id'];
 
-//        $insertEvent = "INSERT INTO event (event_title, event_type, "
+//        $insertEvent = "INSERT INTO event (event_title, main_type, "
 //                . "event_description, start_date_time, end_date_time, address_id, "
 //                . "main_topic_id, main_event_org_id) VALUES ('$title', '$typeId', "
 //                . "'$description', '$startDate', $endDate', '$addressId', '$topicId', '$orgId')";
-        $insertEvent = "INSERT INTO event (event_title, event_type, "
+        $insertEvent = "INSERT INTO event (event_title, main_event_type, main_event_subtype, "
                 . "event_description, start_date_time, end_date_time, "
-                . "address_id, main_topic_id, main_event_org_id) VALUES "
-                . "('$title', '$typeId', '$description', '$startDate', "
-                . "'$endDate', '$addressId', '$topicId', '$orgId')";
+                . "address_id, event_main_topic_id, event_main_sponsor_id, main_contact_id) VALUES "
+                . "('$title', '$typeId', 1, '$description', '$startDate', "
+                . "'$endDate', '$addressId', '$topicId', '$orgMainId', '$contactId')";
         $insertEventQuery = mysqli_query($db, $insertEvent);
         if ($insertEventQuery === TRUE) {
             echo "New event created successfully";
         } else {
             echo nl2br("Error: 6" . $insertEventQuery . "<br>" . $db->error);
         }
+        $eventIdQuery = "SELECT event_id FROM event WHERE event_title = '$title'";
+        $eventIdRow = mysqli_query($db, $eventIdQuery);
+        $eventId = mysqli_fetch_assoc($eventIdRow)['event_id'];
+
+        //just insert the suborg and link them through event_sponsor table
+        $subOrgCount = count($allOrgNameArray);
+        //suborgs are all organizations not in the 0 portion
+        for ($i = 1; $i < $subOrgCount; $i++) {
+            $orgSubName = mysqli_real_escape_string($db, $allOrgNameArray[$i]);
+            $orgSubWebsite = mysqli_real_escape_string($db, $allOrgWebsiteArray[$i]);
+//            $orgSubCheck = mysqli_query($db, "SELECT * FROM organization WHERE" .
+//                    "org_name = '$orgSubName'");
+            $insertSubOrg = "INSERT INTO organization (org_name, org_website, org_address_id)"
+                    . "VALUES ('$orgSubName', '$orgSubWebsite', 1);";
+            $insertSubOrgQuery = mysqli_query($db, $insertSubOrg);
+            if ($insertSubOrgQuery === TRUE) {
+                echo "New oragnization created successfully";
+            } else {
+                echo nl2br("Error: 7" . $insertSubOrgQuery . "<br>" . $db->error);
+            }
+            $orgSubIdQuery = "SELECT org_id FROM organization WHERE org_name = '$orgSubName'";
+            $orgSubIdRow = mysqli_query($db, $orgSubIdQuery);
+            $orgSubId = mysqli_fetch_assoc($orgSubIdRow)['org_id'];
+            $insertEventSubSponsor = "INSERT INTO event_sponsor (event_id, org_id) "
+                    . "VALUES ('$eventId', '$orgSubId');";
+            $insertEventSubSponsorQuery = mysqli_query($db, $insertEventSubSponsor);
+            if ($insertEventSubSponsorQuery === TRUE) {
+                echo "New subsponsor created successfully";
+            } else {
+                echo nl2br("Error: 8" . $insertEventSubSponsorQuery . "<br>" . $db->error);
+            }
+        }
+        //$eventSubtype
+        //insert event subtypes
+        $subtopicCount = count($allSubtopicArray);
+        for($i = 0; $i < $subtopicCount; $i++){
+            $subtopic = mysqli_real_escape_string($db, $allSubtopicArray[$i]);
+//            $insertSubTopic = ;
+            $insertSubOrg = "INSERT INTO organization (org_name, org_website, org_address_id)"
+                    . "VALUES ('$orgSubName', '$orgSubWebsite', 1);";
+            $insertSubOrgQuery = mysqli_query($db, $insertSubOrg);
+            if ($insertSubOrgQuery === TRUE) {
+                echo "New oragnization created successfully";
+            } else {
+                echo nl2br("Error: 7" . $insertSubOrgQuery . "<br>" . $db->error);
+            }
+            $orgSubIdQuery = "SELECT org_id FROM organization WHERE org_name = '$orgSubName'";
+            $orgSubIdRow = mysqli_query($db, $orgSubIdQuery);
+            $orgSubId = mysqli_fetch_assoc($orgSubIdRow)['org_id'];
+            $insertEventSubSponsor = "INSERT INTO event_sponsor (event_id, org_id) "
+                    . "VALUES ('$eventId', '$orgSubId');";
+            $insertEventSubSponsorQuery = mysqli_query($db, $insertEventSubSponsor);
+            if ($insertEventSubSponsorQuery === TRUE) {
+                echo "New subsponsor created successfully";
+            } else {
+                echo nl2br("Error: 8" . $insertEventSubSponsorQuery . "<br>" . $db->error);
+            }
+        }
+        $eventSubtypeQuery = "INSERT INTO event_subtype (estype_event_id, estype_subtype_id) "
+                . "VALUES ();";
     }
     mysqli_close($db);
 }
