@@ -15,27 +15,27 @@ $eventType=NULL, $topics=NULL, $state=NULL, $city=NULL, $zip=NULL)
 	//echo $now->getTimestamp();
 	date_default_timezone_set('America/Los_Angeles');
     	$now = date('Y-m-d h:i:s');
-	echo $now;
+	//echo $now;
 
         unset($sql); // make sure the array is empty every time we call this
 
         if($startDate==NULL)
         {
 	$startDate=$now;
-	echo "Start Date Filter ".$startDate;
+	//echo "Start Date Filter ".$startDate;
         }
 
         if($endDate==NULL)
 {
 	$endDate=date('Y-m-d', strtotime("+1 months", strtotime($startDate))); 
-	echo "End Date Filter ".$endDate; 
+       //echo "End Date Filter ".$endDate; 
 	
     }
 
     if($eventType)
     {
         $sql[] = " MAIN_TYPE = '$eventType' ";
-	echo "MAIN_TYPE ".$eventType;
+	echo "MAIN TYPE ".$eventType;
     }
     if($topics)
     {
@@ -63,7 +63,7 @@ $eventType=NULL, $topics=NULL, $state=NULL, $city=NULL, $zip=NULL)
 	
 	//for troubleshooting, can take out when combined 
 	//with other code
-	echo $query;
+	//echo $query;
      }
 
     //get results array from database
@@ -89,16 +89,16 @@ $eventType=NULL, $topics=NULL, $state=NULL, $city=NULL, $zip=NULL)
 //echo getEvents('2016-02-01','2016-04-30', NULL, NULL, NULL, NULL, //NULL); 
 
 //test with no args passed
-echo getEvents();
+//echo getEvents();
 
 //test with maintype
-//echo getEvents('2016-03-01','2016-03-30',"Get //Informed",NULL,NULL,NULL,NULL);
+//echo getEvents('2016-03-01','2016-03-30','Get //Informed',NULL,NULL,NULL,NULL);
 
 //testing for filtering for city "Kasson"
 //echo getEvents(NULL, NULL, NULL, NULL, NULL, 'Kasson', NULL);
 
 //testing for "Kasson" and dates
-//echo getEvents('2016-01-01','2016-04-30',NULL,NULL, NULL, 'Kasson', NULL);
+//echo getEvents('2016-01-01','2016-04-30',NULL,NULL, NULL, 'Kasson', //NULL);
 
 //testing for filtering for city "Kasson" and MainTopic "Transport"
 //echo getEvents(NULL, NULL,NULL,"Transport", NULL, 'Kasson', NULL);
