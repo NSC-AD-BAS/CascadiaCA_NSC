@@ -1,7 +1,4 @@
 <?php
-
-//returns array of all 5 main topics
-=======
 /**
  * Created by PhpStorm.
  * User: james_000
@@ -11,13 +8,12 @@
 
 include "connect.php";
 
-function getTopics()
+function getEventTypes()
 {
     $db = connect();
 
-    //fetch table rows from main_topics view
-    $sql = "SELECT DISTINCT `Main Topic` FROM full_topic_list";
-
+    //fetch table rows from mysql db
+    $sql = "select * from event_type";
     $result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 
     //create an array
@@ -33,7 +29,7 @@ function getTopics()
 
     return $jsonarray;
 }
-//display for testing purposes, can be removed.
-echo getTopics();
+
+echo getEventTypes();
 
 ?>
