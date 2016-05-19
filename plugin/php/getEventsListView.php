@@ -2,13 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: cdub
- * Date: 5/11/2016
- * Time: 3:57 PM
+ * Date: 5/18/2016
+ * Time: 6:13 PM
  */
-
 include 'connect.php';
+$theType = $_GET["type"];
+if(isset($theType)) {
+    getAll();
+}
 
-function testAllEvents() {
+function getAll() {
     $db = connect();
 
     //fetch table rows from mysql db
@@ -18,15 +21,10 @@ function testAllEvents() {
     //create an array
     $eventarray = array();
     while ($row = mysqli_fetch_assoc($result)) {
-        $eventarray = $row;
+        $eventarray[] = $row;
     }
-    print_r($eventarray);
     $jsonarray = json_encode($eventarray);
-
     //close the db connection
     mysqli_close($db);
-
-    return $jsonarray;
+    echo $jsonarray;
 }
-testAllEvents();
-?>

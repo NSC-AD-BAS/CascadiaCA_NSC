@@ -15,7 +15,8 @@ function getEvents(type, callback, val1, val2) {
     callBackFunction = callback;
     request.onreadystatechange = processRequest;
     // here we pass the parameters from the caller to php
-    request.open('GET', '../php/getEventAjax.php?type=' + type + '&value1=' + val1 + '&value2=' + val2, true);
+    request.open('GET', '../php/getEventsListView.php?type=' + type, true);
+    //request.open('GET', '../php/getEventAjax.php?type=' + type + '&value1=' + val1 + '&value2=' + val2, true);
     request.send();
 }
 
@@ -23,11 +24,8 @@ function getEvents(type, callback, val1, val2) {
 function processRequest() {
     if (request.readyState === XMLHttpRequest.DONE) {
         if (request.status === 200) {
-            console.log("callback function being called");
             var json = request.responseText;
-            listObj = JSON.parse(json);
-            console.log(listObj);
-            callBackFunction(listObj);
+            callBackFunction(json);
         } else {
             console.log("error, nothing returned from server");
         }

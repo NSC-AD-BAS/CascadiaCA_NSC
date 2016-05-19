@@ -6,8 +6,6 @@ var text = '{"topics":[' +
 '{"main_topic_id":"4","main_topic":"Energy"},' +
 '{"main_topic_id":"5","main_topic":"Other"}]}';
 
-
-
 var parsed = JSON.parse(text);
 
 var arrTopics = [];

@@ -25,9 +25,9 @@ function loadFilters() {
 
 }
 
-// show all events. The div 'eventContent' is our dynamic container element, and we update its ul to show the query info
-function showAll(obj) {
-    console.log('called the showall function with default event list');
+// Callback function for default event list view, json is the ajax request.responsetext
+function showAll(json) {
+    obj = JSON.parse(json);
     // main container element in the landing page
     var container = document.getElementById("eventList");
     var ul = document.getElementById("listChildren");
