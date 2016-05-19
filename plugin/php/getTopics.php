@@ -10,22 +10,21 @@
  */
 
 include "connect.php";
+getTopics();
 
 function getTopics()
 {
     $db = connect();
 
     //fetch table rows from main_topics view
-    $sql = "SELECT DISTINCT `Main Topic` FROM full_topic_list";
+    $sql = "SELECT DISTINCT `Main_Topic` FROM full_topic_list";
 
     $result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 
     //create an array
     $eventarray = array();
     while ($row = mysqli_fetch_assoc($result)) {
-        //$eventarray[] = $row;
-        array_push($eventarray, $row);
-
+        $eventarray[] = $row;
     }
     $jsonarray = json_encode($eventarray);
 
@@ -34,6 +33,5 @@ function getTopics()
 
     echo $jsonarray;
 }
-
 
 ?>

@@ -11,22 +11,22 @@ include 'connect.php';
 function testAllEvents() {
     $db = connect();
 
-    //fetch table rows from mysql db
-    $sql = "select * from event";
+    //fetch table rows from main_topics view
+    $sql = "SELECT DISTINCT `Main Topic` FROM full_topic_list";
+
     $result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 
     //create an array
     $eventarray = array();
     while ($row = mysqli_fetch_assoc($result)) {
-        $eventarray = $row;
+        $eventarray[] = $row;
     }
-    print_r($eventarray);
     $jsonarray = json_encode($eventarray);
 
     //close the db connection
     mysqli_close($db);
 
-    return $jsonarray;
+    echo $jsonarray;
 }
 testAllEvents();
 ?>

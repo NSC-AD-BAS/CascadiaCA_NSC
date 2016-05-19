@@ -50,11 +50,11 @@ body {
 #mainContent {
     display: -webkit-flex;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row-reverse nowrap;
     align-items: stretch;
     justify-content: space-around;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
     background-color: #f5f5f5;
     font-family: "Segoe UI";
     border: solid 3px #00e600;
@@ -122,11 +122,13 @@ body {
     display: flex;
     flex-flow: column nowrap;
     order: 2;
-    flex-shrink: 1;
+    max-height: 550px;
     padding:5px;
     color: #000000;
     border: 3px inset black;
     border-radius: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #filterContainer {border: 3px inset black;}
@@ -146,8 +148,14 @@ body {
     padding:8px 5px 0 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    background-color: transparent;
-    box-shadow: inset 1px 1px 20px #000000;
+}
+
+.hidden {
+    display: none;
+}
+
+.showing {
+    display: flex;
 }
 
 .dynamicList {
@@ -157,18 +165,15 @@ body {
     border-radius: 5px;
     display: flex;
     flex-flow: column nowrap;
-    text-align: center;
     background-color: transparent;
-    font-size: 1.3em;
+    font-size: 1em;
+    text-align: center;
 }
+
 .main {
     background: rgba(173,207,250,1);
     background: radial-gradient(ellipse at left bottom, rgba(173,207,250,.5) 10%, rgba(255, 255, 255, 0.9) 60%, transparent 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adcffa', endColorstr='#c4c4c4', GradientType=1 );
-}
-
-.hidden {
-    display: none;
 }
 
 #filterContainer h3 {
@@ -180,6 +185,7 @@ body {
 
 #formFilterField {
     text-align: center;
+    font-size: .7em;
 }
 
 #typeFilterField {order:1;} #topicFilterField {order:2;}  #locationFilterField{order:3;}
@@ -208,13 +214,13 @@ body {
 }
 
 .filterField, .filterSelect {
-    margin: 5px 10px;
+    margin: 5px 5px;
     width: 80%;
 }
 
 #dateStartFilterField input, #dateEndFilterField input {
     max-width: 80px;
-    margin: 5px 10px;
+    margin: 5px 5px;
 }
 
 .filterButton {

@@ -1,12 +1,30 @@
+var text, events, URLLIST;
+/**
+var callbackCS1 = setTopicsInCityState;
+getAjax(URLLIST.topicList, callbackCS1);
+var callbackCS2 = setEventsInCityState;
 
-var text = '{"topics":[' +
+getAjax(URLLIST.eventList);
+
+function setTopicsInCityState(json) {
+	text = json;
+	console.log(json);
+}
+
+function setEventsInCityState(json) {
+	events = json;
+	console.log(json);
+}
+ */
+
+var text1 = '{"topics":[' +
 '{"main_topic_id":"1","main_topic":"Fossil Fuel"},' +
 '{"main_topic_id":"2","main_topic":"Legislative\/Regulatory"},' +
 '{"main_topic_id":"3","main_topic":"Transport"},' +
 '{"main_topic_id":"4","main_topic":"Energy"},' +
 '{"main_topic_id":"5","main_topic":"Other"}]}';
 
-var parsed = JSON.parse(text);
+var parsed = JSON.parse(text1);
 
 var arrTopics = [];
 
@@ -47,7 +65,6 @@ function populateStates( countryElementId, stateElementId ){
 		stateElement.options[stateElement.length] = new Option(state_arr[i],state_arr[i]);
 	}
 }
-
 
 function populateTopics( topicElementId ){
 
@@ -106,3 +123,8 @@ function populateCountries(countryElementId, stateElementId){
 		};
 	}
 }
+
+URLLIST = {	
+	"topicList": "cca/plugin/php/getTopics.php",
+	"eventList": "cca/plugin/php/getEventTypes.php"
+};
