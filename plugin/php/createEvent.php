@@ -226,7 +226,6 @@ function submitFormToDB() {
         }
         //$eventSubtype
         //insert event subtypes
-<<<<<<< HEAD
         $subtopicCount = count($allSubtopicArray);
         for($i = 0; $i < $subtopicCount; $i++){
             $subtopic = mysqli_real_escape_string($db, $allSubtopicArray[$i]);
@@ -253,12 +252,7 @@ function submitFormToDB() {
         }
         $eventSubtypeQuery = "INSERT INTO event_subtype (estype_event_id, estype_subtype_id) "
                 . "VALUES ();";
-=======
-//        $eventSubtypeQuery = "INSERT INTO event_subtype (estype_event_id, estype_subtype_id) "
-//                . "VALUES ();"
->>>>>>> e8604ab836e8f7d97c0da7363f99999ea3b22192
+
     }
     mysqli_close($db);
 }
-
-submitFormToDB();

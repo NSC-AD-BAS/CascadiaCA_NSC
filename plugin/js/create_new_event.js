@@ -5,8 +5,7 @@
  */
 $(function () {
     //sets a function to the addmore button that generates more html for another
-<<<<<<< HEAD
-    //sponso
+    //sponsor
     $("#timeStart").timepicker({
         disableTextInput: true,
         timeFormat: 'H:i:s',
@@ -39,25 +38,12 @@ $(function () {
     $("dateEnd").on("click", function () {
         $("dateEnd").datepicker().show();
     });
-    
+
     $("#more_sponsors").click(function (e) {
         e.preventDefault();
         addSponsors();
-=======
-    //sponsor
-    $("#addMore").click(function (e) {
-        e.preventDefault();
-        //adds more sponsors
-        $("#fieldList").append("<li>&nbsp;</li>");
-        $("#fieldList").append(
-                "<li>Organization Name*:<input type='text' name=\n\
-                            'organization_name[]' required></li>");
-        $("#fieldList").append(
-                "<li>Organization Website*:<input type='text' name=\n\
-                            'organization_website[]'></li>");
-
->>>>>>> e8604ab836e8f7d97c0da7363f99999ea3b22192
     });
+    
     //need function that generates the clickbox when html dropdown selected
     $("#type").change(function (e) {
         e.preventDefault();
@@ -85,23 +71,20 @@ $(function () {
         $(".subtopics").append(createChecklist($s));
         console.log(createChecklist($s));
     });
-<<<<<<< HEAD
+
     var sponsor = 1;
     function addSponsors() {
         sponsor++;
-        var currentSponsor = document.getElementById('sponsors')
+        var currentSponsor = document.getElementById('sponsors');
         var nextSponsor = document.createElement("div");
         nextSponsor.innerHTML =
                 '<div class="label">Sponsor ' + sponsor + ':</div><div class="content">\n\
             <span>Organization Name*:<input type="text"  name="organization_name[]" value=""/>\n\
             </span><span>Organization Website*:<input type="text"  name="organization_website[]" \n\
             value=""/></span></div>';
-        currentSponsor.appendChild(nextSponsor)
+        currentSponsor.appendChild(nextSponsor);
     }
 
-=======
-    
->>>>>>> e8604ab836e8f7d97c0da7363f99999ea3b22192
     function createChecklist(t) {
         var attrCount;
         var str = "";
@@ -291,4 +274,3 @@ $(function () {
         }
     }
 });
-
