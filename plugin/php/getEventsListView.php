@@ -21,7 +21,8 @@ function getAll() {
     //create an array
     $eventarray = array();
     while ($row = mysqli_fetch_assoc($result)) {
-        $eventarray[] = $row;
+        //$eventarray[] = $row;
+        array_push($eventarray, $row);
     }
     $jsonarray = json_encode($eventarray);
     //close the db connection

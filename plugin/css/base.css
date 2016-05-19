@@ -167,6 +167,10 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adcffa', endColorstr='#c4c4c4', GradientType=1 );
 }
 
+.hidden {
+    display: none;
+}
+
 #filterContainer h3 {
     color: #3366ff;
     border-bottom: 3px solid black;

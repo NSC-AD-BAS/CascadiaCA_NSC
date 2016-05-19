@@ -1,7 +1,7 @@
 <?php
 
 //returns array of all 5 main topics
-=======
+
 /**
  * Created by PhpStorm.
  * User: james_000
@@ -23,7 +23,8 @@ function getTopics()
     //create an array
     $eventarray = array();
     while ($row = mysqli_fetch_assoc($result)) {
-        $eventarray[] = $row;
+        //$eventarray[] = $row;
+        array_push($eventarray, $row);
 
     }
     $jsonarray = json_encode($eventarray);
@@ -31,9 +32,8 @@ function getTopics()
     //close the db connection
     mysqli_close($db);
 
-    return $jsonarray;
+    echo $jsonarray;
 }
-//display for testing purposes, can be removed.
-echo getTopics();
+
 
 ?>
