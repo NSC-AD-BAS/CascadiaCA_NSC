@@ -1,7 +1,6 @@
 <?php
 
 //returns an array of all 18 subtypes
-include "connect.php";
 
 function getSubtypes()
 {
@@ -24,7 +23,5 @@ function getSubtypes()
 
     return $jsonarray;
 }
-
-echo getSubtypes();
 
 ?>
