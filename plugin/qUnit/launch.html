@@ -3,33 +3,32 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Qunit test suite</title>
-    <link rel="stylesheet" href="qUnitSrc/src/qunit.css" type="text/css">
+    <title>Launch</title>
     <link rel="stylesheet" href="base.css" type="text/css">
-    <script src="qunit-1.23.1.js" type="text/javascript"></script>
-    <script src="tests.js" type="text/javascript"></script>
     <script src="../js/AjaxFunctions.js" type="text/javascript"></script>
     <script src="contentView.js" type="text/javascript"></script>
     <script src="Formatter.js"></script>
 </head>
 <body onload="contentViewer.init()">
-    <div id="qunit"></div>
-    <div id="qunit-fixture"></div>
     <div id="mainContent" class="main">
         <div id="eventList">
+            <span id="imageContainer" class="showing"></span>
             <div id="headerBox">
                 <div id="headerLeft"><h2>Events</h2></div>
                 <div id="headerRight">
-                    <button id="toggleCalendar">Calendar</button>
+                    <button id="toggleCalendar" class="filterButton">Calendar</button>
                 </div>
             </div>
-            <div id="calendarContent" class=".hidden"></div>
-            <div id="detailContent" class=".hidden"></div>
-            <div id="eventContent" class=".showing"></div>
+            <div id="wrapper" class="showing">
+            <div id="calendarContent" class="hidden"></div>
+            <div id="detailContent" class="hidden"></div>
+            <div id="eventContent" class="showing"></div>
+                <div id="backLay" class="showing"></div>
+            </div>
         </div>
         <div id="filterSideBar">
             <div id="filterBox">
-                <span id="filterBoth"><h2>Filters</h2></span>
+                <div id="filterBoth"><h2>Filters</h2></div>
             </div>
             <div id="filterContainer">
                 <h3>Sort By:</h3>
@@ -73,7 +72,43 @@
                         <button type="button" onclick="filterDateSearchClick()" class="filterButton">Sort Range</button>
                         <button type="button" onclick="resetDateSearchClick()" class="filterButton">Reset</button>
                         </span>
-
+                <script>
+                    $(function(){
+                        $("#timeStart").timepicker({
+                            disableTextInput: true,
+                            timeFormat: 'H:i:s',
+                            noneOption: true
+                        });
+                        $("#timeStart").on("click", function(){
+                            $("timeStart").timepicker.show();
+                        });
+                        $("#timeEnd").timepicker({
+                            disableTextInput: true,
+                            timeFormat: 'H:i:s',
+                            noneOption: true
+                        });
+                        $("#timeEnd").on("click", function(){
+                            $(alert("hello"));
+                            $("timeEnd").timepicker.show();
+                        });
+                        $("#dateStart").datepicker({
+                            dateFormat: "yy-mm-dd",
+                            showAnim: "fade",
+                            showButtonPanel: true
+                        });
+                        $("dateStart").on("click", function(){
+                            $("dateStart").datepicker().show();
+                        });
+                        $("#dateEnd").datepicker({
+                            dateFormat: "yy-mm-dd",
+                            showAnim: "fade",
+                            showButtonPanel: true
+                        });
+                        $("dateEnd").on("click", function(){
+                            $("dateEnd").datepicker().show();
+                        });
+                    });
+                </script>
                     <span id="zipCodeFilterField">
                         <label for="zipTextBox">Zip Code</label><br>
                         <input type="text" name="zipFilterText" id="zipTextBox" maxlength="5"  class="filterField">
