@@ -10,7 +10,7 @@
 // nothing more than a content viewer object to hold information, common DOM elements related to
 // this module, and functions/subfunctions associated with it
 var dom, settings,
-ContentViewer = {
+contentViewer = {
     domElements: {
         calendarButton: "#toggleCalendar",
         contentDivList: "#eventContent",
@@ -46,5 +46,9 @@ ContentViewer = {
         }
         settings.list = !settings.list;
         settings.calendar = !settings.calendar;
+    },
+
+    showListContent: function(content) {
+
     }
 };

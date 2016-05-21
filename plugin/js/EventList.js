@@ -25,7 +25,7 @@ function loadFilters() {
 function showAll(json) {
     var obj = JSON.parse(json);
     // main container element in the landing page
-    var container = document.getElementsByName("eventList");    
+    var container = document.getElementsByName("eventList");
     var ul = document.getElementById("listChildren");
     // create a bigass list, then append it to the main content div
     for(var index in obj) {
