@@ -6,10 +6,6 @@
         <script src="../js/create_new_event.js"></script>
         <link href="../css/create_event_form.css" rel="stylesheet">
         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <script src="../js/AjaxFunctions.js" type="text/javascript"></script>
-        <script src="../js/EventList.js" type="text/javascript"></script>
-        <script src="../js/Filter.js" type="text/javascript"></script>
-        <script src="../js/city-state.js" type="text/javascript"></script>
         <script src="../js/jonthornton-jquery-timepicker-18fd09d/jquery.timepicker.js" type="text/javascript"></script>
         <script src="../js/Datepair.js-master/dist/datepair.js" type="text/javascript"></script>
         <script src="../js/Datepair.js-master/dist/jquery.datepair.js" type="text/javascript"></script>
@@ -45,7 +41,7 @@
 
             <!-- calendar input for date-->
             <div id="filterSideBar">
-                <form id="formFilterField">
+                <span id="formFilterField">
                     <label for="dateStartFilterField">Start Date/Time</label><br>
                     <span id="dateStartFilterField">
                         <input type="text" name="start_date" id="dateStart" class="filterDate" value="Start Date">
@@ -56,7 +52,7 @@
                         <input type="text" name="end_date" id="dateEnd" class="filterDate" value="End Date">
                         <input type="text" name="end_time" id="timeEnd" class="filterDate" value="End Time">
                     </span><br>
-                </form>
+                </span>
             </div>
 
             <label for="building">Building*:</label>
@@ -96,7 +92,7 @@
             <input type="text" name="phone_number" required><br>
             <label for="fileToUpload">Select image to upload:</label>
             <input type="file" name="fileToUpload" id="fileToUpload"><br>
-            <input type="submit" name="submit" value="Submit New Event">
+            <input type="submit" name="submit_event" value="Submit New Event">
         </form>
     </body>
 </html>

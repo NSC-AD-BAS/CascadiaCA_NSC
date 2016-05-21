@@ -4,30 +4,33 @@
  * and open the template in the editor.
  */
 $(function () {
-    //sets a function to the addmore button that generates more html for another
-    //sponsor
+//sets a function to the addmore button that generates more html for another
+//sponsor
     $("#timeStart").timepicker({
         disableTextInput: true,
         timeFormat: 'H:i:s',
         noneOption: true
     });
-    $("#timeStart").on("click", function () {
-        //$("timeStart").timepicker.show();
+    $("#timeStart").click(function (e) {
+        e.preventDefault();
+        $("timeStart").timepicker.show();
     });
     $("#timeEnd").timepicker({
         disableTextInput: true,
         timeFormat: 'H:i:s',
         noneOption: true
     });
-    $("#timeEnd").on("click", function () {
-        //$("timeEnd").timepicker.show();
+    $("#timeEnd").click(function (e) {
+        e.preventDefault();
+        $("timeEnd").timepicker.show();
     });
     $("#dateStart").datepicker({
         dateFormat: "yy-mm-dd",
         showAnim: "fade",
         showButtonPanel: true
     });
-    $("dateStart").on("click", function () {
+    $("dateStart").click(function (e) {
+        e.preventDefault();
         $("dateStart").datepicker().show();
     });
     $("#dateEnd").datepicker({
@@ -35,15 +38,14 @@ $(function () {
         showAnim: "fade",
         showButtonPanel: true
     });
-    $("dateEnd").on("click", function () {
+    $("dateEnd").click(function (e) {
+        e.preventDefault();
         $("dateEnd").datepicker().show();
     });
-
     $("#more_sponsors").click(function (e) {
         e.preventDefault();
         addSponsors();
     });
-    
     //need function that generates the clickbox when html dropdown selected
     $("#type").change(function (e) {
         e.preventDefault();
@@ -57,9 +59,8 @@ $(function () {
         //figure out how to parse the shortened versions of the tags into
         //text
         $(".subtypes").append(createChecklist($s));
-        console.log(createChecklist($s));
+//        console.log(createChecklist($s));
     });
-
     $("#topic").change(function (e) {
         e.preventDefault();
         //resets the subtype, so that it doesn't duplicate if we change the 
@@ -69,9 +70,8 @@ $(function () {
         var $s = $("#topic option:selected").text();
         //checks which type was selected
         $(".subtopics").append(createChecklist($s));
-        console.log(createChecklist($s));
+//        console.log(createChecklist($s));
     });
-
     var sponsor = 1;
     function addSponsors() {
         sponsor++;
@@ -96,28 +96,28 @@ $(function () {
         } else if (t === 'Action' || t === 'Knowledge' || t === 'Involvement') {
             attrCount = 6;
         }
-        //subtype 0 is other 
+//subtype 0 is other 
         for (var i = 1; i <= attrCount; i++) {
             var subCount = getSub(t) + i;
             str += "<input type='checkbox' name='" + getSub(t) + "[]' value='";
             str += (getLabelText(t, i) + "'> ");
             str += "<label for='";
-            str += (subCount + "'> ");
+            str += (subCount + "'>");
             str += (getLabelText(t, i));
-            str += ("</label><br>");
+            str += ("</label><br> ");
         }
-        //adds the other portion 
-        str += "<input type='checkbox' name='" + getSub(t) + "[]' value='Other'>\n\
-                <label for='" + getSub(t) + "0'>Other</label><br>";
+//adds the other portion 
+        str += "<input type='checkbox' name='" + getSub(t) + "[]' value='Other'><label for='" + getSub(t) + "0'>Other</label><br>";
         return str;
     }
     function getSub(t) {
-        if (t === 'Other' || t === 'Legislate/Regulatory' || t === 'Transport' ||
+        if (t === 'Other' || t === 'Legislative/Regulatory' || t === 'Transport' ||
                 t === 'Alternate Energy' || t === 'Fossil Fuel') {
             return "subtopic";
         } else {
             return "subtype";
         }
+//        console.log(t);
     }
 
     function getLabelText(t, i) {

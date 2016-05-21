@@ -9,7 +9,7 @@ function submitFormToDB() {
         die('Database connection unavailable: ' . mysqli_connect_error());
     }
 
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['submit_event'])) {
         //address variables
         //subtypes into an array as well
         $allOrgNameArray = $_POST['organization_name'];
@@ -227,32 +227,57 @@ function submitFormToDB() {
         //$eventSubtype
         //insert event subtypes
         $subtopicCount = count($allSubtopicArray);
-        for($i = 0; $i < $subtopicCount; $i++){
+        for ($i = 0; $i < $subtopicCount; $i++) {
             $subtopic = mysqli_real_escape_string($db, $allSubtopicArray[$i]);
 //            $insertSubTopic = ;
-            $insertSubOrg = "INSERT INTO organization (org_name, org_website, org_address_id)"
-                    . "VALUES ('$orgSubName', '$orgSubWebsite', 1);";
-            $insertSubOrgQuery = mysqli_query($db, $insertSubOrg);
-            if ($insertSubOrgQuery === TRUE) {
-                echo "New oragnization created successfully";
+            $subtopicQuery = "INSERT INTO subtopics (main_topic_id, subtopic) "
+                    . "VALUES ('$topicId', '$subtopic');";
+            $insertSubtopicQuery = mysqli_query($db, $subtopicQuery);
+            if ($insertSubtopicQuery === TRUE) {
+                echo "New subtopic created successfully";
             } else {
                 echo nl2br("Error: 7" . $insertSubOrgQuery . "<br>" . $db->error);
             }
-            $orgSubIdQuery = "SELECT org_id FROM organization WHERE org_name = '$orgSubName'";
-            $orgSubIdRow = mysqli_query($db, $orgSubIdQuery);
-            $orgSubId = mysqli_fetch_assoc($orgSubIdRow)['org_id'];
-            $insertEventSubSponsor = "INSERT INTO event_sponsor (event_id, org_id) "
-                    . "VALUES ('$eventId', '$orgSubId');";
-            $insertEventSubSponsorQuery = mysqli_query($db, $insertEventSubSponsor);
-            if ($insertEventSubSponsorQuery === TRUE) {
-                echo "New subsponsor created successfully";
+
+            $subtopicIdQuery = "SELECT subtopic_id FROM subtopics WHERE subtopic = '$subtopic'";
+            $subtopicIdRow = mysqli_query($db, $subtopicIdQuery);
+            $subtopicId = mysqli_fetch_assoc($subtopicIdRow)['subtopic_id'];
+            $event_subtopicsQuery = "INSERT INTO event_subtopics (es_event_id, es_subtopic_id) "
+                    . "VALUES ('$eventId', '$subtopicId');";
+            $insertEventSubtopicQuery = mysqli_query($db, $event_subtopicsQuery );
+            if ($insertEventSubtopicQuery === TRUE) {
+                echo "New subtopic link created successfully";
             } else {
-                echo nl2br("Error: 8" . $insertEventSubSponsorQuery . "<br>" . $db->error);
+                echo nl2br("Error: 8" . $insertEventSubtopicQuery . "<br>" . $db->error);
             }
         }
-        $eventSubtypeQuery = "INSERT INTO event_subtype (estype_event_id, estype_subtype_id) "
-                . "VALUES ();";
+        $subtypeCount = count($allSubtypeArray);
+        for ($i = 0; $i < $subtypeCount; $i++) {
+            $subtype = mysqli_real_escape_string($db, $allSubtypeArray[$i]);
+//            $insertSubTopic = ;
+            $subtypeQuery = "INSERT INTO subtypes (main_type_id, subtype_type) "
+                    . "VALUES ('$typeId', '$subtype');";
+            $insertSubtypeQuery = mysqli_query($db, $subtypeQuery);
+            if ($insertSubtypeQuery === TRUE) {
+                echo "New subtype created successfully";
+            } else {
+                echo nl2br("Error: 7" . $insertSubtypeQuery . "<br>" . $db->error);
+            }
 
+            $subtypeIdQuery = "SELECT subtype_id FROM subtypes WHERE subtype_type = '$subtype'";
+            $subtypeIdRow = mysqli_query($db, $subtypeIdQuery);
+            $subtypeId = mysqli_fetch_assoc($subtypeIdRow)['subtype_id'];
+            $event_subtypesQuery = "INSERT INTO event_subtype (estype_event_id, estype_subtype_id) "
+                    . "VALUES ('$eventId', '$subtypeId');";
+            $insertEventSubtypeQuery = mysqli_query($db, $event_subtypesQuery);
+            if ($insertEventSubtypeQuery === TRUE) {
+                echo "New subtype link created successfully";
+            } else {
+                echo nl2br("Error: 8" . $insertEventSubtypeQuery . "<br>" . $db->error);
+            }
+        }
     }
+
     mysqli_close($db);
 }
+submitFormToDB();
