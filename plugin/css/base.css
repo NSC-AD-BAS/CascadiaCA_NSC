@@ -25,7 +25,7 @@ img
 
 
 html {
-    background-color:#a9a9a9;
+
 }
 
 html, body {
@@ -36,13 +36,10 @@ body {
     width: 70%;
     margin: auto;
     padding-top: 10px;
-    background-color:#ffffff;
     padding-bottom: 10px;
 }
 
 #headerLeft h2, #filterBoth h2 {
-    color: #3366ff;
-    text-shadow: 1px 1px 1px #000000;
     padding: 5px;
     margin: -10px;
 }
@@ -58,11 +55,6 @@ body {
     background-color: #f5f5f5;
     font-family: "Segoe UI";
     border: solid 3px #00e600;
-    border-radius: 5px;
-    box-shadow: 1px 0 30px rgba(51,102,255, .9);
-    -moz-box-shadow: 1px 1px 10px rgba(51,102,255, .9);
-    -webkit-box-shadow: 1px 1px 10px rgba(51,102,255, .9);
-    -o-box-shadow: 1px 1px 10px rgba(51,102,255, .9);
     padding-bottom: 5px;
     padding-top: 5px;
 }
@@ -85,7 +77,6 @@ body {
     flex-flow: column nowrap;
     flex-grow: 1;
     padding: 5px;
-    color: #000000;
     background-color: transparent;
 }
 
@@ -109,12 +100,11 @@ body {
     order: 1;
     justify-content: space-between;
     background-color: transparent;
-    border: 2px solid black;
     border-radius: 3px;
     padding: 5px 5px 0 5px;
     height: 25px;
     margin-bottom: 10px;
-    background-color: rgba(0, 0, 0, .3);
+
 }
 
 #eventContent, #filterContainer {
@@ -142,34 +132,16 @@ body {
     flex-basis: auto;
     background-color: black;
     align-self: stretch;
-    margin-bottom: -12px;
-    padding:8px 5px 0 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background-color: transparent;
-    box-shadow: inset 1px 1px 20px #000000;
+}
 }
 
-.dynamicList {
-    color: #000000;
-    padding: 5px;
-    box-shadow: 0 0 40px rgba(0, 0, 0, .3);
-    border-radius: 5px;
-    display: flex;
-    flex-flow: column nowrap;
-    text-align: center;
-    background-color: transparent;
-}
-.main {
-    background: rgba(173,207,250,1);
-    background: radial-gradient(ellipse at left bottom, rgba(173,207,250,.5) 10%, rgba(255, 255, 255, 0.9) 60%, transparent 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adcffa', endColorstr='#c4c4c4', GradientType=1 );
-}
 
 #filterContainer h3 {
     color: #3366ff;
     border-bottom: 3px solid black;
-    text-shadow: 1px 1px 1px #000000;
     padding: 5px;
 }
 
@@ -178,7 +150,7 @@ body {
 }
 
 #typeFilterField {order:1;} #topicFilterField {order:2;}  #locationFilterField{order:3;}
-#monthFilterField{order:4; border-bottom: 3px solid black;} #formFilterField{order:5;} #zipCodeFilterField{order:7; border-top: 3px solid black; text-align: center;}
+#monthFilterField{order:4; border-bottom: 3px solid black;} #formFilterField{order:5;} #zipCodeFilterField{order:7; border-top: 3px solid black; text-align: center; }
 #radiusFilterField{order:8;}  #dateBtnContainer{order: 6;} #searchBtnContainer{order:9;}
 
 #dateStartFilterField, #dateEndFilterField, #dateBtnContainer {
@@ -211,44 +183,6 @@ body {
     max-width: 80px;
     margin: 5px 10px;
 }
-
-.filterButton {
-    -moz-border-radius:8px;
-    -webkit-border-radius:8px;
-    border:1px solid #0B1022;
-    border-radius: 3px;
-    background: #3366ff; /* For browsers that do not support gradients */
-    background: -webkit-radial-gradient(#3366ff, #0040ff, #001a66); /* For Safari 5.1 to 6.0 */
-    background: -o-radial-gradient(#3366ff, #0040ff, #001a66); /* For Opera 11.1 to 12.0 */
-    background: -moz-radial-gradient(#3366ff, #0040ff, #001a66); /* For Firefox 3.6 to 15 */
-    background: radial-gradient(#3366ff, #0040ff, #001a66); /* Standard syntax */
-    display:inline-block;
-    cursor:pointer;
-    color: rgba(204, 204, 204, .7);
-    font-size:14px;
-    font-weight: 700;
-    padding:3px 5px;
-    text-decoration:none;
-    text-shadow:1px 1px 10px #ffffff ;
-    margin: 5px 10px;
-    box-shadow: 1px 0px 5px #3366ff;
-}
-.filterButton:hover {
-    border: 1px solid #00e600;
-    background: #3366ff; /* For browsers that do not support gradients */
-    background: -webkit-radial-gradient(#3366ff, #0040ff, #001a66); /* For Safari 5.1 to 6.0 */
-    background: -o-radial-gradient(#3366ff, #0040ff, #001a66); /* For Opera 11.1 to 12.0 */
-    background: -moz-radial-gradient(#3366ff, #0040ff, #001a66); /* For Firefox 3.6 to 15 */
-    background: radial-gradient(#3366ff, #0040ff, #001a66); /* Standard syntax */
-    color: rgba(0, 0, 0, .4 );
-    text-shadow: 1px 0px 5px #ffffff;
-    box-shadow: 1px 0px 5px #000000;
-}
-.filterButton:active {
-    position:relative;
-    top:1px;
-}
-
 
 
 
