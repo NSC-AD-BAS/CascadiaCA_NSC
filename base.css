@@ -1,0 +1,195 @@
+/*CSS Reset*/
+
+body, html, div, blockquote, img, label, p, pre, ul,
+ol, li, dl, dt, dd, form, a, fieldset, input, th, td
+{
+    margin: 0; padding: 0; border: 0; outline: none; font-size: 100%;
+}
+
+ul, ol
+{
+    list-style: none;
+}
+
+body
+{
+    line-height: 1;
+}
+
+img
+{
+    border: 0;
+}
+
+/* Global Styles*/
+
+
+html {
+
+}
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    width: 70%;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#headerLeft h2, #filterBoth h2 {
+    padding: 5px;
+    margin: -10px;
+}
+
+#mainContent {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    justify-content: space-around;
+    margin-left: 3%;
+    margin-right: 3%;
+    background-color: #f5f5f5;
+    font-family: "Segoe UI";
+    border: solid 3px #00e600;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+#eventList {
+    display: -webkit-flex;
+    display: flex;
+    order: 1;
+    flex-flow: column nowrap;
+    flex-grow: 4;
+    padding: 5px;
+    color: #000000;
+    background-color: transparent;
+}
+
+#filterSideBar {
+    display: -webkit-flex;
+    display: flex;
+    order: 2;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+    padding: 5px;
+    background-color: transparent;
+}
+
+#filterBox  {
+    order: 1;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 3px;
+    padding: 5px 5px 0 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    height: 25px;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+#headerBox {
+    display: flex;
+    flex-flow: row nowrap;
+    order: 1;
+    justify-content: space-between;
+    background-color: transparent;
+    border-radius: 3px;
+    padding: 5px 5px 0 5px;
+    height: 25px;
+    margin-bottom: 10px;
+
+}
+
+#eventContent, #filterContainer {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: column nowrap;
+    order: 2;
+    flex-shrink: 1;
+    padding:5px;
+    color: #000000;
+    border: 3px inset black;
+    border-radius: 5px;
+}
+
+#filterContainer {border: 3px inset black;}
+
+#headerLeft {
+    order: 1;
+    flex-basis: 20%;
+    margin-left: 5px;
+}
+
+#headerRight {
+    order: 2;
+    flex-basis: auto;
+    background-color: black;
+    align-self: stretch;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: transparent;
+}
+}
+
+
+#filterContainer h3 {
+    color: #3366ff;
+    border-bottom: 3px solid black;
+    padding: 5px;
+}
+
+#formFilterField {
+    text-align: center;
+}
+
+#typeFilterField {order:1;} #topicFilterField {order:2;}  #locationFilterField{order:3;}
+#monthFilterField{order:4; border-bottom: 3px solid black;} #formFilterField{order:5;} #zipCodeFilterField{order:7; border-top: 3px solid black; text-align: center; }
+#radiusFilterField{order:8;}  #dateBtnContainer{order: 6;} #searchBtnContainer{order:9;}
+
+#dateStartFilterField, #dateEndFilterField, #dateBtnContainer {
+    display: inline-flex;
+    flex-flow: row nowrap;
+}
+
+#dateStart, #dateEnd, #dateBtnContainer.filterButton {
+    order: 1;
+}
+
+#timeStart, #timeEnd, #searchBtnContainer.filterButton {
+    order: 2;
+}
+
+.filterField, .filterSelect, .filterDate {
+    font-family: "Segoe UI Semibold";
+    background-color: #cccccc;
+    border: 1px solid black;
+    color: #000000;
+    padding: 2px;
+}
+
+.filterField, .filterSelect {
+    margin: 5px 10px;
+    width: 80%;
+}
+
+#dateStartFilterField input, #dateEndFilterField input {
+    max-width: 80px;
+    margin: 5px 10px;
+}
+
+
+
+
+
+
+
+
+
+
