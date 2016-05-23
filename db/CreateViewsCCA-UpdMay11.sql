@@ -102,3 +102,20 @@ SELECT e.event_id, e.event_title, 'Subtopic', st.subtopic
 	JOIN subtopics st
 		ON es.es_subtopic_id = st.subtopic_id
 ORDER BY `Event Id`;
+
+/*Creates a list of all images ordered by the org they
+are associated with*/
+CREATE OR REPLACE VIEW org_image_list AS
+SELECT * FROM org_image 
+	ORDER BY org_id;
+    
+/*Creates a list of all images ordered by the event they
+are associated with (includes org images)*/
+CREATE OR REPLACE VIEW event_image_list AS 
+SELECT ei.event_id, ei.event_image, oi.org_image
+	FROM event_image ei
+	JOIN event_sponsor es 
+		ON ei.event_id = es.event_id
+	JOIN org_image oi 
+        ON oi.org_id = es.org_id
+	ORDER BY ei.event_id;
