@@ -124,17 +124,12 @@ body {
 #headerLeft {
     order: 1;
     flex-basis: 20%;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 #headerRight {
     order: 2;
-    flex-basis: auto;
-    background-color: black;
-    align-self: stretch;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    background-color: transparent;
+    vertical-align:top;
 }
 }
 
