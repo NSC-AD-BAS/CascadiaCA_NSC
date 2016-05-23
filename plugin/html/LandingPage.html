@@ -24,21 +24,27 @@
             <div id="headerLeft"><h2>Events</h2></div>
             <div id="headerRight">
                 <button id="toggleCalendar" class="filterButton">Calendar</button>
+                <button id="submitNew" class="filterButton">Create Event</button>
             </div>
         </div>
         <div id="wrapper" class="showing">
             <div id="calendarContent" class="hidden"></div>
-            <div id="detailContent" class="hidden"></div>
+            <div id="detailContent" class="hidden">
+                <div id="logoContainer" class="showing"></div>
+            </div>
             <div id="eventContent" class="showing"></div>
             <div id="backLay" class="showing"></div>
         </div>
     </div>
     <div id="filterSideBar">
+        <span id="filterLogoContainer"></span>
         <div id="filterBox">
             <div id="filterBoth"><h2>Filters</h2></div>
         </div>
         <div id="filterContainer">
+            <span id="sortByBackLay">
             <h3>Sort By:</h3>
+                </span>
                     <span id="typeFilterField">
                     <label for="eventTypeListBox">Event Type</label><br>
                     <select id="eventTypeListBox"  class="filterSelect">
@@ -76,8 +82,7 @@
                         </span><br>
             </form>
                         <span id="dateBtnContainer">
-                        <button type="button" onclick="filterDateSearchClick()" class="filterButton">Sort Range</button>
-                        <button type="button" onclick="resetDateSearchClick()" class="filterButton">Reset</button>
+                        <button type="button" onclick="resetDateSearchClick()" class="filterButton">Reset Dates</button>
                         </span>
             <script>
                 $(function(){

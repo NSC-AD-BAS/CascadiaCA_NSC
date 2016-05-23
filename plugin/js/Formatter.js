@@ -9,7 +9,7 @@ function formatDefaultAllEvents(json, callback) {
     var btnObj;
     var obj = JSON.parse(json);
     var h = document.createElement("h3");
-    h.innerHTML = "Event Title | City | State | Event Topic | Event Type";
+    h.innerHTML = "Event Title - City - State - Event Topic - Event Type";
     var l = document.createElement("li");
     l.appendChild(h);
     var ul = document.createElement("ul");

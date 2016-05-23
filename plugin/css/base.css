@@ -49,9 +49,11 @@ body {
 }
 
 #headerLeft h2, #filterBoth h2 {
-    text-shadow: 1px 1px 1px #111111;
+    color: #313131;
+    text-shadow: 1px 1px 1px #999999;
     padding: 5px;
     margin: -10px;
+    font-family: "Segoe UI Semibold";
 }
 
 #mainContent {
@@ -62,9 +64,8 @@ body {
     justify-content: space-around;
     margin-left: 5%;
     margin-right: 5%;
-    background-color: #111111;
     font-family: "Segoe UI";
-    border: solid 2px #111111;
+    border: 4px solid #5CC36C;
     border-radius: 5px;
     box-shadow: 0 0 15px rgba(255, 157, 0, 1);
     -moz-box-shadow: 0 0 15px rgba(255, 157, 0, 1);
@@ -84,83 +85,6 @@ body {
     position: relative;
 }
 
-#filterSideBar {
-    display: -webkit-flex;
-    display: flex;
-    order: 2;
-    flex-flow: column nowrap;
-    flex-grow: 1;
-    padding: 5px;
-}
-
-#filterBox  {
-    order: 1;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #111111;
-    border-radius: 3px;
-    padding: 5px 5px 0 5px;
-    margin-bottom: 10px;
-    height: 25px;
-}
-
-#filterBoth {
-    margin-left: 5px;
-}
-
-#headerBox {
-    display: flex;
-    flex-flow: row nowrap;
-    order: 1;
-    justify-content: space-between;
-    border: 1px solid #111111;
-    border-radius: 3px;
-    padding: 5px 5px 0 5px;
-    margin-bottom: 10px;
-    height: 25px;
-}
-
-#wrapper, #filterContainer {
-    display: -webkit-flex;
-    display: flex;
-    flex-flow: column nowrap;
-    order: 2;
-    padding:5px;
-    height: 550px;
-    border: 3px inset #111111;
-    border-radius: 5px;
-    position: relative;
-}
-
-#wrapper {
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-#eventContent, #detailContent, #calendarContent, #backLay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 1px;
-    width: 100%;
-}
-
-#backLay {
-    /**
-    background: -webkit-radial-gradient(#002A80 25%, transparent 50%);
-    background: -o-radial-gradient(#002a80 25%, transparent 50%);
-    background: -moz-radial-gradient(#002a80 25%, transparent 50%);
-    background: radial-gradient(#002a80 25%, transparent 50%);
-    border-bottom: 2px solid #57d5ff;
-     */
-    border-bottom: 2px solid #111111;
-    overflow-y: visible;
-    overflow-x: visible;
-    width: 100%;
-    height: 55px;
-    z-index: 10;
-}
-
 #imageContainer {
     min-width: 1px;
     width: 100%;
@@ -175,12 +99,153 @@ body {
     z-index: 9;
 }
 
+#filterSideBar {
+    display: -webkit-flex;
+    display: flex;
+    order: 2;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+    padding: 5px;
+    position: relative;
+}
+
+#filterBox  {
+    order: 1;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #111111;
+    border-radius: 3px;
+    padding: 5px 5px 0 10px;
+    margin-bottom: 10px;
+    height: 25px;
+}
+
+#filterBoth {
+    margin-left: 5px;
+}
+
+#headerBox {
+    display: flex;
+    flex-flow: row nowrap;
+    order: 1;
+    justify-content: space-between;
+    background-color: #111111;
+    box-shadow: inset 1px 0 10px #5CC36C;
+    border-radius: 5px;
+    padding: 5px 5px 0 20px;
+    margin-bottom: 10px;
+    height: 28px;
+}
+
+#wrapper, #filterContainer {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: column nowrap;
+    order: 2;
+    padding:5px;
+    height: 550px;
+    position: relative;
+}
+
+#wrapper {
+    border-radius: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#eventContent, #detailContent, #calendarContent, #backLay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 1px;
+    width: 100%;
+}
+
+#detailContent {
+    position: relative;
+}
+
+#backLay {
+    background-image: url("../assets/img/headerBarBkrndBig.gif");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    overflow-y: visible;
+    overflow-x: visible;
+    min-width: 1px;
+    width: 100%;
+    height: 43px;
+    z-index: 10;
+    position: absolute;
+    top: 4px;
+    left: 0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#sortByBackLay {
+    background-image: url("../assets/img/filterBarBkgrndBig.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    min-height: 1px;
+    height: 55px;
+    width: 100%;
+}
+
+#logoContainer {
+    min-width: 1px;
+    width: 100%;
+    min-height: 1px;
+    height: 559px;
+    border-radius: 10px;
+    background-size: 100%;
+    background-image: url("../assets/img/rangeLarge.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    z-index: 15;
+}
+
+#filterLogoContainer {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background-image: url("../assets/img/ccaLogoLarge.png");
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    min-width: 1px;
+    width: 253px;
+    min-height: 1px;
+    height: 268px;
+    opacity: .9;
+}
+
+#listChildren {
+    padding: 0 0 6px 15px;
+    font-family: "Segoe UI Light";
+}
+
 #eventContent {
     background-color: transparent;
     box-shadow: inset -20px 20px 50px transparent;
 }
 
-#filterContainer {border: 3px inset black; height: 550px;}
+#listChildren h2, #listChildren h3 {
+    color: #999999;
+    font-family: "Segoe UI Semibold";
+    font-size: 1.2em;
+}
+
+#filterSideBar {
+    border-right: 3px solid #111111;
+    border-bottom: 2px solid #111111;
+}
+
+#filterContainer {
+    height: 550px;
+}
 
 #headerLeft {
     order: 1;
@@ -200,8 +265,16 @@ body {
 
 #toggleCalendar {
     position: absolute;
-    top: 50px;
-    right: 15px;
+    top: 37px;
+    right: 10px;
+    z-index: 20;
+}
+
+#submitNew {
+    position: absolute;
+    top: -7px;
+    right: 10px;
+    width: 110px;
     z-index: 20;
 }
 
@@ -235,7 +308,6 @@ body {
 .dynamicList {
     padding: 5px;
     box-shadow: 0 0 40px transparent;
-    border-radius: 5px;
     display: flex;
     flex-flow: column nowrap;
     font-size: 1em;
@@ -255,10 +327,16 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#524741', endColorstr='#ffffff', GradientType=1 );
 }
 
+#filterBox {
+    background-color: #111111;
+    box-shadow: inset 1px 0 10px #5CC36C;
+    border-radius: 5px;
+}
+
 #filterContainer h3 {
-    border-bottom: 3px solid black;
-    text-shadow: 1px 1px 1px #000000;
-    padding: 5px;
+    color: #111111;
+    text-shadow: 0 0 1px #999999;
+    padding: 0 0 5px 5px;
 }
 
 #formFilterField {
@@ -268,7 +346,13 @@ body {
 
 #typeFilterField {order:1;} #topicFilterField {order:2;}  #locationFilterField{order:3;}
 #monthFilterField{order:4; border-bottom: 3px solid black;} #formFilterField{order:5;} #zipCodeFilterField{order:7; border-top: 3px solid black; text-align: center;}
-#radiusFilterField{order:8;}  #dateBtnContainer{order: 6;} #searchBtnContainer{order:9;}
+#radiusFilterField{order:8;}  #dateBtnContainer{order: 6;}
+#searchBtnContainer{
+    order:9;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 35%;
+}
 
 #dateStartFilterField, #dateEndFilterField, #dateBtnContainer {
     display: inline-flex;
@@ -302,17 +386,18 @@ body {
 }
 
 .lightBtn, .darkBtn {
-    background:transparent;
     cursor: pointer;
     padding:3px 5px;
     text-decoration:none;
-    /**
-    background: #111111; /* For browsers that do not support gradients
-    background: -webkit-linear-gradient(-90deg, #002a80, transparent);
-    background: -o-linear-gradient(-90deg, #002a80, transparent);
-    background: -moz-linear-gradient(-90deg, #002a80, transparent);
-    background: linear-gradient(-90deg, #002a80, transparent);
-     */
+    background: transparent;
+    background: -webkit-linear-gradient(90deg,#86765D, transparent);
+    background: -o-linear-gradient(90deg, #86765D, transparent);
+    background: -moz-linear-gradient(90deg, #86765D, transparent);
+    background: linear-gradient(90deg, #86765D, transparent);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 0;
+    opacity: .65;
 }
 
 .filterButton {
@@ -320,33 +405,33 @@ body {
     -webkit-border-radius:8px;
     border:1px solid #0B1022;
     border-radius: 3px;
-    background: #3366ff; /* For browsers that do not support gradients */
-    background: -webkit-radial-gradient(#3366ff, #0040ff, #001a66); /* For Safari 5.1 to 6.0 */
-    background: -o-radial-gradient(#3366ff, #0040ff, #001a66); /* For Opera 11.1 to 12.0 */
-    background: -moz-radial-gradient(#3366ff, #0040ff, #001a66); /* For Firefox 3.6 to 15 */
-    background: radial-gradient(#3366ff, #0040ff, #001a66); /* Standard syntax */
+    background: #5CC36C; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(#5CC36C , #1c3129); /* For Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(#5CC36C, #1c3129); /* For Opera 11.1 to 12.0 */
+    background: -moz-radial-gradient(#5CC36C, #1c3129); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(#5CC36C, #1c3129); /* Standard syntax */
     display:inline-block;
     cursor:pointer;
-    color: #57d5ff;
+    color: #FF9D00;
     font-size:14px;
     font-weight: 700;
     padding:3px 5px;
     text-decoration:none;
-    text-shadow: 1px 1px 10px #d4073d;
+    text-shadow: 1px 1px 2px #1c3129;
     margin: 5px 10px;
-    box-shadow: 1px 0px 5px #3366ff;
+    box-shadow: 1px 0px 5px #86765D;
 }
 
 .filterButton:hover {
-    border: 1px solid #00e600;
-    background: #3366ff; /* For browsers that do not support gradients */
-    background: -webkit-radial-gradient(#3366ff, #0040ff, #001a66); /* For Safari 5.1 to 6.0 */
-    background: -o-radial-gradient(#3366ff, #0040ff, #001a66); /* For Opera 11.1 to 12.0 */
-    background: -moz-radial-gradient(#3366ff, #0040ff, #001a66); /* For Firefox 3.6 to 15 */
-    background: radial-gradient(#3366ff, #0040ff, #001a66); /* Standard syntax */
-    color: rgba(0, 0, 0, .4 );
-    text-shadow: 1px 0px 5px #d4073d;
-    box-shadow: 1px 0px 5px #000000;
+    border: 1px solid #FF9D00;
+    background: #5CC36C; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(#5CC36C , #1c3129); /* For Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(#5CC36C, #1c3129); /* For Opera 11.1 to 12.0 */
+    background: -moz-radial-gradient(#5CC36C, #1c3129); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(#5CC36C, #1c3129); /* Standard syntax */
+    color:#1c3129;
+    text-shadow: 1px 0px 5px #ff9d00;
+    box-shadow: 1px 0px 5px #86765d;
 }
 .filterButton:active {
     position:relative;
@@ -354,8 +439,7 @@ body {
 }
 
 .lightBtn:hover, .darkBtn:hover {
-    border: 1px solid transparent;
-    background: transparent;
+    background-color: #86765D;
     opacity: 1;
 }
 
