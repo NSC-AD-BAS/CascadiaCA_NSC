@@ -109,13 +109,54 @@ CREATE OR REPLACE VIEW org_image_list AS
 SELECT * FROM org_image 
 	ORDER BY org_id;
     
-/*Creates a list of all images ordered by the event they
-are associated with (includes org images)*/
-CREATE OR REPLACE VIEW event_image_list AS 
-SELECT ei.event_id, ei.event_image, oi.org_image
-	FROM event_image ei
+    
+/*Creates a list of all organization images
+associated with events ordered by event id*/
+CREATE OR REPLACE VIEW event_org_image_list AS
+SELECT e.event_id, 'main_sponsor' AS `sponsor_type`, oi.org_image_id, oi.org_image
+	FROM `event` e
+    JOIN org_image oi
+		ON e.event_main_sponsor_id =oi.org_id
+UNION
+SELECT e.event_id, 'addtl_sponsor', oi.org_image_id, oi.org_image
+	FROM `event` e
+    JOIN event_sponsor es
+		ON e.event_id = es.event_id
+	JOIN org_image oi
+		ON es.org_id = oi.org_id
+ORDER BY event_id;
+
+/*Creates a list of all organization images ordered by the event they
+are associated with*/
+CREATE OR REPLACE VIEW event_org_image_list AS 
+SELECT e.event_id AS `event_id`, oi.org_image AS `org_image`
+	FROM event e
 	JOIN event_sponsor es 
-		ON ei.event_id = es.event_id
+		ON e.event_id = es.event_id
 	JOIN org_image oi 
         ON oi.org_id = es.org_id
-	ORDER BY ei.event_id;
+UNION 
+SELECT e.event_id, oi.org_image
+	FROM event e
+    JOIN org_image oi
+		ON e.event_main_sponsor_id = oi.org_id
+ORDER BY event_id;
+
+
+/*Creates a list of event specific images 
+ordered by event id*/
+CREATE OR REPLACE VIEW event_image_list AS
+SELECT e.event_id AS `event_id`, ei.event_image_id, ei.event_image
+	FROM `event` e
+    JOIN event_image ei
+		ON e.event_id = ei.event_id
+ORDER BY e.event_id;
+    
+/*Creates a list of all images ordered by event id*/
+CREATE OR REPLACE VIEW image_list AS
+SELECT event_id, 'event_image' AS `image_type`, event_image 
+	FROM event_image_list
+UNION 
+SELECT event_id, 'org_image', org_image
+	FROM event_org_image_list
+ORDER BY event_id;
