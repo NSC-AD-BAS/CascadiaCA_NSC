@@ -8,7 +8,9 @@ CREATE TABLE address (
     street_address VARCHAR(100) NOT NULL,
     city VARCHAR(100) NOT NULL,
     state VARCHAR(100) NOT NULL,
-    zip VARCHAR(12) NOT NULL
+    zip VARCHAR(12) NOT NULL,
+    lat FLOAT (10,6),
+    lng FLOAT (10,6)
 );
 
 CREATE TABLE organization (
@@ -124,17 +126,19 @@ CREATE TABLE event_sponsor (
 );
 
 CREATE TABLE org_image (
-	org_image_id INT NOT NULL,
-    CONSTRAINT org_image_org_id
-		FOREIGN KEY (org_image_id)
+	org_image_id INT PRIMARY KEY NOT NULL,
+	org_id INT NOT NULL,
+    CONSTRAINT org_image_fk_org_id
+		FOREIGN KEY (org_id)
         REFERENCES organization(org_id),
     org_image BLOB
 );
 	
 CREATE TABLE event_image (
-	event_image_id INT NOT NULL,
-    CONSTRAINT event_image_event_id
-		FOREIGN KEY (event_image_id)
+	event_image_id INT PRIMARY KEY NOT NULL,
+	event_id INT NOT NULL,
+    CONSTRAINT event_image_fk_event
+		FOREIGN KEY (event_id)
         REFERENCES `event`(event_id),
 	event_image BLOB
 );

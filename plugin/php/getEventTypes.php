@@ -1,4 +1,6 @@
 <?php
+<<<<<<< HEAD
+=======
 /**
  * Created by PhpStorm.
  * User: james_000
@@ -21,8 +23,8 @@ function getEventTypes()
     $eventarray = array();
     while ($row = mysqli_fetch_assoc($result)) {
         $eventarray[] = $row;
-
     }
+
     $jsonarray = json_encode($eventarray);
 
     //close the db connection
@@ -30,7 +32,4 @@ function getEventTypes()
 
     echo $jsonarray;
 }
-
-
-
 ?>
