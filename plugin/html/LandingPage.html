@@ -30,6 +30,9 @@ widget, which will then have Filter.js get all values in the filter form by id, 
         <div id="eventList">
             <div id="headerBox">
                 <div id="headerLeft"><h2>Events</h2></div>
+                
+                
+                
                 <div id="headerRight"	data-role="controlgroup" data-type="horizontal">
 					
       <a href="#" class="ui-btn" button id="dayBtn">>Day</a>
@@ -45,7 +48,7 @@ widget, which will then have Filter.js get all values in the filter form by id, 
 
 			
             <div id="eventContent">
-                <ul data-role="listview" data-inset="true">
+                <ul data-role="listview" data-inset="true" data-filter="true">
 					 <li><a href="#">events[0].eventTitle + " " + events[0].location + " " + events[0].time;</a></li>
       <li><a href="#">events[1].eventTitle + " " + events[1].location + " " + events[1].time;</a></li>
       <li><a href="#">events[2].eventTitle + " " + events[2].location + " " + events[2].time;</a></li>
@@ -62,8 +65,7 @@ widget, which will then have Filter.js get all values in the filter form by id, 
         </div>
 
         <div id="filterSideBar">
-            <div id="filterContainer">
-                <h3>Sort By:</h3>
+            <div id="filterContainer"><br>
                     <span id="typeFilterField">
                     <label for="eventTypeListBox">Event Type</label>
                     <select id="eventTypeListBox"  class="filterSelect">
@@ -90,9 +92,7 @@ widget, which will then have Filter.js get all values in the filter form by id, 
                     </span>
                     <form id="formFilterField">
                         <label for="dateStartFilterField">Start Date/Time</label>
-                        <span id="dateStartFilterField">
-                        <input type="text" id="dateStart" class="filterDate" value="Start Date">
-                        <input type="text" id="timeStart" class="filterDate" value="Start Time">
+                       <input type="text" data-role="date">
                         </span><br>
                         <label for="dateEndFilterField">End Date/Time</label>
                         <span id="dateEndFilterField">
