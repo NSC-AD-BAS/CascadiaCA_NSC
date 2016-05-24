@@ -3,8 +3,7 @@ var text, events, URLLIST;
 
 
 function topicsCallback(json) {
-	text = json;
-	console.log("topics returned from ajax: " + text);
+	text = json;	
 }
 
 
