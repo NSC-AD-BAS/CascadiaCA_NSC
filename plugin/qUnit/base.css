@@ -1,0 +1,373 @@
+    /*CSS Reset*/
+/*
+color theme:
+#524741 - dk brn
+#86765D - lt brn
+#FF9D00 - orange
+#366051 - forest grn
+#5CC36C - teal grn
+*/
+
+body, html, div, blockquote, img, label, p, pre, ul,
+ol, li, dl, dt, dd, form, a, fieldset, input, th, td
+{
+    margin: 0; padding: 0; border: 0; outline: none; font-size: 100%;
+}
+
+ul, ol
+{
+    list-style: none;
+}
+
+body
+{
+    line-height: 1;
+}
+
+img
+{
+    border: 0;
+}
+
+/* Global Styles*/
+
+
+html {
+    background-color:#a9a9a9;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    width: 70%;
+    margin: auto;
+    padding-top: 10px;
+    background-color:#524741;
+    padding-bottom: 10px;
+}
+
+#headerLeft h2, #filterBoth h2 {
+    text-shadow: 1px 1px 1px #111111;
+    padding: 5px;
+    margin: -10px;
+}
+
+#mainContent {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    align-items: stretch;
+    justify-content: space-around;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #111111;
+    font-family: "Segoe UI";
+    border: solid 2px #111111;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(255, 157, 0, 1);
+    -moz-box-shadow: 0 0 15px rgba(255, 157, 0, 1);
+    -webkit-box-shadow: 0 0 15px rgba(255, 157, 0, 1);
+    -o-box-shadow: 0 0 15px rgba(255, 157, 0, 1);
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+#eventList {
+    display: -webkit-flex;
+    display: flex;
+    order: 1;
+    flex-flow: column nowrap;
+    flex-grow: 4;
+    padding: 5px;
+    position: relative;
+}
+
+#filterSideBar {
+    display: -webkit-flex;
+    display: flex;
+    order: 2;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+    padding: 5px;
+}
+
+#filterBox  {
+    order: 1;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #111111;
+    border-radius: 3px;
+    padding: 5px 5px 0 5px;
+    margin-bottom: 10px;
+    height: 25px;
+}
+
+#filterBoth {
+    margin-left: 5px;
+}
+
+#headerBox {
+    display: flex;
+    flex-flow: row nowrap;
+    order: 1;
+    justify-content: space-between;
+    border: 1px solid #111111;
+    border-radius: 3px;
+    padding: 5px 5px 0 5px;
+    margin-bottom: 10px;
+    height: 25px;
+}
+
+#wrapper, #filterContainer {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: column nowrap;
+    order: 2;
+    padding:5px;
+    height: 550px;
+    border: 3px inset #111111;
+    border-radius: 5px;
+    position: relative;
+}
+
+#wrapper {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#eventContent, #detailContent, #calendarContent, #backLay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 1px;
+    width: 100%;
+}
+
+#backLay {
+    /**
+    background: -webkit-radial-gradient(#002A80 25%, transparent 50%);
+    background: -o-radial-gradient(#002a80 25%, transparent 50%);
+    background: -moz-radial-gradient(#002a80 25%, transparent 50%);
+    background: radial-gradient(#002a80 25%, transparent 50%);
+    border-bottom: 2px solid #57d5ff;
+     */
+    border-bottom: 2px solid #111111;
+    overflow-y: visible;
+    overflow-x: visible;
+    width: 100%;
+    height: 55px;
+    z-index: 10;
+}
+
+#imageContainer {
+    min-width: 1px;
+    width: 100%;
+    min-height: 1px;
+    height: 249px;
+    background-size: 100%;
+    background-color: black;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    z-index: 9;
+    opacity: .6;
+}
+
+#eventContent {
+    background-color: transparent;
+    box-shadow: inset -20px 20px 50px transparent;
+}
+
+#filterContainer {border: 3px inset black; height: 550px;}
+
+#headerLeft {
+    order: 1;
+    flex-basis: 20%;
+    margin-left: 5px;
+}
+
+#headerRight {
+    order: 2;
+    flex-basis: auto;
+    align-self: stretch;
+    padding: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
+}
+
+#toggleCalendar {
+    position: absolute;
+    top: 50px;
+    right: 15px;
+    z-index: 20;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.showing {
+    visibility: visible;
+}
+
+.left {
+    float: left;
+    width: 25%;
+    margin: 5px;
+    padding: 2px;
+}
+
+.right {
+    float: right;
+    max-width: 70%;
+    margin: 5px;
+    padding: 2px;
+}
+
+.clear {
+    clear: both;
+    width: 100%;
+}
+
+.dynamicList {
+    padding: 5px;
+    box-shadow: 0 0 40px transparent;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column nowrap;
+    font-size: 1em;
+    text-align: left;
+    list-style: none;
+    padding-left: 15px;
+}
+
+.dynamicList li {
+    margin: 4px 0 4px 0;
+    z-index: 15;
+}
+
+.main {
+    background: #ffffff;
+    background: radial-gradient(ellipse at left bottom, rgba(134, 118, 93, 1) 5%, #e1dbd0 25%, #ffffff);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#524741', endColorstr='#ffffff', GradientType=1 );
+}
+
+#filterContainer h3 {
+    border-bottom: 3px solid black;
+    text-shadow: 1px 1px 1px #000000;
+    padding: 5px;
+}
+
+#formFilterField {
+    text-align: center;
+    font-size: .7em;
+}
+
+#typeFilterField {order:1;} #topicFilterField {order:2;}  #locationFilterField{order:3;}
+#monthFilterField{order:4; border-bottom: 3px solid black;} #formFilterField{order:5;} #zipCodeFilterField{order:7; border-top: 3px solid black; text-align: center;}
+#radiusFilterField{order:8;}  #dateBtnContainer{order: 6;} #searchBtnContainer{order:9;}
+
+#dateStartFilterField, #dateEndFilterField, #dateBtnContainer {
+    display: inline-flex;
+    flex-flow: row nowrap;
+}
+
+#dateStart, #dateEnd, #dateBtnContainer.filterButton {
+    order: 1;
+}
+
+#timeStart, #timeEnd, #searchBtnContainer.filterButton {
+    order: 2;
+}
+
+.filterField, .filterSelect, .filterDate {
+    font-family: "Segoe UI Semibold";
+    background-color: transparent;
+    border: 1px solid black;
+    color: #000000;
+    padding: 2px;
+}
+
+.filterField, .filterSelect {
+    margin: 5px 5px;
+    width: 80%;
+}
+
+#dateStartFilterField input, #dateEndFilterField input {
+    max-width: 80px;
+    margin: 5px 5px;
+}
+
+.lightBtn, .darkBtn {
+    background:transparent;
+    cursor: pointer;
+    padding:3px 5px;
+    text-decoration:none;
+    /**
+    background: #111111; /* For browsers that do not support gradients
+    background: -webkit-linear-gradient(-90deg, #002a80, transparent);
+    background: -o-linear-gradient(-90deg, #002a80, transparent);
+    background: -moz-linear-gradient(-90deg, #002a80, transparent);
+    background: linear-gradient(-90deg, #002a80, transparent);
+     */
+}
+
+.filterButton {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border:1px solid #0B1022;
+    border-radius: 3px;
+    background: #3366ff; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(#3366ff, #0040ff, #001a66); /* For Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(#3366ff, #0040ff, #001a66); /* For Opera 11.1 to 12.0 */
+    background: -moz-radial-gradient(#3366ff, #0040ff, #001a66); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(#3366ff, #0040ff, #001a66); /* Standard syntax */
+    display:inline-block;
+    cursor:pointer;
+    color: #57d5ff;
+    font-size:14px;
+    font-weight: 700;
+    padding:3px 5px;
+    text-decoration:none;
+    text-shadow: 1px 1px 10px #d4073d;
+    margin: 5px 10px;
+    box-shadow: 1px 0px 5px #3366ff;
+}
+
+.filterButton:hover {
+    border: 1px solid #00e600;
+    background: #3366ff; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(#3366ff, #0040ff, #001a66); /* For Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(#3366ff, #0040ff, #001a66); /* For Opera 11.1 to 12.0 */
+    background: -moz-radial-gradient(#3366ff, #0040ff, #001a66); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(#3366ff, #0040ff, #001a66); /* Standard syntax */
+    color: rgba(0, 0, 0, .4 );
+    text-shadow: 1px 0px 5px #d4073d;
+    box-shadow: 1px 0px 5px #000000;
+}
+.filterButton:active {
+    position:relative;
+    top:1px;
+}
+
+.lightBtn:hover, .darkBtn:hover {
+    border: 1px solid transparent;
+    background: transparent;
+    opacity: 1;
+}
+
+#rangeImgContainer {
+
+}
+
+
+
+
+
+
+
+
+
