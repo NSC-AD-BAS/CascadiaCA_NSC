@@ -1,10 +1,10 @@
 var text, events, URLLIST;
-/**
+/*
 var callbackCS1 = setTopicsInCityState;
 getAjax(URLLIST.topicList, callbackCS1);
 var callbackCS2 = setEventsInCityState;
-
-getAjax(URLLIST.eventList);
+getAjax(URLLIST.topicList, callbackCS1);
+getAjax(URLLIST.eventList, callbackCS2);
 
 function setTopicsInCityState(json) {
 	text = json;
@@ -15,7 +15,8 @@ function setEventsInCityState(json) {
 	events = json;
 	console.log(json);
 }
- */
+ **/
+
 
 var text1 = '{"topics":[' +
 '{"main_topic_id":"1","main_topic":"Fossil Fuel"},' +
