@@ -7,13 +7,14 @@
  */
 
 include "connect.php";
+getEventTypes();
 
 function getEventTypes()
 {
     $db = connect();
 
     //fetch table rows from mysql db
-    $sql = "select * from event_type";
+    $sql = "select * from full_type_list";
     $result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 
     //create an array
@@ -27,9 +28,9 @@ function getEventTypes()
     //close the db connection
     mysqli_close($db);
 
-    return $jsonarray;
+    echo $jsonarray;
 }
 
-echo getEventTypes();
+
 
 ?>
