@@ -2,8 +2,7 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 .idea/
-<<<<<<< HEAD
-=======
+
 
 # User-specific stuff:
 .idea/workspace.xml
@@ -26,7 +25,7 @@
 
 # Mongo Explorer plugin:
 .idea/mongoSettings.xml
->>>>>>> origin/unstable
+
 
 ## File-based project format:
 *.iws
