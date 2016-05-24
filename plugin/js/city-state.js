@@ -1,20 +1,4 @@
-jQuery.extend({
-getValues: function(url) {
-    var result = null;
-    $.ajax({
-        url: url,
-        type: 'get',
-        dataType: 'json',
-        async: false,
-        success: function(data) {
-            result = JSON.stringify(data);
-        }
-    });
-   return result;
-}
-});
 
-var test = $.getValues("getTopics.php");
 
 
 
@@ -35,6 +19,15 @@ var arrTopics = [];
 for(var x in parsed.topics){
   arrTopics.push(parsed.topics[x].main_topic);
 }
+
+
+var pardsed2 = JSON.parse(text2);
+
+var arrEvents = [];
+
+for(var x in parsed.Events) {
+	arrEvents.push(parsed.topics[x].main_event);
+
 //"created" by Sam Cooledge & James the 4th
 
 // states
@@ -43,7 +36,7 @@ var country_arr = new Array("Idaho" , "Oregon" , "Washington");
 //topics
 var topic_arr = new Array(arrTopics); //getTopic() using json from db
 
-var events_arr = new Array("Rally", "Speaker" , "Protest" , "Concert"); //getEvent() using json from db
+var events_arr = new Array(arrEvents); //getEvent() using json from db
 // Cities
 var s_a = new Array();
 s_a[0]="";
@@ -105,8 +98,8 @@ function populateEvents( eventsElementId ){
 	
 	
 	
-	for (var i=0; i< events_arr.length; i++) {
-		eventsElement.options[eventsElement.length] = new Option(events_arr[i],events_arr[i]);
+	for (var i=0; i< arrEvents.length; i++) {
+		eventsElement.options[eventsElement.length] = new Option(arrEvents[i],arrEvents[i]);
 	}
 }
 
