@@ -79,9 +79,10 @@ $(function () {
         var nextSponsor = document.createElement("div");
         nextSponsor.innerHTML =
                 '<div class="label">Sponsor ' + sponsor + ':</div><div class="content">\n\
-            <span>Organization Name*:<input type="text"  name="organization_name[]" value=""/>\n\
+            <span>Organization Name*:<input type="text"  name="organization_name[]" value="" required/>\n\
             </span><span>Organization Website*:<input type="text"  name="organization_website[]" \n\
-            value=""/></span></div>';
+            value="" required/><br><label for="fileToUpload">Select an image for your sponsor:</label>\n\
+            <input type="file" name="orgImage[]" class="inputFile"><br></span></div>';
         currentSponsor.appendChild(nextSponsor);
     }
 

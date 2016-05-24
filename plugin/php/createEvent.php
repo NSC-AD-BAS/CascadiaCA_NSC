@@ -16,8 +16,10 @@ function submitFormToDB() {
         $allOrgWebsiteArray = $_POST['organization_website'];
         $allSubtopicArray = $_POST['subtopic'];
         $allSubtypeArray = $_POST['subtype'];
-        echo count($allSubtopicArray);
-        echo count($allSubtypeArray);
+//        $orgImageArray = $_FILES['orgImage'];
+        //maybe number the images so that we know which correspond to which
+//        echo count($allSubtopicArray);
+//        echo count($allSubtypeArray);
 //        foreach ($allSubtopicArray as $checkbox) {
 //            echo $checkbox . ' ';
 //        }
@@ -181,6 +183,21 @@ function submitFormToDB() {
 //                . "event_description, start_date_time, end_date_time, address_id, "
 //                . "main_topic_id, main_event_org_id) VALUES ('$title', '$typeId', "
 //                . "'$description', '$startDate', $endDate', '$addressId', '$topicId', '$orgId')";
+        //uploads the event image
+        if ($_FILES['eventImage']['tmp_name'] != "") {
+            $imgData = addslashes(file_get_contents($_FILES['eventImage']['tmp_name']));
+            $imageProperties = getimageSize($_FILES['eventImage']['tmp_name']);
+            //change which table is uploaded to
+            $insertImg = "INSERT INTO event_image(imageData) "
+                    . "VALUES('{$imgData}')";
+            $insertImgQuery = mysqli_query($db, $insertImg) or die("<b>Error:</b> Problem on Image Insert<br/>");
+            $imgIdQuery = "SELECT event_image_id FROM event_image;";
+            $insertImgId = mysqli_fetch_assoc($imgIdQuery)['event_image_id'];
+            $insertImgRow = mysqli_query($db, $insertImgId);
+            //gets the image id so we can insert it into the event database
+            $eventImgId = mysqli_fetch_assoc($insertImgRow)['event_image_id'];
+        }
+
         $insertEvent = "INSERT INTO event (event_title, main_event_type, main_event_subtype, "
                 . "event_description, start_date_time, end_date_time, "
                 . "address_id, event_main_topic_id, event_main_sponsor_id, main_contact_id) VALUES "
@@ -192,6 +209,7 @@ function submitFormToDB() {
         } else {
             echo nl2br("Error: 6" . $insertEventQuery . "<br>" . $db->error);
         }
+
         $eventIdQuery = "SELECT event_id FROM event WHERE event_title = '$title'";
         $eventIdRow = mysqli_query($db, $eventIdQuery);
         $eventId = mysqli_fetch_assoc($eventIdRow)['event_id'];
@@ -200,6 +218,25 @@ function submitFormToDB() {
         $subOrgCount = count($allOrgNameArray);
         //suborgs are all organizations not in the 0 portion
         for ($i = 1; $i < $subOrgCount; $i++) {
+//            if (is_uploaded_file($_FILES['orgImage']['tmp_name'])) {
+            $imgData = addslashes(file_get_contents($_FILES['orgImage']['tmp_name'][$i]));
+            //checks if an image was uploaded by checking if the name is not blank
+            if ($_FILES['orgImage']['tmp_name'][$i] != "") {
+                $imageProperties = getimageSize($_FILES['orgImage']['tmp_name'][$i]);
+                //change which table is uploaded to
+                $insertImg = "INSERT INTO event_image(imageData) "
+                        . "VALUES('{$imgData}')";
+                $insertImgQuery = mysqli_query($db, $insertImg) or die("<b>Error:</b> Problem on Image Insert<br/>");
+                $imgIdQuery = "SELECT event_image_id FROM event_image;";
+                $insertImgId = mysqli_fetch_assoc($imgIdQuery)['event_image_id'];
+                $insertImgRow = mysqli_query($db, $insertImgId);
+                //gets the image id so we can insert it into the event database
+                $imgId = mysqli_fetch_assoc($insertImgRow)['event_image_id'];
+                //use this img id to link to the sponsor
+//            if (isset($current_id)) {
+//                header("Location: listImages.php");
+//            }
+            }
             $orgSubName = mysqli_real_escape_string($db, $allOrgNameArray[$i]);
             $orgSubWebsite = mysqli_real_escape_string($db, $allOrgWebsiteArray[$i]);
 //            $orgSubCheck = mysqli_query($db, "SELECT * FROM organization WHERE" .
@@ -224,6 +261,8 @@ function submitFormToDB() {
                 echo nl2br("Error: 8" . $insertEventSubSponsorQuery . "<br>" . $db->error);
             }
         }
+
+
         //$eventSubtype
         //insert event subtypes
         $subtopicCount = count($allSubtopicArray);
@@ -244,7 +283,7 @@ function submitFormToDB() {
             $subtopicId = mysqli_fetch_assoc($subtopicIdRow)['subtopic_id'];
             $event_subtopicsQuery = "INSERT INTO event_subtopics (es_event_id, es_subtopic_id) "
                     . "VALUES ('$eventId', '$subtopicId');";
-            $insertEventSubtopicQuery = mysqli_query($db, $event_subtopicsQuery );
+            $insertEventSubtopicQuery = mysqli_query($db, $event_subtopicsQuery);
             if ($insertEventSubtopicQuery === TRUE) {
                 echo "New subtopic link created successfully";
             } else {
@@ -276,8 +315,7 @@ function submitFormToDB() {
                 echo nl2br("Error: 8" . $insertEventSubtypeQuery . "<br>" . $db->error);
             }
         }
+        mysqli_close($db);
     }
-
-    mysqli_close($db);
 }
 submitFormToDB();

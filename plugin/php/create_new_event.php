@@ -65,21 +65,24 @@
             <input type="text" name="state" required><br>
             <label for="zip">Zip*:</label>
             <input type="text" name="zip" required><br>
-
+            <label for="fileToUpload">Select an image for your event:</label>
+            <input type="file" name="eventImage" class="inputFile"><br>
+            
             <h3>Organization</h3>
 
-            <input type="button" id="more_sponsors" value="Add More Sponsors" />
             <div id="sponsors">
                 <div>
                     <div class='label'>Sponsor 1: </div>
                     <div class="content">
                         <span>Organization Name*:<input type="text" name="organization_name[]" required></span>
-                        <span>Organization Website*:<input type="text" name="organization_website[]" required></span>
+                        <span>Organization Website*:<input type="text" name="organization_website[]" required></span><br>
+                        <label for="fileToUpload">Select an image for your sponsor:</label>
+                        <input type="file" name="orgImage[]" class="inputFile"><br>
                     </div>
                 </div>
             </div>
             <!--adds more fields on button click-->
-            <!--            <button id="addMore">Add another sponsor</button><br><br>-->
+            <input type="button" id="more_sponsors" value="Add More Sponsors" /><br>
 
             <h3>Contact Info</h3>
             <label for="first_name">First Name*:</label>
@@ -90,8 +93,6 @@
             <input type="text" name="email" required><br>
             <label for="phone_number">Phone Number*:</label>
             <input type="text" name="phone_number" required><br>
-            <label for="fileToUpload">Select image to upload:</label>
-            <input type="file" name="fileToUpload" id="fileToUpload"><br>
             <input type="submit" name="submit_event" value="Submit New Event">
         </form>
     </body>
