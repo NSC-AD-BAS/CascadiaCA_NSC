@@ -1,4 +1,24 @@
+jQuery.extend({
+getValues: function(url) {
+    var result = null;
+    $.ajax({
+        url: url,
+        type: 'get',
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+            result = JSON.stringify(data);
+        }
+    });
+   return result;
+}
+});
 
+var test = $.getValues("getTopics.php");
+
+
+
+/*
 var text = '{"topics":[' +
 '{"main_topic_id":"1","main_topic":"Fossil Fuel"},' +
 '{"main_topic_id":"2","main_topic":"Legislative\/Regulatory"},' +
@@ -6,7 +26,7 @@ var text = '{"topics":[' +
 '{"main_topic_id":"4","main_topic":"Energy"},' +
 '{"main_topic_id":"5","main_topic":"Other"}]}';
 
-
+*/
 
 var parsed = JSON.parse(text);
 
