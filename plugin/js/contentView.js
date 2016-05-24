@@ -27,7 +27,7 @@ var dom, settings, methods,
             detail: false,
             currentContent: {},
             urlList: {
-                getDefault: "cca/plugin/php/getEventsListView.php"
+                getDefault: "../php/getEventsListView.php"
             }
         },
 
