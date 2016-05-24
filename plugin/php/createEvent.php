@@ -14,8 +14,8 @@ if($db->connect_errno){
 }
 
 $address = "INSERT INTO address (building_name, street_address, city, state, 
-	zip) VALUES ('$_POST["building"]', $_POST["street_address"]', $_POST["city"],
-	$_POST["state"], $_POST["zip"])";
+	zip) VALUES ('$_POST["building"]', '$_POST["street_address"]', '$_POST["city"]',
+	'$_POST["state"]', '$_POST["zip"]')";
 
 if ($db->query($address) === TRUE) {
     echo "New address created successfully";
@@ -40,7 +40,7 @@ $organization = "INSERT INTO organization (org_name, org_website)
 VALUES ($_POST["organization_name"], $_POST["organization_website"])";
 
 if ($db->query($organization) === TRUE) {
-    echo "New oragnization created successfully";
+    echo "New organization created successfully";
 } else {
     echo "Error: " . $organization . "<br>" . $db->error;
 }
