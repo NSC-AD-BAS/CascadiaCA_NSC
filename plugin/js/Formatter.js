@@ -2,7 +2,7 @@
  * Created by cdub on 5/19/2016.
  */
 
-var EVENTS, TOPICS, TYPES, BUTTONS, ELEMENTSTRINGS, REFVALUES;
+var EVENTS, TOPICS, TYPES, BUTTONS, ELEMENTSTRINGS, REFVALUES, MONTHS;
 var HTML, INDEX;
 
 function formatDefaultAllEvents(json, callback) {
@@ -58,13 +58,14 @@ function attachButtonClicks() {
 
 function formatDetailView(btn) {
     var list = buildDetailElements(btn);
-    
+    methods.swapFromListToDetailView("detailContent", list);
 }
 
 function buildDetailElements(ref) {    
     var e = ELEMENTSTRINGS;
     var r = REFVALUES;
-    var outer = document.getElementById("detailContent");   
+    var outer = document.createElement("span");
+    outer.setAttribute("id", "detailSpan");
     var h3 = document.createElement("h3");
     h3.innerHTML = ref.Title;
     outer.appendChild(h3);
@@ -85,7 +86,7 @@ function buildDetailElements(ref) {
     a.setAttribute("id", "backButton");
     a.setAttribute("class", "filterButton");
     a.addEventListener("click", function(){
-        var listView = document.getElementById("")
+        var listView = document.getElementById("");
     });
     return outer;
 }
@@ -96,4 +97,6 @@ ELEMENTSTRINGS = ["Description:", "Main Topic:", "Main Type:", "Main Sponsor:", 
     "Street Address:", "City:", "State:", "Zip:", "Start Time:", "End Time:"];
 REFVALUES = ["Description", "Main_Topic", "Main_Type", "Main_Sponsor", "Main_Contact", "Email_Contact", "Phone_Contact",
     "Street_Address", "City", "State", "Zip", "Start_Time", "End_Time"];
+MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
+        "December"];
 

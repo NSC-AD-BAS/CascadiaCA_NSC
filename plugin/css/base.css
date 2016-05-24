@@ -166,7 +166,7 @@ body {
 }
 
 #backLay {
-    background-image: url("../assets/img/headerBarBkrndBig.gif");
+    background-image: url("../assets/img/bkgrndBig.png");
     background-repeat: no-repeat;
     background-size: 100%;
     overflow-y: visible;
@@ -183,7 +183,7 @@ body {
 }
 
 #sortByBackLay {
-    background-image: url("../assets/img/filterBarBkgrndBig.png");
+    background-image: url("../assets/img/bkgrndsmall.png");
     background-repeat: no-repeat;
     background-size: 100%;
     border-top-left-radius: 5px;

@@ -1,11 +1,12 @@
 /**
  * Created by cdub on 5/19/2016.
  */
-// lets organize by breaking down our calendar plugin into specific, abstracted
+// Content View module - one of several specific, abstracted
 // modules. Consider the "pieces" of our calendar app:
-//      main content viewer: shows all views including the calendar
+//      main content viewer: shows all views including the calendar, detail view, list view, submit event
 //      filter box: contains the filters/buttons
 //      event submittal: will be its own view for submitting an event
+//      calendar: its own view for viewing everything in the list view
 
 // nothing more than a content viewer object to hold information, common DOM elements related to
 // this module, and functions/subfunctions associated with it
@@ -42,7 +43,8 @@ var dom, settings, methods,
         viewerMethods: {
             bindCalendarAction: function () {
                 document.getElementById(dom.calendarButton).onclick = function () {
-                    contentViewer.showCalendar(dom.contentDivList, dom.contentDivCal);
+                    console.log("calendar button clicked");
+                    methods.showCalendar(dom.contentDivList, dom.contentDivCal);
                 };
             },
 
@@ -84,13 +86,20 @@ var dom, settings, methods,
 
             swapFromListToDetailView: function(newDiv, newInnerVal) {
                 if(settings.list) {
-                    var newList = document.getElementById(dom.contentDetailList);
+                    var newList = document.getElementById(newDiv);
                     newList.setAttribute("class", "showing");
+                    console.log("attempting to swap from list to detail view, div is: " + newList.getAttribute("id"));
+                    newList.insertBefore(newInnerVal, newList.firstChild);
                     var oldList = document.getElementById(dom.contentDivList);
                     oldList.setAttribute("class", "hidden");
+                    document.getElementById("listChildren").style.height = 0;
                     settings.list = !settings.list;
                     settings.detail = !settings.detail;
                 }
+            },
+
+            updateCityStateLists: function() {
+
             }
             
         }
