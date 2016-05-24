@@ -101,8 +101,7 @@ SELECT e.event_id, e.event_title, 'Subtopic', st.subtopic
 		ON e.event_id = es.es_event_id
 	JOIN subtopics st
 		ON es.es_subtopic_id = st.subtopic_id
-<<<<<<< HEAD:db/CreateViewsCCA-UpdMay22.sql
-ORDER BY `Event Id`;
+ORDER BY event_id;
 
 /*Creates a list of all images ordered by the org they
 are associated with*/
