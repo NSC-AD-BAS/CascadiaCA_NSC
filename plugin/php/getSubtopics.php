@@ -2,6 +2,7 @@
 
 //returns an array of all 24 sub topics
 include "connect.php";
+getSubtopics();
 
 function getSubtopics()
 {
@@ -22,7 +23,7 @@ function getSubtopics()
     //close the db connection
     mysqli_close($db);
 
-    return $jsonarray;
+    echo $jsonarray;
 }
 //display for testing purposes, can be removed.
 echo getSubtopics();

@@ -1,32 +1,14 @@
 var text, events, URLLIST;
-/*
-var callbackCS1 = setTopicsInCityState;
-getAjax(URLLIST.topicList, callbackCS1);
-var callbackCS2 = setEventsInCityState;
-getAjax(URLLIST.topicList, callbackCS1);
-getAjax(URLLIST.eventList, callbackCS2);
 
-function setTopicsInCityState(json) {
+
+
+function topicsCallback(json) {
 	text = json;
-	console.log(json);
+	console.log("topics returned from ajax: " + text);
 }
 
-function setEventsInCityState(json) {
-	events = json;
-	console.log(json);
-}
- **/
 
-
-var text1 = '{"topics":[' +
-'{"main_topic_id":"1","main_topic":"Fossil Fuel"},' +
-'{"main_topic_id":"2","main_topic":"Legislative\/Regulatory"},' +
-'{"main_topic_id":"3","main_topic":"Transport"},' +
-'{"main_topic_id":"4","main_topic":"Energy"},' +
-'{"main_topic_id":"5","main_topic":"Other"}]}';
-
-var parsed = JSON.parse(text1);
-
+/*
 var arrTopics = [];
 
 for(var x in parsed.topics){
@@ -48,7 +30,7 @@ s_a[1]="Sun Valley| coure d'alene";
 s_a[2]="Bend|Portland|Corvalis|";
 s_a[3]="Seattle|Tacoma|Bellingham|Kirkland";
 
-
+*/
 
 function populateStates( countryElementId, stateElementId ){
 	
@@ -125,7 +107,3 @@ function populateCountries(countryElementId, stateElementId){
 	}
 }
 
-URLLIST = {	
-	"topicList": "cca/plugin/php/getTopics.php",
-	"eventList": "cca/plugin/php/getEventTypes.php"
-};

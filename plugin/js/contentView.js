@@ -27,17 +27,24 @@ var dom, settings, methods,
             detail: false,
             currentContent: {},
             urlList: {
-                getDefault: "cca/plugin/php/getEventsListView.php"
+                getDefault: "../php/getEventsListView.php",
+                getSubtopics: "../php/getSubtopics.php"
             }
         },
 
         init: function () {
+            // the init() function is called when the landing page is loaded
             console.log("init called");
             dom = this.domElements;
             settings = this.settings;
             methods = this.viewerMethods;
             methods.bindCalendarAction();
-            methods.callAjaxMethod();            
+            methods.callAjaxMethod();
+            // this is the first call to ajax generically - in this case we are
+            // passing the url for the getSubtopics to the call, with the callback function
+            // "topicsCallback()" in the city-state.js file which sets the global variable text
+            // to the value of the json data returned
+            methods.ajaxGeneric(settings.urlList.getSubtopics, topicsCallback);
         },      
 
         viewerMethods: {
@@ -68,6 +75,10 @@ var dom, settings, methods,
             
             callAjaxMethod: function() {
                 getAjax(settings.urlList.getDefault, methods.getEventsDefaultCallback);
+            },
+
+            ajaxGeneric: function(url, callback) {
+                getAjax(url, callback);
             },
 
             addToContent: function(propertyName, item) {
