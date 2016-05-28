@@ -42,7 +42,7 @@ var dom, settings, methods;
             inactiveDiv: "",
             urlList: {
                 getDefault: "../php/getEventsListView.php",
-                getSubtopics: "../php/getSubtopics.php"
+                getSubtopics: "../php/getTopics.php"
             }
         },
 

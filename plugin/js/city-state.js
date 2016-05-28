@@ -1,11 +1,43 @@
-var text, events, URLLIST;
+var text, events, types, URLLIST;
 
 
 
 function topicsCallback(json) {
-	text = json;	
+	text = JSON.parse(json);
+    populateTopicsDropDown();
 }
 
+function typesCallback(json) {
+    types = JSON.parse(json);
+    populateTypesDropDown();
+}
+
+function populateTopicsDropDown() {
+    var dropDown = document.getElementById("eventTopicListBox");
+    for(var index in text) {
+        var mainTopic = document.createElement("option");
+        mainTopic.value = "MainTopic";
+        console.log(text[index]);
+        mainTopic.innerHTML = text[index].Main_Topic;
+        dropDown.appendChild(mainTopic);
+    }
+}
+
+function populateTypesDropDown() {
+    var dropDown = document.getElementById("eventTypeListBox");
+    for(var index in types) {
+        var mainOption = document.createElement("option");
+        mainOption.value = "MainType";
+        console.log(types[index]);
+        mainOption.innerHTML = types[index].Main_Type;
+        dropDown.appendChild(mainOption);
+    }
+}
+
+var typesURL = "../php/getEventTypes.php";
+
+
+getAjax(typesURL, typesCallback);
 
 /*
 var arrTopics = [];
@@ -51,7 +83,7 @@ function populateStates( countryElementId, stateElementId ){
 function populateTopics( topicElementId ){
 
 
-	var topicElement = document.getElementById(topicElementId );
+	var topicElement = document.getElementById(topicElementId);
 	
 	topicElement.length=0;	
 	
