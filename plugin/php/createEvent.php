@@ -104,7 +104,6 @@ function submitFormToDB() {
 //        } else {
 //            echo nl2br("Error: 3" . $insertTypeQuery . "<br>" . $db->error);
 //        }
-
         //get the ids for insertion
         $addressIdQuery = "SELECT address_id FROM address "
                 . "WHERE street_address = '$streetAddress'";
@@ -139,7 +138,7 @@ function submitFormToDB() {
 //        } else {
 //            echo nl2br("Error: 4" . $insertMainOrgQuery . "<br>" . $db->error);
 //        }
-       
+
 
         $orgMainIdQuery = "SELECT org_id FROM organization WHERE org_name = '$orgMainName'";
         $orgMainIdRow = mysqli_query($db, $orgMainIdQuery);
