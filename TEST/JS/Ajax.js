@@ -9,7 +9,6 @@ var request, callBackFunction;
 
 function getAjax(url, callback) {
     var request, callBackFunction;
-    console.log('ajax called, url is: ' + url);
     // based upon which value 'typeOfQuery' is, the php will call different functions
     try {
         request = new XMLHttpRequest();
@@ -29,8 +28,7 @@ function getAjax(url, callback) {
     function processRequest() {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {                
-                var json = JSON.parse(request.responseText);
-                console.log(typeof json);
+                var json = request.responseText;
                 // right here, we take your callback function that you passed, and we then pass
                 // the json data that was returned from the server as the argument to your callback.
                 // for example, in city-state.js, the callback function takes one argument, and sets
