@@ -66,6 +66,7 @@
             <label for="zip">Zip*:</label>
             <input type="text" name="zip" required><br>
             <label for="fileToUpload">Select an image for your event:</label>
+            <!--image for the event-->
             <input type="file" name="eventImage" class="inputFile"><br>
             
             <h3>Organization</h3>
@@ -77,7 +78,7 @@
                         <span>Organization Name*:<input type="text" name="organization_name[]" required></span>
                         <span>Organization Website*:<input type="text" name="organization_website[]" required></span><br>
                         <label for="fileToUpload">Select an image for your sponsor:</label>
-                        <input type="file" name="orgImage[]" class="inputFile"><br>
+                        <input type="file" name="orgImage[]" class="inputFile" data-max-size="2048"  accept="image/*"><br>
                     </div>
                 </div>
             </div>
@@ -90,7 +91,7 @@
             <label for="last_name">Last Name*:</label>
             <input type="text" name="last_name" required><br>
             <label for="email">E-Mail*:</label>
-            <input type="text" name="email" required><br>
+            <input type="email" name="email" required><br>
             <label for="phone_number">Phone Number*:</label>
             <input type="text" name="phone_number" required><br>
             <input type="submit" name="submit_event" value="Submit New Event">

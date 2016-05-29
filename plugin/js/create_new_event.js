@@ -82,7 +82,7 @@ $(function () {
             <span>Organization Name*:<input type="text"  name="organization_name[]" value="" required/>\n\
             </span><span>Organization Website*:<input type="text"  name="organization_website[]" \n\
             value="" required/><br><label for="fileToUpload">Select an image for your sponsor:</label>\n\
-            <input type="file" name="orgImage[]" class="inputFile"><br></span></div>';
+            <input type="file" name="orgImage[]" class="inputFile" data-max-size="2048" accept="image/*"><br></span></div>';
         currentSponsor.appendChild(nextSponsor);
     }
 
