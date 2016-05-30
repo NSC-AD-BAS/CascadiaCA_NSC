@@ -1,7 +1,6 @@
 <?php
 
 //returns an array of all 24 sub topics
-include "connect.php";
 
 function getSubtopics()
 {
@@ -24,7 +23,5 @@ function getSubtopics()
 
     return $jsonarray;
 }
-//display for testing purposes, can be removed.
-echo getSubtopics();
 
 ?>

@@ -8,7 +8,7 @@ function getTypes()
     $db = connect();
 
     //fetch table rows from mysql db
-    $sql = "SELECT DISTINCT `Main Type` FROM full_type_list";
+    $sql = "SELECT DISTINCT `Main_Type` FROM full_type_list";
     $result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 
     //create an array
