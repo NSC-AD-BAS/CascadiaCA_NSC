@@ -7,7 +7,7 @@ if ( typeof window === "undefined" || !window.document ) {
 var config = QUnit.config,
 	hasOwn = Object.prototype.hasOwnProperty;
 
-// Stores fixture HTML for resetting later
+// Stores fixture html for resetting later
 function storeFixture() {
 
 	// Avoid overwriting user-defined values

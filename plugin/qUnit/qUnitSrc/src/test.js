@@ -230,7 +230,7 @@ Test.prototype = {
 			total: this.assertions.length,
 			runtime: this.runtime,
 
-			// HTML Reporter use
+			// html Reporter use
 			assertions: this.assertions,
 			testId: this.testId,
 

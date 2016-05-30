@@ -114,7 +114,7 @@ QUnit.diff = ( function() {
 			pointer, preIns, preDel, postIns, postDel;
 		changes = false;
 		equalities = []; // Stack of indices where equalities are found.
-		equalitiesLength = 0; // Keeping our own length var is faster in JS.
+		equalitiesLength = 0; // Keeping our own length var is faster in js.
 		/** @type {?string} */
 		lastequality = null;
 
@@ -205,10 +205,10 @@ QUnit.diff = ( function() {
 	};
 
 	/**
-	 * Convert a diff array into a pretty HTML report.
+	 * Convert a diff array into a pretty html report.
 	 * @param {!Array.<!DiffMatchPatch.Diff>} diffs Array of diff tuples.
 	 * @param {integer} string to be beautified.
-	 * @return {string} HTML representation.
+	 * @return {string} html representation.
 	 */
 	DiffMatchPatch.prototype.diffPrettyHtml = function( diffs ) {
 		var op, data, x,
@@ -740,7 +740,7 @@ QUnit.diff = ( function() {
 			lengthDeletions1, deletion, insertion, overlapLength1, overlapLength2;
 		changes = false;
 		equalities = []; // Stack of indices where equalities are found.
-		equalitiesLength = 0; // Keeping our own length var is faster in JS.
+		equalitiesLength = 0; // Keeping our own length var is faster in js.
 		/** @type {?string} */
 		lastequality = null;
 

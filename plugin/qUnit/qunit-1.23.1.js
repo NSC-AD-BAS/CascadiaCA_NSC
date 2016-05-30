@@ -232,7 +232,7 @@ var config = {
 	// By default, modify document.title when suite is done
 	altertitle: true,
 
-	// HTML Reporter: collapse every test except the first failing test
+	// html Reporter: collapse every test except the first failing test
 	// If false, all failing tests will be expanded
 	collapse: true,
 
@@ -930,7 +930,7 @@ Test.prototype = {
 			total: this.assertions.length,
 			runtime: this.runtime,
 
-			// HTML Reporter use
+			// html Reporter use
 			assertions: this.assertions,
 			testId: this.testId,
 
@@ -2354,7 +2354,7 @@ function getUrlParams() {
 	return urlParams;
 }
 
-// Don't load the HTML Reporter on non-browser environments
+// Don't load the html Reporter on non-browser environments
 if ( typeof window === "undefined" || !window.document ) {
 	return;
 }
@@ -2863,7 +2863,7 @@ function appendTest( name, testId, moduleName ) {
 	tests.appendChild( testBlock );
 }
 
-// HTML Reporter initialization and load
+// html Reporter initialization and load
 QUnit.begin( function( details ) {
 	var i, moduleObj, tests;
 
@@ -2878,7 +2878,7 @@ QUnit.begin( function( details ) {
 		return a.localeCompare( b );
 	} );
 
-	// Capture fixture HTML from the page
+	// Capture fixture html from the page
 	storeFixture();
 
 	// Initialize QUnit elements
@@ -3280,7 +3280,7 @@ QUnit.diff = ( function() {
 			pointer, preIns, preDel, postIns, postDel;
 		changes = false;
 		equalities = []; // Stack of indices where equalities are found.
-		equalitiesLength = 0; // Keeping our own length var is faster in JS.
+		equalitiesLength = 0; // Keeping our own length var is faster in js.
 		/** @type {?string} */
 		lastequality = null;
 
@@ -3371,10 +3371,10 @@ QUnit.diff = ( function() {
 	};
 
 	/**
-	 * Convert a diff array into a pretty HTML report.
+	 * Convert a diff array into a pretty html report.
 	 * @param {!Array.<!DiffMatchPatch.Diff>} diffs Array of diff tuples.
 	 * @param {integer} string to be beautified.
-	 * @return {string} HTML representation.
+	 * @return {string} html representation.
 	 */
 	DiffMatchPatch.prototype.diffPrettyHtml = function( diffs ) {
 		var op, data, x,
@@ -3906,7 +3906,7 @@ QUnit.diff = ( function() {
 			lengthDeletions1, deletion, insertion, overlapLength1, overlapLength2;
 		changes = false;
 		equalities = []; // Stack of indices where equalities are found.
-		equalitiesLength = 0; // Keeping our own length var is faster in JS.
+		equalitiesLength = 0; // Keeping our own length var is faster in js.
 		/** @type {?string} */
 		lastequality = null;
 

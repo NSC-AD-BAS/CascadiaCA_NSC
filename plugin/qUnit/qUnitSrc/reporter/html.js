@@ -578,7 +578,7 @@ function appendTest( name, testId, moduleName ) {
 	tests.appendChild( testBlock );
 }
 
-// HTML Reporter initialization and load
+// html Reporter initialization and load
 QUnit.begin( function( details ) {
 	var i, moduleObj, tests;
 

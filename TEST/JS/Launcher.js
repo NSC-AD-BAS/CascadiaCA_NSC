@@ -6,15 +6,15 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
         settings: {
             allContent: {},
             urlList: {
-                allURL: "../PHP/getEventsListView.php",
-                typesURL: "../PHP/getTopics.php",
-                topicsURL: "../PHP/getTypes.php",
+                allURL: "../php/getEventsListView.php",
+                typesURL: "../php/getTopics.php",
+                topicsURL: "../php/getTypes.php",
                 filterURL: ""
             },
             eventObjArray: [],
             buttonObjArray: [],
-            typesArray: {},
-            topicsArray: {}
+            typesArray: [],
+            topicsArray: []
         },
 
         methods: {
@@ -47,14 +47,14 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
             getAllButtons: function() {
                 return buttonArray;
             },
-            setEventNavigation: function() {
+            setEventNavigation: function(current) {
                 console.log("called nav function");
-                var length = currentArray.length;
-                console.log("length " + length);
+                var l = current.length;
+                console.log("length " + l);
                 var counter = 0;
-                var endIndex = length - 1;
+                var endIndex = l - 1;
                 if(currentArray.length < 4) {
-                    switch(length) {
+                    switch(l) {
                         case 2:
                             var first = currentArray[0];
                             var second = currentArray[1];
@@ -99,11 +99,14 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
             M = this.methods;
             currentArray = S.eventObjArray;
             buttonArray = S.buttonObjArray;
+            typesArray = S.typesArray;
+            topicsArray = S.topicsArray;
             M.ajax(S.urlList.allURL, M.allCallBack);
-            var tempList = S.eventObjArray;
+            var tempList = currentArray;
+            console.log("temp array length: " + tempList.length);
             M.setAllEvents(tempList);
             M.testList(tempList);
-            M.setEventNavigation();
+            M.setEventNavigation(tempList);
         }
     }
 

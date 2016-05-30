@@ -18,7 +18,7 @@ var config = {
 	// By default, modify document.title when suite is done
 	altertitle: true,
 
-	// HTML Reporter: collapse every test except the first failing test
+	// html Reporter: collapse every test except the first failing test
 	// If false, all failing tests will be expanded
 	collapse: true,
 

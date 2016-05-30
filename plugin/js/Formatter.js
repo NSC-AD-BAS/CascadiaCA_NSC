@@ -82,7 +82,7 @@ function formatDetailView(btn) {
     // create a span by calling buildDetailElements and passing it the button that was clicked
     var list = buildDetailElements(btn);
     // now that we have a span to add to te detailContent div, call the methods.swapFromListToDetail view and pass it
-    // the "detailContent" div, plus the new span with all the details rendered in HTML
+    // the "detailContent" div, plus the new span with all the details rendered in html
     methods.swapFromListToDetailView("detailContent", list);
 }
 
