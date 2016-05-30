@@ -107,7 +107,7 @@
                         showAnim: "fade",
                         showButtonPanel: true
                     });
-                    $("dateStart").on("click", function(){
+                    $("#dateStart").on("click", function(){
                         $("dateStart").datepicker().show();
                     });
                     $("#dateEnd").datepicker({
@@ -115,8 +115,8 @@
                         showAnim: "fade",
                         showButtonPanel: true
                     });
-                    $("dateEnd").on("click", function(){
-                        $("dateEnd").datepicker().show();
+                    $("#dateEnd").on("click", function(){
+                        $("#dateEnd").datepicker().show();
                     });
                 });
             </script>
@@ -131,8 +131,8 @@
                         </select>
                     </span>
                     <span id="searchBtnContainer">
-                        <button type="button" onclick="filterSearchClick()" class="filterButton">Search</button>
-                        <button type="button" onclick="filterResetClick()" class="filterButton">Reset</button>
+                        <button type="button" class="filterButton">Search</button>
+                        <button type="button" class="filterButton">Reset</button>
                     </span>
         </div>
     </div>

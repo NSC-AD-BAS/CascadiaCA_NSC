@@ -6,65 +6,78 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
         settings: {
             allContent: {},
             urlList: {
-                allURL: "../php/getEventsListView.php",
-                typesURL: "../php/getTopics.php",
-                topicsURL: "../php/getTypes.php",
-                filterURL: ""
+                allURL: "../PHP/getEventsListView.php",
+                typesURL: "../PHP/getTypes.php",
+                topicsURL: "../PHP/getTopics.php"
             },
             eventObjArray: [],
             buttonObjArray: [],
-            typesArray: [],
-            topicsArray: []
+            eventTypesArray: [],
+            eventTopicsArray: []
         },
 
         methods: {
-            allCallBack: function(j) {
+            allCallBack: function (j) {
                 // Issues here: adding any string such as "test" to an array of objects automatically converts the objects
                 //  into strings, so we need to build all Event objects first then we can test them.
                 S.allContent = j;
                 var list = JSON.parse(S.allContent);
-                for(var index in list) {
+                for (var index in list) {
                     var event = new Event(list[index]);
                     S.eventObjArray.push(event);
+                    currentArray.push(event);
                 }
             },
-            ajax: function(url, callback) {
+            topicsCallBack: function(j) {
+                S.eventTopicsArray = j;
+                var list = JSON.parse(S.eventTopicsArray);
+                topicsArray = list;
+                M.populateTopicsDropDown(list);
+            },
+            typesCallBack: function(j) {
+                S.eventTypesArray = j;
+                var list = JSON.parse(S.eventTypesArray);
+                typesArray = list;
+                M.populateTypesDropDown(list);
+            },
+            ajax: function (url, callback) {
                 getAjax(url, callback);
             },
-            testList: function(listIn) {
+            testList: function (listIn) {
                 console.log("inside testList method, do we have a global variable?");
                 console.log(currentArray);
             },
-            setAllEvents: function(listIn) {                
+            setAllEvents: function (listIn) {
                 currentArray = listIn;
             },
-            getAllEvents: function() {
+            getAllEvents: function () {
                 return currentArray;
             },
-            setAllButtons: function(listIn) {
+            setAllButtons: function (listIn) {
                 buttonArray = listIn;
             },
-            getAllButtons: function() {
+            getAllButtons: function () {
                 return buttonArray;
             },
+
             setEventNavigation: function(current) {
                 console.log("called nav function");
                 var l = current.length;
                 console.log("length " + l);
                 var counter = 0;
                 var endIndex = l - 1;
-                if(currentArray.length < 4) {
-                    switch(l) {
+                if (current.length < 4) {
+                    switch (l) {
                         case 2:
-                            var first = currentArray[0];
-                            var second = currentArray[1];
+                            var first = current[0];
+                            var second = current[1];
                             first.setNextEvent(second);
                             second.setPreviousEvent(first);
                             break;
                         case 3:
-                            var first = currentArray[0];
-                            var second = currentArray[1];
-                            var third = currentArray[2];
+                            var first = current[0];
+                            var second = current[1];
+                            var third = current[2];
                             first.setNextEvent(second);
                             second.setPreviousEvent(first);
                             second.setNextEvent(third);
@@ -73,23 +86,32 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
                         default:
                             break;
                     }
+                } else {
+                    // do something
                 }
-                else {
-                    console.log("entering longer navigation case");
-                    var firstE = currentArray[0];
-                    console.log(firstE);
-                    var lastE = currentArray[endIndex];
-                    firstE.setNextEvent(currentArray[1]);
-                    lastE.setPreviousEvent(currentArray[endIndex - 1]);
-                    counter++;
-                    while(counter > 0 && counter < endIndex) {
-                        var current = currentArray[counter];
-                        current.setPreviousEvent(currentArray[counter - 1]);
-                        current.setNextEvent(currentArray[counter + 1]);
-                        counter++;
-                    }
-                }
+            },
 
+            populateTopicsDropDown: function(listTopics) {
+                console.log("inside topics drop");
+                console.log(listTopics);
+                var topicsDropDown = document.getElementById("eventTopicListBox");
+                for(var index in listTopics) {
+                    var op = document.createElement("option");
+                    op.setAttribute("id", "dd" + index);
+                    op.innerHTML = listTopics[index].Main_Topic;
+                    topicsDropDown.appendChild(op);
+                }
+            },
+            populateTypesDropDown: function(listTypes) {
+                console.log("inside types drodown");
+                console.log(listTypes);
+                var typesDropDown = document.getElementById("eventTypeListBox");
+                for(var index2 in listTypes) {
+                    var op2 = document.createElement("option");
+                    op2.setAttribute("id", "dd2" + index2);
+                    op2.innerHTML = listTypes[index2].Main_Type;
+                    typesDropDown.appendChild(op2);
+                }
             }
         },
 
@@ -99,16 +121,19 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
             M = this.methods;
             currentArray = S.eventObjArray;
             buttonArray = S.buttonObjArray;
-            typesArray = S.typesArray;
-            topicsArray = S.topicsArray;
+            topicsArray = S.eventTopicsArray;
+            typesArray = S.eventTypesArray;
             M.ajax(S.urlList.allURL, M.allCallBack);
             var tempList = currentArray;
             console.log("temp array length: " + tempList.length);
             M.setAllEvents(tempList);
             M.testList(tempList);
             M.setEventNavigation(tempList);
+            //M.setEventNavigation();
+            M.ajax(S.urlList.topicsURL, M.topicsCallBack);
+            M.ajax(S.urlList.typesURL, M.typesCallBack);
         }
-    }
+    };
 
 
 
