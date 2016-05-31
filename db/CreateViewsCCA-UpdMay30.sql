@@ -27,7 +27,8 @@ CREATE OR REPLACE VIEW event_list AS
 		e.event_description AS `Description`,
 		e.start_date_time AS `Start_Time`, e.end_date_time AS `End_Time`,
         a.building_name AS `Building`, a.street_address AS `Street_Address`,
-        a.city AS `City`, a.state AS `State`, a.zip AS `ZIP`,
+        a.city AS `City`, a.state AS `State`, a.zip AS `ZIP`, 
+        a.lat AS `Lat`, a.lng AS `Lng`
         CONCAT(c.first_name, " ", c.last_name) AS `Main_Contact`,
         c.email AS `Contact_Email`, c.phone AS `Contact_Phone`,
         o.org_name AS `Main_Sponsor`,
