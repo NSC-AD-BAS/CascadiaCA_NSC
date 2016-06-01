@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../js/jonthornton-jquery-timepicker-18fd09d/jquery.timepicker.css" rel="stylesheet">
+    <link href="../js/jquery-ui-1.12.0-rc.2.custom/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jtsage.com/datebox/latest/jqm-datebox.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="../js/AjaxFunctions.js" type="text/javascript"></script>
-    <script src="../js/EventList.js" type="text/javascript"></script>
-    <script src="../js/Filter.js" type="text/javascript"></script>
+    <script src="../js/contentView.js" type="text/javascript"></script>
+    <script src="../js/Formatter.js" type="text/javascript"></script>
     <script src="../js/city-state.js" type="text/javascript"></script>
     <script src="../js/jonthornton-jquery-timepicker-18fd09d/jquery.timepicker.js" type="text/javascript"></script>
     <script src="../js/Datepair.js-master/dist/datepair.js" type="text/javascript"></script>
     <script src="../js/Datepair.js-master/dist/jquery.datepair.js" type="text/javascript"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.core.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.datebox.min.js"></script>
     <link href="../css/base.css" rel="stylesheet">
-    <link href="../js/jonthornton-jquery-timepicker-18fd09d/jquery.timepicker.css" rel="stylesheet">
     <link href="../js/jquery-ui-1.12.0-rc.2.custom/jquery-ui.css" rel="stylesheet">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 </head>
@@ -30,43 +35,48 @@ widget, which will then have Filter.js get all values in the filter form by id, 
         <div id="eventList">
             <div id="headerBox">
                 <div id="headerLeft"><h2>Events</h2></div>
+                
+    
+                
                 <div id="headerRight"	data-role="controlgroup" data-type="horizontal">
 					
-      <a href="#" class="ui-btn" button id="dayBtn">>Day</a>
+      <a href="#" class="ui-btn" button id="dayBtn">Day</a>
       <a href="#" class="ui-btn" button id="weekBtn">Week</a>
       <a href="#" class="ui-btn" button id="monthBtn">Month</a>
       <a href="#" class="ui-btn" button id="toggleCalendar">Calendar</a>
+
     </div>
+           
 
                    
-            </div>
-          </br>
+            </div>	
+ <br>
+			
             <div id="eventContent">
-                <ul data-role="listview" data-inset="true">
-					 <li><a href="#">events[0].eventTitle + " " + events[0].location + " " + events[0].time;</a></li>
-      <li><a href="#">events[1].eventTitle + " " + events[1].location + " " + events[1].time;</a></li>
-      <li><a href="#">events[2].eventTitle + " " + events[2].location + " " + events[2].time;</a></li>
-      <li><a href="#">events[3].eventTitle + " " + events[3].location + " " + events[3].time;</a></li>
-      <li><a href="#">events[4].eventTitle + " " + events[4].location + " " + events[4].time;</a></li>
-      <li><a href="#">events[5].eventTitle + " " + events[5].location + " " + events[5].time;</a></li>    
-      <li><a href="#">events[6].eventTitle + " " + events[6].location + " " + events[6].time;</a></li>
-      <li><a href="#">events[7].eventTitle + " " + events[7].location + " " + events[7].time;</a></li>
-      <li><a href="#">events[8].eventTitle + " " + events[8].location + " " + events[8].time;</a></li>
-      <li><a href="#">events[9].eventTitle + " " + events[9].location + " " + events[9].time;</a></li>
-                </ul>
-            </div>
-            
-        </div>
 
-        <div id="filterSideBar">
+                <ul data-role="listview" data-inset="true" data-filter="true">
+					 <li>
+                </ul>
+                </div>
+                </div>
+</head>
+
+<body onload="contentViewer.init()">
+<div id="mainContent" class="main">
+    <div id="eventList">
+        <a href="#"button id="submitNew" class="ui-btn">Create Event</a>
+           
+
             <div id="filterContainer">
-                <h3>Sort By:</h3>
+
+  
                     <span id="typeFilterField">
                     <label for="eventTypeListBox">Event Type</label>
                     <select id="eventTypeListBox"  class="filterSelect">
                         <option value="clear"></option>
                     </select>
                         </span>
+
                     <span id="topicFilterField">
                     <label for="eventTopicListBox">Event Topic</label>
                     <select id="eventTopicListBox" class="filterSelect">
@@ -85,59 +95,59 @@ widget, which will then have Filter.js get all values in the filter form by id, 
                             <option value="clear"></option>
                         </select>
                     </span>
-                    <form id="formFilterField">
-                        <label for="dateStartFilterField">Start Date/Time</label>
+
+            <form id="formFilterField">
+              
                         <span id="dateStartFilterField">
-                        <input type="text" id="dateStart" class="filterDate" value="Start Date">
-                        <input type="text" id="timeStart" class="filterDate" value="Start Time">
+                        <input type="text" id="dateStart" class="filterDate" value="Start Date"  data-role="datebox" data-options='{"mode":"datebox"}'>
+                        <input type="text" id="timeStart" class="filterDate" value="Start Time"  data-role="datebox" data-options='{"mode":"timebox"}'>
                         </span><br>
-                        <label for="dateEndFilterField">End Date/Time</label>
+
                         <span id="dateEndFilterField">
-                        <input type="text" id="dateEnd" class="filterDate" value="End Date">
-                        <input type="text" id="timeEnd" class="filterDate" value="End Time">
+                        <input type="text" id="dateEnd" class="filterDate" value="End Date" data-role="datebox" data-options='{"mode":"datebox"}'>
+                        <input type="text" id="timeEnd" class="filterDate" value="End Time" data-role="datebox" data-options='{"mode":"timebox"}'>
                         </span><br>
-                    </form>
+            </form>
                         <span id="dateBtnContainer">
-                        <button type="button" onclick="filterDateSearchClick()" class="filterButton">Sort Range</button>
                         <button type="button" onclick="resetDateSearchClick()" class="filterButton">Reset</button>
                         </span>
-                <script>
-                    $(function(){
-                        $("#timeStart").timepicker({
-                            disableTextInput: true,
-                            timeFormat: 'H:i:s',
-                            noneOption: true
-                        });
-                        $("#timeStart").on("click", function(){
-                            $("timeStart").timepicker.show();
-                        });
-                        $("#timeEnd").timepicker({
-                            disableTextInput: true,
-                            timeFormat: 'H:i:s',
-                            noneOption: true
-                        });
-                        $("#timeEnd").on("click", function(){
-                            $(alert("hello"));
-                            $("timeEnd").timepicker.show();
-                        });
-                        $("#dateStart").datepicker({
-                            dateFormat: "yy-mm-dd",
-                            showAnim: "fade",
-                            showButtonPanel: true
-                        });
-                        $("dateStart").on("click", function(){
-                            $("dateStart").datepicker().show();
-                        });
-                        $("#dateEnd").datepicker({
-                            dateFormat: "yy-mm-dd",
-                            showAnim: "fade",
-                            showButtonPanel: true
-                        });
-                        $("dateEnd").on("click", function(){
-                            $("dateEnd").datepicker().show();
-                        });
+            <script>
+                $(function(){
+                    $("#timeStart").timepicker({
+                        disableTextInput: true,
+                        timeFormat: 'H:i:s',
+                        noneOption: true
                     });
-                </script>
+                    $("#timeStart").on("click", function(){
+                        $("timeStart").timepicker.show();
+                    });
+                    $("#timeEnd").timepicker({
+                        disableTextInput: true,
+                        timeFormat: 'H:i:s',
+                        noneOption: true
+                    });
+                    $("#timeEnd").on("click", function(){
+                        $(alert("hello"));
+                        $("timeEnd").timepicker.show();
+                    });
+                    $("#dateStart").datepicker({
+                        dateFormat: "yy-mm-dd",
+                        showAnim: "fade",
+                        showButtonPanel: true
+                    });
+                    $("dateStart").on("click", function(){
+                        $("dateStart").datepicker().show();
+                    });
+                    $("#dateEnd").datepicker({
+                        dateFormat: "yy-mm-dd",
+                        showAnim: "fade",
+                        showButtonPanel: true
+                    });
+                    $("dateEnd").on("click", function(){
+                        $("dateEnd").datepicker().show();
+                    });
+                });
+            </script>
                     <span id="zipCodeFilterField">
                         <label for="zipTextBox">Zip Code</label>
                         <input type="text" name="zipFilterText" id="zipTextBox" maxlength="5"  class="filterField">
@@ -152,8 +162,8 @@ widget, which will then have Filter.js get all values in the filter form by id, 
                         <button type="button" onclick="filterSearchClick()" class="filterButton">Search</button>
                         <button type="button" onclick="filterResetClick()" class="filterButton">Reset</button>
                     </span>
-                </div>
-            </div>
         </div>
+    </div>
+</div>
 </body>
 </html>
