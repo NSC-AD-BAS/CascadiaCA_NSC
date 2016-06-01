@@ -17,12 +17,18 @@ function Event(json) {
     this.contactEmail = json.Contact_Email;
     this.phone = json.Contact_Phone;
     this.mainSponsor = json.Main_Sponsor;
-    this.type = {name: "nothing yet for types"};
-    this.topic = {name: "nothing yet for topics"};
+    this.type = json.Main_Type;
+    this.topic = json.Main_Topic;
     this.nextEvent = null;
     this.previousEvent = null;
     this.button = null;
     this.listItem = null;
+    this.buildButton();
+    this.buildListElement();
+}
+
+Event.prototype.getId = function() {
+    return this.id;
 }
 
 Event.prototype.setTypes = function(list) {
@@ -71,15 +77,19 @@ Event.prototype.getButton = function() {
     return this.button;
 }
 
+Event.prototype.getListElement = function() {
+    return this.listItem;
+}
+
 Event.prototype.buildButton = function() {
     var button = document.createElement("button");
     button.setAttribute("id", "button" + this.id);
-    button.setAttribute("class", "dynamicList");
-    var text = String(this.title + ",    " + this.city + ",    " + this.state + ",    " + this.mainTopic
-        + " -- " + this.mainType);
+    button.setAttribute("class", "lightBtn");
+    var text = String(this.title + ", " + this.city + ", " + this.state + ", " + this.topic
+        + " -- " + this.type);
     button.innerHTML = text;
     this.button = button;
-    return button;
+    //console.log(this.button);
 }
 
 Event.prototype.buildListElement = function() {
@@ -87,5 +97,7 @@ Event.prototype.buildListElement = function() {
     li.setAttribute("id", "li" + this.id);
     li.appendChild(this.button);
     this.listItem = li;
-    return li;
+    //console.log(this.listItem);
 }
+
+

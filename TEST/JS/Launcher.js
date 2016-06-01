@@ -1,4 +1,4 @@
-var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
+var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray;
 
     content = {
         domElements: {},
@@ -13,19 +13,32 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
             eventObjArray: [],
             buttonObjArray: [],
             eventTypesArray: [],
-            eventTopicsArray: []
+            eventTopicsArray: [],
+            eventLiArray:[]
         },
 
         methods: {
+            // this is the first method of the entire on-the-fly method passed to the initial ajax call
+            // we set the return value of the original JSON array from php into the S.allContent variable (parsed)
+            // we create a new event object for every object inside the S.allContent var and push it into the
+            //  S.eventObject array (which the global array currentArray is set to as well)
             allCallBack: function (j) {
-                // Issues here: adding any string such as "test" to an array of objects automatically converts the objects
-                //  into strings, so we need to build all Event objects first then we can test them.
-                S.allContent = j;
-                var list = JSON.parse(S.allContent);
+                S.allContent = JSON.parse(j);
+                console.log("first step, allCallBack called");
+                var list = S.allContent;
                 for (var index in list) {
                     var event = new Event(list[index]);
+                    S.buttonObjArray.push(event.getButton());
+                    S.eventLiArray.push(event.getListElement());
                     S.eventObjArray.push(event);
-                    currentArray.push(event);
+                }                
+            },
+            setButtonHandlers: function(j) {
+                for(var i = 0; i < j.length; i++) {
+                    var el = j[i];
+                    el.addEventListener('click', function(el) {
+                        console.log("you have clicked " + el);
+                    });
                 }
             },
             topicsCallBack: function(j) {
@@ -43,12 +56,19 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
             ajax: function (url, callback) {
                 getAjax(url, callback);
             },
-            testList: function (listIn) {
-                console.log("inside testList method, do we have a global variable?");
-                console.log(currentArray);
+            testList: function () {
+               // test function
             },
-            setAllEvents: function (listIn) {
-                currentArray = listIn;
+            setAllEvents: function (btns, litems, divId) {
+                console.log("passing this function into ajax for all events");
+                var container = document.getElementById(divId);
+                var ul = document.createElement("ul");
+                ul.setAttribute("class", "dynamicList");
+                for(var index in litems) {
+                    var l = litems[index];
+                    ul.appendChild(l);
+                }
+                container.appendChild(ul);
             },
             getAllEvents: function () {
                 return currentArray;
@@ -59,11 +79,8 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
             getAllButtons: function () {
                 return buttonArray;
             },
-
             setEventNavigation: function(current) {
-                console.log("called nav function");
                 var l = current.length;
-                console.log("length " + l);
                 var counter = 0;
                 var endIndex = l - 1;
                 if (current.length < 4) {
@@ -87,13 +104,12 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
                             break;
                     }
                 } else {
-                    // do something
+                    for(var i = 0; i < l; i++) {
+                        console.log(current[i].getMainType());
+                    }
                 }
             },
-
             populateTopicsDropDown: function(listTopics) {
-                console.log("inside topics drop");
-                console.log(listTopics);
                 var topicsDropDown = document.getElementById("eventTopicListBox");
                 for(var index in listTopics) {
                     var op = document.createElement("option");
@@ -103,8 +119,6 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
                 }
             },
             populateTypesDropDown: function(listTypes) {
-                console.log("inside types drodown");
-                console.log(listTypes);
                 var typesDropDown = document.getElementById("eventTypeListBox");
                 for(var index2 in listTypes) {
                     var op2 = document.createElement("option");
@@ -114,24 +128,29 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray;
                 }
             }
         },
-
         init: function() {
             dom = this.domElements;
             S = this.settings;
             M = this.methods;
             currentArray = S.eventObjArray;
             buttonArray = S.buttonObjArray;
+            liArray = S.eventLiArray;
             topicsArray = S.eventTopicsArray;
             typesArray = S.eventTypesArray;
-            M.ajax(S.urlList.allURL, M.allCallBack);
-            var tempList = currentArray;
-            console.log("temp array length: " + tempList.length);
-            M.setAllEvents(tempList);
-            M.testList(tempList);
-            M.setEventNavigation(tempList);
-            //M.setEventNavigation();
-            M.ajax(S.urlList.topicsURL, M.topicsCallBack);
-            M.ajax(S.urlList.typesURL, M.typesCallBack);
+            M.ajax(S.urlList.allURL, function (j) {
+                // Note that all the rest of the code is moved in this call back
+                // function, so that it only executes when the Ajax response is
+                // available:
+                M.allCallBack(j);
+                M.setButtonHandlers(liArray);
+                M.setAllEvents(buttonArray, liArray, "eventContent");
+                M.setEventNavigation(currentArray);
+                // Note that you will need to take care with the following asynchronous
+                // calls as well: their effect is only available when the Ajax
+                // callback is triggered:
+                M.ajax(S.urlList.topicsURL, M.topicsCallBack);
+                M.ajax(S.urlList.typesURL, M.typesCallBack);
+            });
         }
     };
 
