@@ -1,7 +1,11 @@
-var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray;
+var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray, self;
 
-    content = {
-        domElements: {},
+    content = {        
+        domElements: {
+            eventCont: "eventContent",
+            detailCont: "detailContent",
+            calCont: "calendarContent"
+        },
 
         settings: {
             allContent: {},
@@ -28,19 +32,11 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray;
                 var list = S.allContent;
                 for (var index in list) {
                     var event = new Event(list[index]);
-                    S.buttonObjArray.push(event.getButton());
-                    S.eventLiArray.push(event.getListElement());
+                    var b = event.getButton();
                     S.eventObjArray.push(event);
+                    S.buttonObjArray.push(b);
                 }                
-            },
-            setButtonHandlers: function(j) {
-                for(var i = 0; i < j.length; i++) {
-                    var el = j[i];
-                    el.addEventListener('click', function(el) {
-                        console.log("you have clicked " + el);
-                    });
-                }
-            },
+            },            
             topicsCallBack: function(j) {
                 S.eventTopicsArray = j;
                 var list = JSON.parse(S.eventTopicsArray);
@@ -59,16 +55,27 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray;
             testList: function () {
                // test function
             },
-            setAllEvents: function (btns, litems, divId) {
-                console.log("passing this function into ajax for all events");
+            showDetails: function(details) {
+                console.log("callback function on button click has been passed into object");
+                var el = document.getElementById(dom.eventCont);
+                var dl = document.getElementById(dom.detailCont);
+                dl.innerHTML = "";
+                dl.appendChild(details);
+                el.setAttribute("class", "hidden");
+                dl.setAttribute("class", "showing");
+            },
+            setAllEvents: function (events, divId) {
                 var container = document.getElementById(divId);
-                var ul = document.createElement("ul");
-                ul.setAttribute("class", "dynamicList");
-                for(var index in litems) {
-                    var l = litems[index];
-                    ul.appendChild(l);
+                var u = document.createElement("ul");
+                var h = document.createElement("h3");
+                h.innerHTML = "Title, City, State, Event Topic -- Event Type";
+                for(var index in events) {
+                    var li = document.createElement("li");
+                    var listItem = events[index].buildButton(li, M.showDetails);
+                    //listItem.innerHTML = b;
+                    u.appendChild(listItem);
                 }
-                container.appendChild(ul);
+                container.appendChild(u);
             },
             getAllEvents: function () {
                 return currentArray;
@@ -129,6 +136,7 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray;
             }
         },
         init: function() {
+            self = this;
             dom = this.domElements;
             S = this.settings;
             M = this.methods;
@@ -142,8 +150,7 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray;
                 // function, so that it only executes when the Ajax response is
                 // available:
                 M.allCallBack(j);
-                M.setButtonHandlers(liArray);
-                M.setAllEvents(buttonArray, liArray, "eventContent");
+                M.setAllEvents(currentArray, "eventContent");
                 M.setEventNavigation(currentArray);
                 // Note that you will need to take care with the following asynchronous
                 // calls as well: their effect is only available when the Ajax

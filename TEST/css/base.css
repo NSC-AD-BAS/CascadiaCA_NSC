@@ -151,6 +151,7 @@ body {
     border-radius: 5px;
     overflow-y: scroll;
     overflow-x: hidden;
+    width: 560px;
 }
 
 #eventContent, #detailContent, #calendarContent, #backLay {
@@ -174,7 +175,6 @@ body {
     min-width: 1px;
     width: 100%;
     height: 43px;
-    z-index: 10;
     position: absolute;
     top: 4px;
     left: 0px;
@@ -229,7 +229,6 @@ body {
 
 #eventContent {
     background-color: transparent;
-    box-shadow: inset -20px 20px 50px transparent;
 }
 
 #listChildren h2, #listChildren h3 {
@@ -279,11 +278,11 @@ body {
 }
 
 .hidden {
-    visibility: hidden;
+    display:none;
 }
 
 .showing {
-    visibility: visible;
+    display: block;
 }
 
 .left {
@@ -307,18 +306,17 @@ body {
 
 .dynamicList {
     padding: 5px;
-    box-shadow: 0 0 40px transparent;
     display: flex;
     flex-flow: column nowrap;
     font-size: 1em;
     text-align: left;
     list-style: none;
     padding-left: 15px;
+    max-width: 540;
 }
 
 .dynamicList li {
     margin: 4px 0 4px 0;
-    z-index: 15;
 }
 
 .main {
@@ -365,6 +363,10 @@ body {
 
 #timeStart, #timeEnd, #searchBtnContainer.filterButton {
     order: 2;
+}
+
+select * {
+    background-color: #ffffff;
 }
 
 .filterField, .filterSelect, .filterDate {

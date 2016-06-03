@@ -1,8 +1,10 @@
 /**
  * Created by cdub on 5/19/2016.
  */
+var self;
 
 function Event(json) {
+    self = this;
     this.id = json.Event_Id;
     this.title = json.Title;
     this.description = json.Description;
@@ -19,85 +21,109 @@ function Event(json) {
     this.mainSponsor = json.Main_Sponsor;
     this.type = json.Main_Type;
     this.topic = json.Main_Topic;
-    this.nextEvent = null;
-    this.previousEvent = null;
-    this.button = null;
-    this.listItem = null;
-    this.buildButton();
-    this.buildListElement();
+    this.nextEvent = undefined;
+    this.previousEvent = undefined;
+    this.items = [this.id, this.description,  this.type, this.topic, this.city, this.state, this.zipCode, this.address,
+        this.building, this.startTime, this.endTime, this.contact, this.contactEmail, this.phone, this.mainSponsor];
+    this.headerEls = ["ID: ", "Description: ",  "Event Type: ", "Event Topic: ", "City: ", "State: ", "Zip Code: ", "Address: ",
+    "Building: ", "Start Date/Time: ", "End Date/Time: ", "Contact Name: ", "Contact Email: ",
+    "Contact Phone: ", "Main Sponsor: "];
+    this.button = undefined;
+    this.detailView = undefined;
 }
 
 Event.prototype.getId = function() {
     return this.id;
-}
-
-Event.prototype.setTypes = function(list) {
-    this.type.mainType = list.Main_Type;
-    this.type.subType = list.Subtype;
-}
-
-Event.prototype.setTopic = function(list) {
-    this.topic.mainTopic = list.Main_Topic;
-    this.topic.subTopic = list.Subtopic;
-}
+};
 
 Event.prototype.getMainType = function() {
-    return this.type.mainType;
-}
-
-Event.prototype.getSubtype = function() {
-    return this.type.subType;
-}
+    return this.type;
+};
 
 Event.prototype.getMainTopic = function() {
-    return this.topic.mainTopic;
-}
-
-Event.prototype.getSubtopic = function() {
-    return this.topic.subTopic;
-}
+    return this.topic;
+};
 
 Event.prototype.setNextEvent = function(next) {
     this.nextEvent = next;
-}
+};
 
 Event.prototype.getNextEvent = function() {
     return this.nextEvent;
-}
+};
 
 Event.prototype.setPreviousEvent = function(prev) {
     this.previousEvent = prev;
-}
+};
 
 Event.prototype.getPreviousEvent = function() {
     return this.previousEvent;
-}
+};
 
 Event.prototype.getButton = function() {
     return this.button;
-}
+};
 
-Event.prototype.getListElement = function() {
-    return this.listItem;
-}
+Event.prototype.getDetailView = function() {
+    return this.detailView;
+};
 
-Event.prototype.buildButton = function() {
-    var button = document.createElement("button");
-    button.setAttribute("id", "button" + this.id);
-    button.setAttribute("class", "lightBtn");
-    var text = String(this.title + ", " + this.city + ", " + this.state + ", " + this.topic
-        + " -- " + this.type);
-    button.innerHTML = text;
-    this.button = button;
-    //console.log(this.button);
-}
-
-Event.prototype.buildListElement = function() {
+Event.prototype.buildDetailView = function() {
+    var ul = document.createElement("ul");
+    ul.setAttribute("id", "listChildren");
+    ul.setAttribute("class", "dynamicList");
+    var h = document.createElement("h3");
+    h.innerHTML = this.title;
     var li = document.createElement("li");
-    li.setAttribute("id", "li" + this.id);
-    li.appendChild(this.button);
-    this.listItem = li;
-    //console.log(this.listItem);
-}
+    li.appendChild(h);
+    ul.appendChild(li);
+    for(var i = 0; i < this.items.length; i++) {
+        var l = document.createElement("li");
+        var textHeader = String(this.headerEls[i]);        
+        var headerData;
+        if(this.items[i] == null) {
+            headerData = String("N/A");
+        }
+        else {
+            headerData = this.items[i];
+        }
+        var str = textHeader + "  --  " + headerData;
+        l.innerHTML = str;
+        ul.appendChild(l);
+    }
+    var exitBtn = document.createElement("button");
+    exitBtn.setAttribute("class", "exitButton");
+    exitBtn.innerHTML = "Back To Events";
+    exitBtn.addEventListener('click', function() {
+        document.getElementById("detailContent").setAttribute("class", "hidden");
+        document.getElementById("eventContent").setAttribute("class", "showing");
+    }, false);
+    var lastLi = document.createElement("li");
+    lastLi.appendChild(exitBtn);
+    ul.appendChild(lastLi);
+    this.detailView = ul;
+    return this.detailView;
+};
+
+Event.prototype.buildButton = function(listItem, callbackFunc) {
+    var button = document.createElement("button");
+    button.setAttribute("id", "btn" + this.id);
+    button.setAttribute("class", "lightBtn");
+    var text = this.title + ", " + this.city + ", " + this.state + ", " + this.topic
+        + " -- " + this.type;    
+    button.innerHTML = text;
+    // create passed in event handler
+    button.addEventListener('click', function(){
+        var view = self.buildDetailView();
+        callbackFunc(view);
+    }, false);
+    this.button = button;
+    listItem.appendChild(button);
+    return listItem;
+};
+
+
+
+
 
 
