@@ -4,7 +4,7 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray, self
         domElements: {
             eventCont: "eventContent",
             detailCont: "detailContent",
-            calCont: "calendarContent"
+            calCont: "calendarContent"                      
         },
 
         settings: {
@@ -56,8 +56,8 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray, self
                // test function
             },
             showDetails: function(details) {
-                console.log("callback function on click passed");
-                console.log(details);
+                //console.log("callback function on click passed");
+                //console.log(details);
                 details.setAttribute("id", "someFuck");
                 var el = document.getElementById(dom.eventCont);
                 var dl = document.getElementById(dom.detailCont);
@@ -73,11 +73,11 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray, self
                 h.innerHTML = "Title, City, State, Event Topic -- Event Type";
                 for(var index in events) {
                     var li = document.createElement("li");
-                    console.log("setting all events: ");
-                    console.log(events[index].id);
+                    //console.log("setting all events: ");
+                    //console.log(events[index].id);
                     var listItem = events[index].buildButton(li, M.showDetails);
-                    console.log("here is the returned list item/button: ");
-                    console.log(listItem);
+                    //console.log("here is the returned list item/button: ");
+                    //console.log(listItem);
                     //listItem.innerHTML = b;
                     u.appendChild(listItem);
                 }
@@ -139,6 +139,29 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray, self
                     op2.innerHTML = listTypes[index2].Main_Type;
                     typesDropDown.appendChild(op2);
                 }
+            },
+            populateMonthsDropDown: function() {
+                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+                    "October", "November", "December"];
+                var monthsDropDown = document.getElementById("monthTextBox");
+                for(var i in months) {
+                    var m = document.createElement("option");
+                    m.setAttribute("id", "ddMonth" + i);
+                    m.innerHTML = months[i];
+                    monthsDropDown.appendChild(m);
+                }
+            },
+            setFilterHandlers: function() {
+                var calBtn = document.getElementById("toggleCalendar");
+                var resetBtn = document.getElementById("resetAll");
+                var dateResetBtn = document.getElementById("dateResetBtn");
+                var searchAllBtn = document.getElementById("searchAll");
+                var submitEventBtn = document.getElementById("submitNew");
+                swapCalendar(calBtn);
+                resetAll(resetBtn);
+                resetDates(dateResetBtn);
+                search(searchAllBtn);
+                createNew(submitEventBtn);
             }
         },
         init: function() {
@@ -162,8 +185,10 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray, self
                 // calls as well: their effect is only available when the Ajax
                 // callback is triggered:
                 M.ajax(S.urlList.topicsURL, M.topicsCallBack);
-                M.ajax(S.urlList.typesURL, M.typesCallBack);
+                M.ajax(S.urlList.typesURL, M.typesCallBack);                
             });
+            M.populateMonthsDropDown();
+            M.setFilterHandlers();
         }
     };
 
