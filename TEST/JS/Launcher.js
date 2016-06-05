@@ -1,4 +1,5 @@
 var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray, self;
+var cal;
 
     content = {        
         domElements: {
@@ -18,7 +19,7 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray, self
             buttonObjArray: [],
             eventTypesArray: [],
             eventTopicsArray: [],
-            eventLiArray:[]
+            eventLiArray:[],
         },
 
         methods: {
@@ -152,6 +153,7 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray, self
                 }
             },
             setFilterHandlers: function() {
+                cal = false;
                 var calBtn = document.getElementById("toggleCalendar");
                 var resetBtn = document.getElementById("resetAll");
                 var dateResetBtn = document.getElementById("dateResetBtn");

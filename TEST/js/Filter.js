@@ -1,11 +1,23 @@
 /**
  * Created by cdub on 6/4/2016.
  */
+var calShowing = false;
 
 function swapCalendar(calBtn) {
-    console.log("setting cal handler");
     calBtn.addEventListener('click', function(){
-        console.log('switched to calendar');
+        console.log("calshowing is: " + calShowing);
+        if(calShowing == false) {
+            document.getElementById("eventContent").setAttribute("class", "hidden");
+            document.getElementById("detailContent").setAttribute("class", "hidden");
+            document.getElementById("calendarContent").setAttribute("class", "showing");
+            calShowing = !calShowing;
+        }
+        else {
+            document.getElementById("eventContent").setAttribute("class", "showing");
+            //document.getElementById("detailContent").setAttribute("class", "hidden");
+            document.getElementById("calendarContent").setAttribute("class", "hidden");
+            calShowing = !calShowing;
+        }
     }, false);
 }
 
