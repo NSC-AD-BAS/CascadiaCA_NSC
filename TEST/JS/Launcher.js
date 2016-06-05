@@ -28,7 +28,7 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray, self
             //  S.eventObject array (which the global array currentArray is set to as well)
             allCallBack: function (j) {
                 S.allContent = JSON.parse(j);
-                console.log("first step, allCallBack called");
+                //console.log("first step, allCallBack called");
                 var list = S.allContent;
                 for (var index in list) {
                     var event = new Event(list[index]);
@@ -56,7 +56,9 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray, self
                // test function
             },
             showDetails: function(details) {
-                console.log("callback function on button click has been passed into object");
+                console.log("callback function on click passed");
+                console.log(details);
+                details.setAttribute("id", "someFuck");
                 var el = document.getElementById(dom.eventCont);
                 var dl = document.getElementById(dom.detailCont);
                 dl.innerHTML = "";
@@ -71,7 +73,11 @@ var dom, S, M, currentArray, buttonArray, typesArray, topicsArray, liArray, self
                 h.innerHTML = "Title, City, State, Event Topic -- Event Type";
                 for(var index in events) {
                     var li = document.createElement("li");
+                    console.log("setting all events: ");
+                    console.log(events[index].id);
                     var listItem = events[index].buildButton(li, M.showDetails);
+                    console.log("here is the returned list item/button: ");
+                    console.log(listItem);
                     //listItem.innerHTML = b;
                     u.appendChild(listItem);
                 }

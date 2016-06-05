@@ -29,7 +29,7 @@ function Event(json) {
     "Building: ", "Start Date/Time: ", "End Date/Time: ", "Contact Name: ", "Contact Email: ",
     "Contact Phone: ", "Main Sponsor: "];
     this.button = undefined;
-    this.detailView = undefined;
+    this.buildDetailView();
 }
 
 Event.prototype.getId = function() {
@@ -68,9 +68,8 @@ Event.prototype.getDetailView = function() {
     return this.detailView;
 };
 
-Event.prototype.buildDetailView = function() {
+Event.prototype.buildDetailView = function() {    
     var ul = document.createElement("ul");
-    ul.setAttribute("id", "listChildren");
     ul.setAttribute("class", "dynamicList");
     var h = document.createElement("h3");
     h.innerHTML = this.title;
@@ -79,7 +78,7 @@ Event.prototype.buildDetailView = function() {
     ul.appendChild(li);
     for(var i = 0; i < this.items.length; i++) {
         var l = document.createElement("li");
-        var textHeader = String(this.headerEls[i]);        
+        var textHeader = String(this.headerEls[i]);
         var headerData;
         if(this.items[i] == null) {
             headerData = String("N/A");
@@ -95,14 +94,16 @@ Event.prototype.buildDetailView = function() {
     exitBtn.setAttribute("class", "exitButton");
     exitBtn.innerHTML = "Back To Events";
     exitBtn.addEventListener('click', function() {
-        document.getElementById("detailContent").setAttribute("class", "hidden");
+        var details = document.getElementById("detailContent");
+        details.innerHTML = "";        
+        details.setAttribute("class", "hidden");
         document.getElementById("eventContent").setAttribute("class", "showing");
     }, false);
     var lastLi = document.createElement("li");
     lastLi.appendChild(exitBtn);
-    ul.appendChild(lastLi);
+    ul.appendChild(lastLi);    
     this.detailView = ul;
-    return this.detailView;
+    //return this.detailView;
 };
 
 Event.prototype.buildButton = function(listItem, callbackFunc) {
@@ -110,11 +111,11 @@ Event.prototype.buildButton = function(listItem, callbackFunc) {
     button.setAttribute("id", "btn" + this.id);
     button.setAttribute("class", "lightBtn");
     var text = this.title + ", " + this.city + ", " + this.state + ", " + this.topic
-        + " -- " + this.type;    
+        + " -- " + this.type;
     button.innerHTML = text;
-    // create passed in event handler
-    button.addEventListener('click', function(){
-        var view = self.buildDetailView();
+    var view = this.detailView;
+    // bind the detail view of this Event object to the callback function inside the event handler
+    button.addEventListener('click', function() {
         callbackFunc(view);
     }, false);
     this.button = button;
