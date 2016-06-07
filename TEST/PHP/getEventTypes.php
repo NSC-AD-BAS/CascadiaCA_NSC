@@ -1,18 +1,20 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: james_000
+ * Date: 4/29/2016
+ * Time: 11:01 PM
+ */
 
-//returns an array of all 24 sub topics
-<<<<<<< HEAD
-=======
 include "connect.php";
-getSubtopics();
->>>>>>> unstable-cw
+getEventTypes();
 
-function getSubtopics()
+function getEventTypes()
 {
     $db = connect();
 
-    //fetch table rows from main_topics view
-    $sql = "SELECT DISTINCT `Subtopic` FROM full_topic_list";
+    //fetch table rows from mysql db
+    $sql = "select * from full_type_list";
     $result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 
     //create an array
@@ -28,5 +30,7 @@ function getSubtopics()
 
     echo $jsonarray;
 }
+
+
 
 ?>

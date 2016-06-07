@@ -1,11 +1,8 @@
 <?php
 
 //returns an array of all 24 sub topics
-<<<<<<< HEAD
-=======
 include "connect.php";
 getSubtopics();
->>>>>>> unstable-cw
 
 function getSubtopics()
 {
@@ -28,5 +25,7 @@ function getSubtopics()
 
     echo $jsonarray;
 }
+//display for testing purposes, can be removed.
+echo getSubtopics();
 
 ?>

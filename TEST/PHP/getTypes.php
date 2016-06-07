@@ -1,18 +1,14 @@
 <?php
 
-//returns an array of all 24 sub topics
-<<<<<<< HEAD
-=======
+//returns an array of 3 main types
 include "connect.php";
-getSubtopics();
->>>>>>> unstable-cw
 
-function getSubtopics()
+function getTypes()
 {
     $db = connect();
 
-    //fetch table rows from main_topics view
-    $sql = "SELECT DISTINCT `Subtopic` FROM full_topic_list";
+    //fetch table rows from mysql db
+    $sql = "SELECT DISTINCT `Main_Type` FROM full_type_list";
     $result = mysqli_query($db, $sql) or die("Error in Selecting " . mysqli_error($db));
 
     //create an array
@@ -26,7 +22,9 @@ function getSubtopics()
     //close the db connection
     mysqli_close($db);
 
-    echo $jsonarray;
+    return $jsonarray;
 }
+
+echo getTypes();
 
 ?>

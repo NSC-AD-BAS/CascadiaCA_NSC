@@ -33,7 +33,7 @@ img
 
 
 html {
-
+    background-color:#a9a9a9;
 }
 
 html, body {
@@ -44,25 +44,13 @@ body {
     width: 70%;
     margin: auto;
     padding-top: 10px;
-<<<<<<< HEAD
-=======
     background-color:#524741;
->>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
     padding-bottom: 10px;
 }
 
 #headerLeft h2, #filterBoth h2 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     color: #313131;
     text-shadow: 1px 1px 1px #999999;
->>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
-=======
-    /*color: #313131;
-    text-shadow: 1px 1px 1px #999999;
-    */
->>>>>>> unstable-cw
     padding: 5px;
     margin: -10px;
     font-family: "Segoe UI Semibold";
@@ -77,19 +65,12 @@ body {
     margin-left: 5%;
     margin-right: 5%;
     font-family: "Segoe UI";
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     border: 4px solid #5CC36C;
     border-radius: 5px;
     box-shadow: 0 0 15px rgba(255, 157, 0, 1);
     -moz-box-shadow: 0 0 15px rgba(255, 157, 0, 1);
     -webkit-box-shadow: 0 0 15px rgba(255, 157, 0, 1);
     -o-box-shadow: 0 0 15px rgba(255, 157, 0, 1);
->>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
-=======
-    border-radius: 5px;
->>>>>>> unstable-cw
     padding-bottom: 5px;
     padding-top: 5px;
 }
@@ -104,20 +85,19 @@ body {
     position: relative;
 }
 
-/*
 #imageContainer {
     min-width: 1px;
     width: 100%;
     min-height: 1px;
     height: 249px;
     background-size: 100%;
+    background-image: url("../assets/img/rangeLarge.png");
     background-repeat: no-repeat;
     position: absolute;
     bottom: 0px;
     right: 0px;
     z-index: 9;
 }
-*/
 
 #filterSideBar {
     display: -webkit-flex;
@@ -126,17 +106,14 @@ body {
     flex-flow: column nowrap;
     flex-grow: 1;
     padding: 5px;
-<<<<<<< HEAD
-    background-color: transparent;
-=======
     position: relative;
->>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
 }
 
 #filterBox  {
     order: 1;
     align-items: center;
     justify-content: space-between;
+    border: 1px solid #111111;
     border-radius: 3px;
     padding: 5px 5px 0 10px;
     margin-bottom: 10px;
@@ -152,24 +129,12 @@ body {
     flex-flow: row nowrap;
     order: 1;
     justify-content: space-between;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    background-color: transparent;
-    border-radius: 3px;
-    padding: 5px 5px 0 5px;
-    height: 25px;
-    margin-bottom: 10px;
-
-=======
     background-color: #111111;
     box-shadow: inset 1px 0 10px #5CC36C;
-=======
->>>>>>> unstable-cw
     border-radius: 5px;
     padding: 5px 5px 0 20px;
     margin-bottom: 10px;
     height: 28px;
->>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
 }
 
 #wrapper, #filterContainer {
@@ -178,8 +143,6 @@ body {
     flex-flow: column nowrap;
     order: 2;
     padding:5px;
-<<<<<<< HEAD
-=======
     height: 550px;
     position: relative;
 }
@@ -201,10 +164,12 @@ body {
 
 #detailContent {
     position: relative;
+    background-color: white;
+    border: 1px solid red;
 }
 
 #backLay {
-
+    background-image: url("../assets/img/bkgrndBig.png");
     background-repeat: no-repeat;
     background-size: 100%;
     overflow-y: visible;
@@ -220,7 +185,7 @@ body {
 }
 
 #sortByBackLay {
-
+    background-image: url("../assets/img/bkgrndsmall.png");
     background-repeat: no-repeat;
     background-size: 100%;
     border-top-left-radius: 5px;
@@ -228,7 +193,6 @@ body {
     min-height: 1px;
     height: 55px;
     width: 100%;
->>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
 }
 
 #logoContainer {
@@ -238,7 +202,7 @@ body {
     height: 559px;
     border-radius: 10px;
     background-size: 100%;
-
+    background-image: url("../assets/img/rangeLarge.png");
     background-repeat: no-repeat;
     position: absolute;
     bottom: 0px;
@@ -250,7 +214,7 @@ body {
     position: absolute;
     bottom: 0px;
     right: 0px;
-
+    background-image: url("../assets/img/ccaLogoLarge.png");
     background-position: bottom right;
     background-repeat: no-repeat;
     min-width: 1px;
@@ -263,10 +227,13 @@ body {
 #listChildren {
     padding: 0 0 6px 15px;
     font-family: "Segoe UI Light";
+    background-color: yellow;
+    border: 1px solid cornflowerblue;
 }
 
 #eventContent {
-    background-color: transparent;
+    background-color: green;
+    border: 1px solid purple;
 }
 
 #listChildren h2, #listChildren h3 {
@@ -287,17 +254,11 @@ body {
 #headerLeft {
     order: 1;
     flex-basis: 20%;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 #headerRight {
     order: 2;
-<<<<<<< HEAD
-    vertical-align:top;
-
-  
-}
-=======
     flex-basis: auto;
     align-self: stretch;
     padding: 5px;
@@ -350,13 +311,15 @@ body {
 
 .dynamicList {
     padding: 5px;
+    background-color: greenyellow;
+    border: 1px solid darkgreen;
     display: flex;
     flex-flow: column nowrap;
     font-size: 1em;
     text-align: left;
     list-style: none;
     padding-left: 15px;
-    max-width: 540px;
+    max-width: 540;
 }
 
 .dynamicList li {
@@ -373,19 +336,12 @@ body {
     background-color: #111111;
     box-shadow: inset 1px 0 10px #5CC36C;
     border-radius: 5px;
->>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
 }
 
-
 #filterContainer h3 {
-<<<<<<< HEAD
-
-    padding: 5px;
-=======
     color: #111111;
     text-shadow: 0 0 1px #999999;
     padding: 0 0 5px 5px;
->>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
 }
 
 #formFilterField {
@@ -394,10 +350,6 @@ body {
 }
 
 #typeFilterField {order:1;} #topicFilterField {order:2;}  #locationFilterField{order:3;}
-<<<<<<< HEAD
-#monthFilterField{order:4; border-bottom: 3px solid black;} #formFilterField{order:5;} #zipCodeFilterField{order:7; border-top: 3px solid black; text-align: center; }
-#radiusFilterField{order:8;}  #dateBtnContainer{order: 6;} #searchBtnContainer{order:9;}
-=======
 #monthFilterField{order:4; border-bottom: 3px solid black;} #formFilterField{order:5;} #zipCodeFilterField{order:7; border-top: 3px solid black; text-align: center;}
 #radiusFilterField{order:8;}  #dateBtnContainer{order: 6;}
 #searchBtnContainer{
@@ -406,7 +358,6 @@ body {
     flex-flow: column nowrap;
     width: 35%;
 }
->>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
 
 #dateStartFilterField, #dateEndFilterField, #dateBtnContainer {
     display: inline-flex;
@@ -458,8 +409,6 @@ select * {
     opacity: .65;
 }
 
-<<<<<<< HEAD
-=======
 .filterButton {
     -moz-border-radius:8px;
     -webkit-border-radius:8px;
@@ -503,7 +452,6 @@ select * {
     opacity: 1;
 }
 
->>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
 
 
 
