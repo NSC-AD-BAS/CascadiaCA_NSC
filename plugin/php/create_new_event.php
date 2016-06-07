@@ -1,37 +1,100 @@
-<?php 
-//upload portion of the event creation
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create New Event</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="../js/create_new_event.js"></script>
+        <link href="../css/create_event_form.css" rel="stylesheet">
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="../js/jonthornton-jquery-timepicker-18fd09d/jquery.timepicker.js" type="text/javascript"></script>
+        <script src="../js/Datepair.js-master/dist/datepair.js" type="text/javascript"></script>
+        <script src="../js/Datepair.js-master/dist/jquery.datepair.js" type="text/javascript"></script>
+        <link href="../js/jonthornton-jquery-timepicker-18fd09d/jquery.timepicker.css" rel="stylesheet">
+        <link href="../js/jquery-ui-1.12.0-rc.2.custom/jquery-ui.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>New Event Form</h1>
+        <form action="../php/createEvent.php" method="post" enctype="multipart/form-data">
 
-	$target_dir = "uploads/";
-	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-	// Check if file already exists
-	if (file_exists($target_file)) {
-		echo "Sorry, file already exists.";
-		$uploadOk = 0;
-	}
-	 // Check file size
-	if ($_FILES["fileToUpload"]["size"] > 500000) {
-		echo "Sorry, your file is too large.";
-		$uploadOk = 0;
-	}
-	// Allow certain file formats
-	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-		&& $imageFileType != "gif" ) {
-		echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-		$uploadOk = 0;
-	}
+            <h3>Event Info</h3>
+            Title*: <input type="text" name="title" required><br>
+            Type*:<select id="type" name="type" required>
+                <option selected disabled hidden style='display: none' value=''></option>
+                <option value="Action">Action</option>
+                <option value="Knowledge">Knowledge</option>
+                <option value="Involvement">Involvement</option>
+            </select><br>
+            <!--an empty div class that gets dynamically written to for subtypes-->
+            <div class="subtype"></div>
+            Topic*:<select id="topic" name="topic" required>
+                <option selected disabled hidden style='display: none' value=''></option>
+                <option value="fossil">Fossil Fuel</option>
+                <option value="legislative">Legislative/Regulatory</option>
+                <option value="transport">Transport</option>
+                <option value="energy">Alternate Energy</option>
+                <option value="other">Other</option>
+            </select><br>
+            <!--an empty div class that gets dynamically written to for subtypes-->
+            <div class="subtopic"></div>
+            <label for="description">Event Description*:</label>
+            <textarea name="description" id="description" rows="5" cols="50" required></textarea><br>
 
-}
+            <!-- calendar input for date-->
+            <div id="filterSideBar">
+                <span id="formFilterField">
+                    <label for="dateStartFilterField">Start Date/Time</label><br>
+                    <span id="dateStartFilterField">
+                        <input type="text" name="start_date" id="dateStart" class="filterDate" value="Start Date">
+                        <input type="text" name="start_time" id="timeStart" class="filterDate" value="Start Time">
+                    </span><br>
+                    <label for="dateEndFilterField">End Date/Time</label><br>
+                    <span id="dateEndFilterField">
+                        <input type="text" name="end_date" id="dateEnd" class="filterDate" value="End Date">
+                        <input type="text" name="end_time" id="timeEnd" class="filterDate" value="End Time">
+                    </span><br>
+                </span>
+            </div>
 
-?>
+            <label for="building">Building*:</label>
+            <input type="text" name="building" required><br>
+            <label for="street_address">Address*:</label>
+            <input type="text" name="street_address" required><br>
+            <label for="city">City*:</label>
+            <input type="text" name="city" required><br>
+            <label for="state">State*:</label>
+            <input type="text" name="state" required><br>
+            <label for="zip">Zip*:</label>
+            <input type="text" name="zip" required><br>
+            <label for="fileToUpload">Select an image for your event:</label>
+            <!--image for the event-->
+            <input type="file" name="eventImage" class="inputFile"><br>
+            
+            <h3>Organization</h3>
+
+            <div id="sponsors">
+                <div>
+                    <div class='label'>Sponsor 1: </div>
+                    <div class="content">
+                        <span>Organization Name*:<input type="text" name="organization_name[]" required></span>
+                        <span>Organization Website*:<input type="text" name="organization_website[]" required></span><br>
+                        <label for="fileToUpload">Select an image for your sponsor:</label>
+                        <input type="file" name="orgImage[]" class="inputFile" data-max-size="2048"  accept="image/*"><br>
+                    </div>
+                </div>
+            </div>
+            <!--adds more fields on button click-->
+            <input type="button" id="more_sponsors" value="Add More Sponsors" /><br>
+
+            <h3>Contact Info</h3>
+            <label for="first_name">First Name*:</label>
+            <input type="text" name="first_name" required><br>
+            <label for="last_name">Last Name*:</label>
+            <input type="text" name="last_name" required><br>
+            <label for="email">E-Mail*:</label>
+            <input type="email" name="email" required><br>
+            <label for="phone_number">Phone Number*:</label>
+            <input type="text" name="phone_number" required><br>
+            <input type="submit" name="submit_event" value="Submit New Event">
+        </form>
+    </body>
+</html>

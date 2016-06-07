@@ -1,6 +1,4 @@
 <?php
-<<<<<<< HEAD
-=======
 /**
  * Created by PhpStorm.
  * User: james_000
