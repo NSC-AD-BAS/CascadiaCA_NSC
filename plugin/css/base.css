@@ -49,8 +49,9 @@ body {
 }
 
 #headerLeft h2, #filterBoth h2 {
-    color: #313131;
+    /*color: #313131;
     text-shadow: 1px 1px 1px #999999;
+    */
     padding: 5px;
     margin: -10px;
     font-family: "Segoe UI Semibold";
@@ -65,12 +66,7 @@ body {
     margin-left: 5%;
     margin-right: 5%;
     font-family: "Segoe UI";
-    border: 4px solid #5CC36C;
     border-radius: 5px;
-    box-shadow: 0 0 15px rgba(255, 157, 0, 1);
-    -moz-box-shadow: 0 0 15px rgba(255, 157, 0, 1);
-    -webkit-box-shadow: 0 0 15px rgba(255, 157, 0, 1);
-    -o-box-shadow: 0 0 15px rgba(255, 157, 0, 1);
     padding-bottom: 5px;
     padding-top: 5px;
 }
@@ -85,19 +81,20 @@ body {
     position: relative;
 }
 
+/*
 #imageContainer {
     min-width: 1px;
     width: 100%;
     min-height: 1px;
     height: 249px;
     background-size: 100%;
-    background-image: url("../assets/img/rangeLarge.png");
     background-repeat: no-repeat;
     position: absolute;
     bottom: 0px;
     right: 0px;
     z-index: 9;
 }
+*/
 
 #filterSideBar {
     display: -webkit-flex;
@@ -113,7 +110,6 @@ body {
     order: 1;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid #111111;
     border-radius: 3px;
     padding: 5px 5px 0 10px;
     margin-bottom: 10px;
@@ -129,8 +125,6 @@ body {
     flex-flow: row nowrap;
     order: 1;
     justify-content: space-between;
-    background-color: #111111;
-    box-shadow: inset 1px 0 10px #5CC36C;
     border-radius: 5px;
     padding: 5px 5px 0 20px;
     margin-bottom: 10px;
@@ -164,12 +158,10 @@ body {
 
 #detailContent {
     position: relative;
-    background-color: white;
-    border: 1px solid red;
 }
 
 #backLay {
-    background-image: url("../assets/img/bkgrndBig.png");
+
     background-repeat: no-repeat;
     background-size: 100%;
     overflow-y: visible;
@@ -185,7 +177,7 @@ body {
 }
 
 #sortByBackLay {
-    background-image: url("../assets/img/bkgrndsmall.png");
+
     background-repeat: no-repeat;
     background-size: 100%;
     border-top-left-radius: 5px;
@@ -202,7 +194,7 @@ body {
     height: 559px;
     border-radius: 10px;
     background-size: 100%;
-    background-image: url("../assets/img/rangeLarge.png");
+
     background-repeat: no-repeat;
     position: absolute;
     bottom: 0px;
@@ -214,7 +206,7 @@ body {
     position: absolute;
     bottom: 0px;
     right: 0px;
-    background-image: url("../assets/img/ccaLogoLarge.png");
+
     background-position: bottom right;
     background-repeat: no-repeat;
     min-width: 1px;
@@ -227,13 +219,10 @@ body {
 #listChildren {
     padding: 0 0 6px 15px;
     font-family: "Segoe UI Light";
-    background-color: yellow;
-    border: 1px solid cornflowerblue;
 }
 
 #eventContent {
-    background-color: green;
-    border: 1px solid purple;
+    background-color: transparent;
 }
 
 #listChildren h2, #listChildren h3 {
@@ -311,15 +300,13 @@ body {
 
 .dynamicList {
     padding: 5px;
-    background-color: greenyellow;
-    border: 1px solid darkgreen;
     display: flex;
     flex-flow: column nowrap;
     font-size: 1em;
     text-align: left;
     list-style: none;
     padding-left: 15px;
-    max-width: 540;
+    max-width: 540px;
 }
 
 .dynamicList li {
