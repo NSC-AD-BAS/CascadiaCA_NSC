@@ -1,12 +1,4 @@
 /*CSS Reset*/
-/*
-color theme:
-#524741 - dk brn
-#86765D - lt brn
-#FF9D00 - orange
-#366051 - forest grn
-#5CC36C - teal grn
-*/
 
 body, html, div, blockquote, img, label, p, pre, ul,
 ol, li, dl, dt, dd, form, a, fieldset, input, th, td
@@ -33,7 +25,7 @@ img
 
 
 html {
-    background-color:#a9a9a9;
+
 }
 
 html, body {
@@ -43,30 +35,21 @@ html, body {
 body {
     width: 70%;
     margin: auto;
-    padding-top: 10px;
-    background-color:#524741;
+    padding-top: 5px;
     padding-bottom: 10px;
 }
 
 #headerLeft h2, #filterBoth h2 {
-    /*color: #313131;
-    text-shadow: 1px 1px 1px #999999;
-    */
     padding: 5px;
     margin: -10px;
-    font-family: "Segoe UI Semibold";
 }
 
 #mainContent {
     display: -webkit-flex;
     display: flex;
-    flex-flow: row-reverse nowrap;
-    align-items: stretch;
-    justify-content: space-around;
-    margin-left: 5%;
-    margin-right: 5%;
-    font-family: "Segoe UI";
-    border-radius: 5px;
+    flex-flow: row nowrap;
+    margin-left: 3%;
+    margin-right: 3%;
     padding-bottom: 5px;
     padding-top: 5px;
 }
@@ -77,168 +60,50 @@ body {
     order: 1;
     flex-flow: column nowrap;
     flex-grow: 4;
-    padding: 5px;
-    position: relative;
 }
-
-/*
-#imageContainer {
-    min-width: 1px;
-    width: 100%;
-    min-height: 1px;
-    height: 249px;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    z-index: 9;
-}
-*/
 
 #filterSideBar {
-    display: -webkit-flex;
-    display: flex;
     order: 2;
-    flex-flow: column nowrap;
-    flex-grow: 1;
     padding: 5px;
-    position: relative;
 }
 
 #filterBox  {
     order: 1;
     align-items: center;
     justify-content: space-between;
+    background-color: transparent;
+    border: 2px solid black;
     border-radius: 3px;
-    padding: 5px 5px 0 10px;
+    padding: 5px 5px 0 5px;
     margin-bottom: 10px;
-    height: 25px;
-}
-
-#filterBoth {
     margin-left: 5px;
+    height: 25px;
 }
 
 #headerBox {
     display: flex;
-    flex-flow: row nowrap;
     order: 1;
     justify-content: space-between;
-    border-radius: 5px;
-    padding: 5px 5px 0 20px;
+    background-color: transparent;
+    border-radius: 3px;
+    padding: 5px 5px 0 5px;
+    height: 25px;
     margin-bottom: 10px;
-    height: 28px;
+
 }
 
-#wrapper, #filterContainer {
+#eventContent, #filterContainer {
     display: -webkit-flex;
     display: flex;
     flex-flow: column nowrap;
     order: 2;
+    flex-shrink: 1;
     padding:5px;
-    height: 550px;
-    position: relative;
-}
-
-#wrapper {
+    border: 3px inset black;
     border-radius: 5px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 560px;
 }
 
-#eventContent, #detailContent, #calendarContent, #backLay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 1px;
-    width: 100%;
-}
-
-#detailContent {
-    position: relative;
-}
-
-#backLay {
-
-    background-repeat: no-repeat;
-    background-size: 100%;
-    overflow-y: visible;
-    overflow-x: visible;
-    min-width: 1px;
-    width: 100%;
-    height: 43px;
-    position: absolute;
-    top: 4px;
-    left: 0px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-#sortByBackLay {
-
-    background-repeat: no-repeat;
-    background-size: 100%;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    min-height: 1px;
-    height: 55px;
-    width: 100%;
-}
-
-#logoContainer {
-    min-width: 1px;
-    width: 100%;
-    min-height: 1px;
-    height: 559px;
-    border-radius: 10px;
-    background-size: 100%;
-
-    background-repeat: no-repeat;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    z-index: 15;
-}
-
-#filterLogoContainer {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-
-    background-position: bottom right;
-    background-repeat: no-repeat;
-    min-width: 1px;
-    width: 253px;
-    min-height: 1px;
-    height: 268px;
-    opacity: .9;
-}
-
-#listChildren {
-    padding: 0 0 6px 15px;
-    font-family: "Segoe UI Light";
-}
-
-#eventContent {
-    background-color: transparent;
-}
-
-#listChildren h2, #listChildren h3 {
-    color: #999999;
-    font-family: "Segoe UI Semibold";
-    font-size: 1.2em;
-}
-
-#filterSideBar {
-    border-right: 3px solid #111111;
-    border-bottom: 2px solid #111111;
-}
-
-#filterContainer {
-    height: 550px;
-}
+#filterContainer {border: 3px inset black;}
 
 #headerLeft {
     order: 1;
@@ -249,102 +114,27 @@ body {
 #headerRight {
     order: 2;
     flex-basis: auto;
+    background-color: black;
     align-self: stretch;
-    padding: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    position: relative;
+    background-color: transparent;
+}
 }
 
-#toggleCalendar {
-    position: absolute;
-    top: 37px;
-    right: 10px;
-    z-index: 20;
-}
-
-#submitNew {
-    position: absolute;
-    top: -7px;
-    right: 10px;
-    width: 110px;
-    z-index: 20;
-}
-
-.hidden {
-    display:none;
-}
-
-.showing {
-    display: block;
-}
-
-.left {
-    float: left;
-    width: 25%;
-    margin: 5px;
-    padding: 2px;
-}
-
-.right {
-    float: right;
-    max-width: 70%;
-    margin: 5px;
-    padding: 2px;
-}
-
-.clear {
-    clear: both;
-    width: 100%;
-}
-
-.dynamicList {
-    padding: 5px;
-    display: flex;
-    flex-flow: column nowrap;
-    font-size: 1em;
-    text-align: left;
-    list-style: none;
-    padding-left: 15px;
-    max-width: 540px;
-}
-
-.dynamicList li {
-    margin: 4px 0 4px 0;
-}
-
-.main {
-    background: #ffffff;
-    background: radial-gradient(ellipse at left bottom, rgba(134, 118, 93, 1) 5%, #e1dbd0 25%, #ffffff);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#524741', endColorstr='#ffffff', GradientType=1 );
-}
-
-#filterBox {
-    background-color: #111111;
-    box-shadow: inset 1px 0 10px #5CC36C;
-    border-radius: 5px;
-}
 
 #filterContainer h3 {
-    color: #111111;
-    text-shadow: 0 0 1px #999999;
-    padding: 0 0 5px 5px;
+    color: #3366ff;
+    border-bottom: 3px solid black;
 }
 
 #formFilterField {
     text-align: center;
-    font-size: .7em;
 }
 
 #typeFilterField {order:1;} #topicFilterField {order:2;}  #locationFilterField{order:3;}
-#monthFilterField{order:4; border-bottom: 3px solid black;} #formFilterField{order:5;} #zipCodeFilterField{order:7; border-top: 3px solid black; text-align: center;}
-#radiusFilterField{order:8;}  #dateBtnContainer{order: 6;}
-#searchBtnContainer{
-    order:9;
-    display: flex;
-    flex-flow: column nowrap;
-    width: 35%;
-}
+#monthFilterField{order:4; border-bottom: 3px solid black;} #formFilterField{order:5;} #zipCodeFilterField{order:7; border-top: 3px solid black; text-align: center; }
+#radiusFilterField{order:8;}  #dateBtnContainer{order: 6;} #searchBtnContainer{order:9;}
 
 #dateStartFilterField, #dateEndFilterField, #dateBtnContainer {
     display: inline-flex;
@@ -359,88 +149,23 @@ body {
     order: 2;
 }
 
-select * {
-    background-color: #ffffff;
-}
-
 .filterField, .filterSelect, .filterDate {
     font-family: "Segoe UI Semibold";
-    background-color: transparent;
+    background-color: #cccccc;
     border: 1px solid black;
     color: #000000;
     padding: 2px;
 }
 
 .filterField, .filterSelect {
-    margin: 5px 5px;
+    margin: 5px 10px;
     width: 80%;
 }
 
 #dateStartFilterField input, #dateEndFilterField input {
     max-width: 80px;
-    margin: 5px 5px;
-}
-
-.lightBtn, .darkBtn {
-    cursor: pointer;
-    padding:3px 5px;
-    text-decoration:none;
-    background: transparent;
-    background: -webkit-linear-gradient(90deg,#86765D, transparent);
-    background: -o-linear-gradient(90deg, #86765D, transparent);
-    background: -moz-linear-gradient(90deg, #86765D, transparent);
-    background: linear-gradient(90deg, #86765D, transparent);
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border: 0;
-    opacity: .65;
-}
-
-.filterButton {
-    -moz-border-radius:8px;
-    -webkit-border-radius:8px;
-    border:1px solid #0B1022;
-    border-radius: 3px;
-    background: #5CC36C; /* For browsers that do not support gradients */
-    background: -webkit-radial-gradient(#5CC36C , #1c3129); /* For Safari 5.1 to 6.0 */
-    background: -o-radial-gradient(#5CC36C, #1c3129); /* For Opera 11.1 to 12.0 */
-    background: -moz-radial-gradient(#5CC36C, #1c3129); /* For Firefox 3.6 to 15 */
-    background: radial-gradient(#5CC36C, #1c3129); /* Standard syntax */
-    display:inline-block;
-    cursor:pointer;
-    color: #FF9D00;
-    font-size:14px;
-    font-weight: 700;
-    padding:3px 5px;
-    text-decoration:none;
-    text-shadow: 1px 1px 2px #1c3129;
     margin: 5px 10px;
-    box-shadow: 1px 0px 5px #86765D;
 }
-
-.filterButton:hover {
-    border: 1px solid #FF9D00;
-    background: #5CC36C; /* For browsers that do not support gradients */
-    background: -webkit-radial-gradient(#5CC36C , #1c3129); /* For Safari 5.1 to 6.0 */
-    background: -o-radial-gradient(#5CC36C, #1c3129); /* For Opera 11.1 to 12.0 */
-    background: -moz-radial-gradient(#5CC36C, #1c3129); /* For Firefox 3.6 to 15 */
-    background: radial-gradient(#5CC36C, #1c3129); /* Standard syntax */
-    color:#1c3129;
-    text-shadow: 1px 0px 5px #ff9d00;
-    box-shadow: 1px 0px 5px #86765d;
-}
-.filterButton:active {
-    position:relative;
-    top:1px;
-}
-
-.lightBtn:hover, .darkBtn:hover {
-    background-color: #86765D;
-    opacity: 1;
-}
-
-
-
 
 
 
