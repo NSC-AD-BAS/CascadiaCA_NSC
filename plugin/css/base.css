@@ -1,12 +1,4 @@
 /*CSS Reset*/
-/*
-color theme:
-#524741 - dk brn
-#86765D - lt brn
-#FF9D00 - orange
-#366051 - forest grn
-#5CC36C - teal grn
-*/
 
 body, html, div, blockquote, img, label, p, pre, ul,
 ol, li, dl, dt, dd, form, a, fieldset, input, th, td
@@ -43,15 +35,20 @@ html, body {
 body {
     width: 70%;
     margin: auto;
+<<<<<<< HEAD
     padding-top: 10px;
 <<<<<<< HEAD
 =======
     background-color:#524741;
 >>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
+=======
+    padding-top: 5px;
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
     padding-bottom: 10px;
 }
 
 #headerLeft h2, #filterBoth h2 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -63,14 +60,16 @@ body {
     text-shadow: 1px 1px 1px #999999;
     */
 >>>>>>> unstable-cw
+=======
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
     padding: 5px;
     margin: -10px;
-    font-family: "Segoe UI Semibold";
 }
 
 #mainContent {
     display: -webkit-flex;
     display: flex;
+<<<<<<< HEAD
     flex-flow: row-reverse nowrap;
     align-items: stretch;
     justify-content: space-around;
@@ -90,6 +89,11 @@ body {
 =======
     border-radius: 5px;
 >>>>>>> unstable-cw
+=======
+    flex-flow: row nowrap;
+    margin-left: 3%;
+    margin-right: 3%;
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
     padding-bottom: 5px;
     padding-top: 5px;
 }
@@ -100,64 +104,48 @@ body {
     order: 1;
     flex-flow: column nowrap;
     flex-grow: 4;
-    padding: 5px;
-    position: relative;
 }
-
-/*
-#imageContainer {
-    min-width: 1px;
-    width: 100%;
-    min-height: 1px;
-    height: 249px;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    z-index: 9;
-}
-*/
 
 #filterSideBar {
-    display: -webkit-flex;
-    display: flex;
     order: 2;
-    flex-flow: column nowrap;
-    flex-grow: 1;
     padding: 5px;
+<<<<<<< HEAD
 <<<<<<< HEAD
     background-color: transparent;
 =======
     position: relative;
 >>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
+=======
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
 }
 
 #filterBox  {
     order: 1;
     align-items: center;
     justify-content: space-between;
+    background-color: transparent;
+    border: 2px solid black;
     border-radius: 3px;
-    padding: 5px 5px 0 10px;
+    padding: 5px 5px 0 5px;
     margin-bottom: 10px;
-    height: 25px;
-}
-
-#filterBoth {
     margin-left: 5px;
+    height: 25px;
 }
 
 #headerBox {
     display: flex;
-    flex-flow: row nowrap;
     order: 1;
     justify-content: space-between;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
     background-color: transparent;
     border-radius: 3px;
     padding: 5px 5px 0 5px;
     height: 25px;
+<<<<<<< HEAD
     margin-bottom: 10px;
 
 =======
@@ -170,14 +158,20 @@ body {
     margin-bottom: 10px;
     height: 28px;
 >>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
+=======
+    margin-bottom: 10px;
+
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
 }
 
-#wrapper, #filterContainer {
+#eventContent, #filterContainer {
     display: -webkit-flex;
     display: flex;
     flex-flow: column nowrap;
     order: 2;
+    flex-shrink: 1;
     padding:5px;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     height: 550px;
@@ -185,20 +179,13 @@ body {
 }
 
 #wrapper {
+=======
+    border: 3px inset black;
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
     border-radius: 5px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 560px;
 }
 
-#eventContent, #detailContent, #calendarContent, #backLay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 1px;
-    width: 100%;
-}
-
+<<<<<<< HEAD
 #detailContent {
     position: relative;
 }
@@ -283,6 +270,9 @@ body {
 #filterContainer {
     height: 550px;
 }
+=======
+#filterContainer {border: 3px inset black;}
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
 
 #headerLeft {
     order: 1;
@@ -299,85 +289,27 @@ body {
 }
 =======
     flex-basis: auto;
+    background-color: black;
     align-self: stretch;
-    padding: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    position: relative;
+    background-color: transparent;
+}
 }
 
-#toggleCalendar {
-    position: absolute;
-    top: 37px;
-    right: 10px;
-    z-index: 20;
-}
-
-#submitNew {
-    position: absolute;
-    top: -7px;
-    right: 10px;
-    width: 110px;
-    z-index: 20;
-}
-
-.hidden {
-    display:none;
-}
-
-.showing {
-    display: block;
-}
-
-.left {
-    float: left;
-    width: 25%;
-    margin: 5px;
-    padding: 2px;
-}
-
-.right {
-    float: right;
-    max-width: 70%;
-    margin: 5px;
-    padding: 2px;
-}
-
-.clear {
-    clear: both;
-    width: 100%;
-}
-
-.dynamicList {
-    padding: 5px;
-    display: flex;
-    flex-flow: column nowrap;
-    font-size: 1em;
-    text-align: left;
-    list-style: none;
-    padding-left: 15px;
-    max-width: 540px;
-}
-
-.dynamicList li {
-    margin: 4px 0 4px 0;
-}
-
-.main {
-    background: #ffffff;
-    background: radial-gradient(ellipse at left bottom, rgba(134, 118, 93, 1) 5%, #e1dbd0 25%, #ffffff);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#524741', endColorstr='#ffffff', GradientType=1 );
-}
-
+<<<<<<< HEAD
 #filterBox {
     background-color: #111111;
     box-shadow: inset 1px 0 10px #5CC36C;
     border-radius: 5px;
 >>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
 }
+=======
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
 
 
 #filterContainer h3 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     padding: 5px;
@@ -386,14 +318,18 @@ body {
     text-shadow: 0 0 1px #999999;
     padding: 0 0 5px 5px;
 >>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
+=======
+    color: #3366ff;
+    border-bottom: 3px solid black;
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
 }
 
 #formFilterField {
     text-align: center;
-    font-size: .7em;
 }
 
 #typeFilterField {order:1;} #topicFilterField {order:2;}  #locationFilterField{order:3;}
+<<<<<<< HEAD
 <<<<<<< HEAD
 #monthFilterField{order:4; border-bottom: 3px solid black;} #formFilterField{order:5;} #zipCodeFilterField{order:7; border-top: 3px solid black; text-align: center; }
 #radiusFilterField{order:8;}  #dateBtnContainer{order: 6;} #searchBtnContainer{order:9;}
@@ -407,6 +343,10 @@ body {
     width: 35%;
 }
 >>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
+=======
+#monthFilterField{order:4; border-bottom: 3px solid black;} #formFilterField{order:5;} #zipCodeFilterField{order:7; border-top: 3px solid black; text-align: center; }
+#radiusFilterField{order:8;}  #dateBtnContainer{order: 6;} #searchBtnContainer{order:9;}
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
 
 #dateStartFilterField, #dateEndFilterField, #dateBtnContainer {
     display: inline-flex;
@@ -421,25 +361,22 @@ body {
     order: 2;
 }
 
-select * {
-    background-color: #ffffff;
-}
-
 .filterField, .filterSelect, .filterDate {
     font-family: "Segoe UI Semibold";
-    background-color: transparent;
+    background-color: #cccccc;
     border: 1px solid black;
     color: #000000;
     padding: 2px;
 }
 
 .filterField, .filterSelect {
-    margin: 5px 5px;
+    margin: 5px 10px;
     width: 80%;
 }
 
 #dateStartFilterField input, #dateEndFilterField input {
     max-width: 80px;
+<<<<<<< HEAD
     margin: 5px 5px;
 }
 
@@ -478,21 +415,11 @@ select * {
     padding:3px 5px;
     text-decoration:none;
     text-shadow: 1px 1px 2px #1c3129;
+=======
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
     margin: 5px 10px;
-    box-shadow: 1px 0px 5px #86765D;
 }
-
-.filterButton:hover {
-    border: 1px solid #FF9D00;
-    background: #5CC36C; /* For browsers that do not support gradients */
-    background: -webkit-radial-gradient(#5CC36C , #1c3129); /* For Safari 5.1 to 6.0 */
-    background: -o-radial-gradient(#5CC36C, #1c3129); /* For Opera 11.1 to 12.0 */
-    background: -moz-radial-gradient(#5CC36C, #1c3129); /* For Firefox 3.6 to 15 */
-    background: radial-gradient(#5CC36C, #1c3129); /* Standard syntax */
-    color:#1c3129;
-    text-shadow: 1px 0px 5px #ff9d00;
-    box-shadow: 1px 0px 5px #86765d;
-}
+<<<<<<< HEAD
 .filterButton:active {
     position:relative;
     top:1px;
@@ -506,6 +433,8 @@ select * {
 >>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
 
 
+=======
+>>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
 
 
 

@@ -11,9 +11,9 @@ var cal;
         settings: {
             allContent: {},
             urlList: {
-                allURL: "../PHP/getEventsListView.php",
-                typesURL: "../PHP/getTypes.php",
-                topicsURL: "../PHP/getTopics.php"
+                allURL: "../php/getEventsListView.php",
+                typesURL: "../php/getTypes.php",
+                topicsURL: "../php/getTopics.php"
             },
             eventObjArray: [],
             buttonObjArray: [],
