@@ -23,11 +23,6 @@ img
 
 /* Global Styles*/
 
-
-html {
-
-}
-
 html, body {
     min-height: 100%;
 }
@@ -35,7 +30,7 @@ html, body {
 body {
     width: 70%;
     margin: auto;
-    padding-top: 5px;
+    padding-top: 10px;
     padding-bottom: 10px;
 }
 
@@ -47,9 +42,11 @@ body {
 #mainContent {
     display: -webkit-flex;
     display: flex;
-    flex-flow: row nowrap;
-    margin-left: 3%;
-    margin-right: 3%;
+    flex-flow: row-reverse nowrap;
+    align-items: stretch;
+    justify-content: space-around;
+    margin-left: 5%;
+    margin-right: 5%;
     padding-bottom: 5px;
     padding-top: 5px;
 }

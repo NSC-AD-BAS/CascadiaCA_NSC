@@ -4,37 +4,36 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="../css/base.css" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.core.min.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.datebox.min.js"></script>
     <script src="../js/Ajax.js" type="text/javascript"></script>
     <script src="../js/Filter.js" type="text/javascript"></script>
     <script src="../js/Launcher.js" type="text/javascript"></script>
     <script src="../js/Event.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="http://cdn.jtsage.com/datebox/latest/jqm-datebox.min.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<script type="text/javascript" src="http://cdn.jtsage.com/datebox/latest/jqm-datebox.core.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.datebox.min.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 </head>
 <body onload="content.init()">
 <div id="mainContent" class="main">
     <div id="eventList">
-
-				   <div id="headerRight"	data-role="controlgroup" data-type="horizontal">
+        <!-- insertion -->
+        <div id="headerBox">
+                <div id="headerLeft"><h2>Events</h2></div>
+                <!-- -->
+				<div id="headerRight" data-role="controlgroup" data-type="horizontal">
                 <button id="toggleCalendar" class="filterButton">Calendar</button>
-                <button id="submitNew" class="filterButton">+</button>
-            </div>
-
+                <button id="submitNew" class="filterButton">+ Add</button>
+                </div>
+        </div>
         <div id="wrapper" class="showing">
             <div id="calendarContent" class="hidden"></div>
             <div id="detailContent" class="hidden"></div>
-            <div id="eventContent" class="showing"> <ul data-role="listview" data-inset="true" data-filter="true">
-					
-                </ul></div>
-            
-            
-              
-</div>
-    </div>
+            <div id="eventContent" class="showing"> <!--ul data-role="listview" data-inset="true" data-filter="true">
+            </ul--></div>
+            </div>
+        </div>
     <div id="filterSideBar">
         <div id="filterContainer">
                     <span id="typeFilterField">
