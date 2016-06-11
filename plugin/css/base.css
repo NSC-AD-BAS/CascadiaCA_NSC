@@ -27,18 +27,6 @@ img
 
 /* Global Styles*/
 
-/*
-html, body {
-    min-height: 100%;
-}
-*/
-body {
-    width: 100%;
-    margin: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 1px solid orchid;
-}
 
 #mainContent {
     display: -webkit-flex;
@@ -50,7 +38,7 @@ body {
     margin-right: 10%;
     padding-bottom: 5px;
     padding-top: 5px;
-    border: 1px solid green;
+    border: 1px solid black;
 }
 
 #eventList {
@@ -84,20 +72,6 @@ body {
     margin: 10px 0 0 5px;
     height: 43px;
 }
-/*
-#headerBox {
-    display: flex;
-    flex-flow: row nowrap;
-    order: 1;
-    justify-content: space-between;
-    background-color: transparent;
-    border-radius: 3px;
-    padding: 5px 5px 0 20px;
-    height: 28px;
-    margin-bottom: 10px;
-    background-color: red;
-}
-*/
 
 #wrapper, #filterContainer {
     display: -webkit-flex;
@@ -105,7 +79,7 @@ body {
     flex-flow: column nowrap;
     order: 2;
     padding:5px;
-    height: 550px;
+    height: 580px;
     border-radius: 5px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -166,7 +140,7 @@ body {
 }
 
 #header {
-    border: 2px solid red;
+
 }
 
 
