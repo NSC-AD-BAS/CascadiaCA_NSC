@@ -11,6 +11,10 @@ ul, ol
     list-style: none;
 }
 
+li {
+    margin: 5px;
+}
+
 body
 {
     line-height: 1;
@@ -24,6 +28,7 @@ img
 /* Global Styles*/
 
 
+<<<<<<< HEAD
 html {
 
 }
@@ -94,8 +99,19 @@ body {
     margin-left: 3%;
     margin-right: 3%;
 >>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
+=======
+#mainContent {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    align-items: stretch;
+    justify-content: space-around;
+    margin-left: 10%;
+    margin-right: 10%;
+>>>>>>> 3ea69e8e303d351e6f19c243bbaeea758269f719
     padding-bottom: 5px;
     padding-top: 5px;
+    border: 1px solid black;
 }
 
 #eventList {
@@ -104,11 +120,20 @@ body {
     order: 1;
     flex-flow: column nowrap;
     flex-grow: 4;
+    flex-basis: 60%;
+    padding: 5px;
+    position: relative;
 }
 
 #filterSideBar {
+    display: -webkit-flex;
+    display: flex;
     order: 2;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+    flex-basis: 30%;
     padding: 5px;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     background-color: transparent;
@@ -117,12 +142,15 @@ body {
 >>>>>>> d740cd6f1773ab1b6ac877b848d602b99f71c501
 =======
 >>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
+=======
+    position: relative;
+>>>>>>> 3ea69e8e303d351e6f19c243bbaeea758269f719
 }
 
 #filterBox  {
-    order: 1;
     align-items: center;
     justify-content: space-between;
+<<<<<<< HEAD
     background-color: transparent;
     border: 2px solid black;
     border-radius: 3px;
@@ -162,15 +190,22 @@ body {
     margin-bottom: 10px;
 
 >>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
+=======
+    background-color: #bbbbbb;
+    border-radius: 5px;
+    padding: 5px 5px 0 5px;
+    margin: 10px 0 0 5px;
+    height: 43px;
+>>>>>>> 3ea69e8e303d351e6f19c243bbaeea758269f719
 }
 
-#eventContent, #filterContainer {
+#wrapper, #filterContainer {
     display: -webkit-flex;
     display: flex;
     flex-flow: column nowrap;
     order: 2;
-    flex-shrink: 1;
     padding:5px;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -182,9 +217,16 @@ body {
 =======
     border: 3px inset black;
 >>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
+=======
+    height: 580px;
+>>>>>>> 3ea69e8e303d351e6f19c243bbaeea758269f719
     border-radius: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #detailContent {
     position: relative;
@@ -322,6 +364,12 @@ body {
     color: #3366ff;
     border-bottom: 3px solid black;
 >>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
+=======
+#wrapper {
+    border-radius: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+>>>>>>> 3ea69e8e303d351e6f19c243bbaeea758269f719
 }
 
 #formFilterField {
@@ -377,6 +425,7 @@ body {
 #dateStartFilterField input, #dateEndFilterField input {
     max-width: 80px;
 <<<<<<< HEAD
+<<<<<<< HEAD
     margin: 5px 5px;
 }
 
@@ -418,6 +467,9 @@ body {
 =======
 >>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
     margin: 5px 10px;
+=======
+    margin: 0px 10px;
+>>>>>>> 3ea69e8e303d351e6f19c243bbaeea758269f719
 }
 <<<<<<< HEAD
 .filterButton:active {
@@ -436,7 +488,17 @@ body {
 =======
 >>>>>>> 95462a324ea7e8741bb9ab7fa47b7d99eb6e8316
 
+.hidden {
+    display: none;
+}
 
+.showing {
+    display: block;
+}
+
+#header {
+
+}
 
 
 
