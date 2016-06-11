@@ -11,6 +11,10 @@ ul, ol
     list-style: none;
 }
 
+li {
+    margin: 5px;
+}
+
 body
 {
     line-height: 1;
@@ -23,20 +27,17 @@ img
 
 /* Global Styles*/
 
+/*
 html, body {
     min-height: 100%;
 }
-
+*/
 body {
-    width: 70%;
+    width: 100%;
     margin: auto;
     padding-top: 10px;
     padding-bottom: 10px;
-}
-
-#headerLeft h2, #filterBoth h2 {
-    padding: 5px;
-    margin: -10px;
+    border: 1px solid orchid;
 }
 
 #mainContent {
@@ -45,10 +46,11 @@ body {
     flex-flow: row-reverse nowrap;
     align-items: stretch;
     justify-content: space-around;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
     padding-bottom: 5px;
     padding-top: 5px;
+    border: 1px solid green;
 }
 
 #eventList {
@@ -57,72 +59,63 @@ body {
     order: 1;
     flex-flow: column nowrap;
     flex-grow: 4;
+    flex-basis: 60%;
+    padding: 5px;
+    position: relative;
 }
 
 #filterSideBar {
+    display: -webkit-flex;
+    display: flex;
     order: 2;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+    flex-basis: 30%;
     padding: 5px;
+    position: relative;
 }
 
 #filterBox  {
-    order: 1;
     align-items: center;
     justify-content: space-between;
-    background-color: transparent;
-    border: 2px solid black;
-    border-radius: 3px;
+    background-color: #bbbbbb;
+    border-radius: 5px;
     padding: 5px 5px 0 5px;
-    margin-bottom: 10px;
-    margin-left: 5px;
-    height: 25px;
+    margin: 10px 0 0 5px;
+    height: 43px;
 }
-
+/*
 #headerBox {
     display: flex;
+    flex-flow: row nowrap;
     order: 1;
     justify-content: space-between;
     background-color: transparent;
     border-radius: 3px;
-    padding: 5px 5px 0 5px;
-    height: 25px;
+    padding: 5px 5px 0 20px;
+    height: 28px;
     margin-bottom: 10px;
-
+    background-color: red;
 }
+*/
 
-#eventContent, #filterContainer {
+#wrapper, #filterContainer {
     display: -webkit-flex;
     display: flex;
     flex-flow: column nowrap;
     order: 2;
-    flex-shrink: 1;
     padding:5px;
-    border: 3px inset black;
+    height: 550px;
     border-radius: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
 }
 
-#filterContainer {border: 3px inset black;}
-
-#headerLeft {
-    order: 1;
-    flex-basis: 20%;
-    margin-left: 5px;
-}
-
-#headerRight {
-    order: 2;
-    flex-basis: auto;
-    background-color: black;
-    align-self: stretch;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    background-color: transparent;
-}
-}
-
-
-#filterContainer h3 {
-    color: #3366ff;
-    border-bottom: 3px solid black;
+#wrapper {
+    border-radius: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #formFilterField {
@@ -161,10 +154,20 @@ body {
 
 #dateStartFilterField input, #dateEndFilterField input {
     max-width: 80px;
-    margin: 5px 10px;
+    margin: 0px 10px;
 }
 
+.hidden {
+    display: none;
+}
 
+.showing {
+    display: block;
+}
+
+#header {
+    border: 2px solid red;
+}
 
 
 
